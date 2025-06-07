@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+// 點擊外部關閉 modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('documentModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -493,11 +499,11 @@
             <h1>告別選擇困難</h1>
             <p>一鍵解鎖美食驚喜！智能隨機餐廳推薦，讓用餐決策變成有趣的冒險</p>
             <div class="cta-buttons">
-                <a href="https://your-webapp-url.com" class="btn btn-primary" target="_blank">
+                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
                     🚀 立即體驗 Web 版
                 </a>
                 <a href="#download" class="btn btn-secondary">
-                    📱 下載 APP
+                    📱 內測體驗
                 </a>
             </div>
         </div>
@@ -554,7 +560,7 @@
                 <div class="preview-content">
                     <h2>🎨 現代化設計</h2>
                     <p>溫暖橘色系配合玻璃擬態效果，創造舒適的視覺體驗。支援深色/淺色模式，適應不同使用場景。</p>
-                    <a href="https://your-webapp-url.com" class="btn btn-primary" target="_blank">
+                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
                         立即試用 Web 版 →
                     </a>
                 </div>
@@ -578,30 +584,33 @@
     <!-- Download Section -->
     <section id="download" class="download">
         <div class="container">
-            <h2 class="section-title">📱 立即下載</h2>
+            <h2 class="section-title">🧪 內測體驗</h2>
             <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
-                支援 iOS 和 Android 平台，隨時隨地享受美食推薦服務
+                Foodfate 目前處於內測階段，歡迎搶先體驗我們的創新功能！
             </p>
             <div class="download-buttons">
-                <a href="#" class="download-btn">
-                    <span>📱</span>
-                    <div>
-                        <div style="font-size: 0.8rem;">Download on the</div>
-                        <div style="font-weight: bold;">App Store</div>
-                    </div>
-                </a>
-                <a href="#" class="download-btn">
+                <a href="#" class="download-btn" onclick="showBetaInfo('android')">
                     <span>🤖</span>
                     <div>
-                        <div style="font-size: 0.8rem;">Get it on</div>
-                        <div style="font-weight: bold;">Google Play</div>
+                        <div style="font-size: 0.8rem;">Android 內測版</div>
+                        <div style="font-weight: bold;">APK 下載</div>
+                    </div>
+                </a>
+                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank">
+                    <span>🌐</span>
+                    <div>
+                        <div style="font-size: 0.8rem;">Web 版本</div>
+                        <div style="font-weight: bold;">立即體驗</div>
                     </div>
                 </a>
             </div>
-            <div style="margin-top: 2rem;">
-                <a href="https://your-webapp-url.com" class="btn btn-secondary" target="_blank">
-                    🌐 或使用 Web 版本
-                </a>
+            <div style="margin-top: 2rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 10px;">
+                <h4 style="color: #FF6B35; margin-bottom: 0.5rem;">📝 內測須知</h4>
+                <p style="color: #666; font-size: 0.9rem; margin: 0;">
+                    • iOS 版本開發中，敬請期待！<br>
+                    • 建議先使用 Web 版本體驗完整功能<br>
+                    • 內測期間您的寶貴意見將幫助我們改善產品
+                </p>
             </div>
         </div>
     </section>
@@ -616,11 +625,11 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h3>產品</h3>
-                    <a href="https://your-webapp-url.com" target="_blank">Web 版本</a>
-                    <a href="#">iOS APP</a>
-                    <a href="#">Android APP</a>
+                    <h3>產品體驗</h3>
+                    <a href="https://app.foodfate.xyz" target="_blank">Web 版本</a>
+                    <a href="#" onclick="showBetaInfo('android')">Android 內測</a>
                     <a href="#features">功能介紹</a>
+                    <a href="#contact">意見回饋</a>
                 </div>
                 
                 <div class="footer-section">
@@ -787,10 +796,51 @@
             document.getElementById('documentModal').style.display = 'none';
         }
         
-        // 點擊外部關閉 modal
-        window.onclick = function(event) {
+        // 顯示內測資訊
+        function showBetaInfo(platform) {
             const modal = document.getElementById('documentModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            const content = document.getElementById('modalContent');
+            
+            let title = '';
+            let body = '';
+            
+            if (platform === 'android') {
+                title = 'Android 內測版下載';
+                body = `
+                    <h2>📱 Android 內測版</h2>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <h3 style="color: #FF6B35;">🚀 搶先體驗</h3>
+                        <p>感謝您對 Foodfate 的興趣！目前我們正在進行內測，歡迎加入我們的測試行列。</p>
+                    </div>
+                    
+                    <h3>📋 內測申請方式</h3>
+                    <ol>
+                        <li>發送郵件至 <strong>beta@foodfate.xyz</strong></li>
+                        <li>郵件主旨：<strong>[Android 內測申請] 您的姓名</strong></li>
+                        <li>內容包含：
+                            <ul>
+                                <li>Android 設備型號和版本</li>
+                                <li>簡單自我介紹</li>
+                                <li>期待使用的場景</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h3>🎯 內測期間享有</h3>
+                    <ul>
+                        <li>✅ 搶先體驗最新功能</li>
+                        <li>✅ 直接與開發團隊交流</li>
+                        <li>✅ 影響產品發展方向</li>
+                        <li>✅ 正式版推出時的早鳥優惠</li>
+                    </ul>
+                    
+                    <div style="background: rgba(255, 107, 53, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: #FF6B35;">💡 暫時無法下載？</h4>
+                        <p style="margin: 0;">建議您先<a href="https://app.foodfate.xyz" target="_blank" style="color: #FF6B35; font-weight: bold;">體驗 Web 版本</a>，享受完整的 Foodfate 功能！</p>
+                    </div>
+                `;
             }
+            
+            content.innerHTML = body;
+            modal.style.display = 'block';
         }
