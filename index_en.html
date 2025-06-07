@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodfate - Say Goodbye to Food Decision Fatigue</title>
+    <meta name="description" content="Foodfate is an intelligent restaurant recommendation app that uses smart random algorithms to solve your 'what to eat' dilemma with fun roulette-style decision making.">
+    <meta name="keywords" content="restaurant recommendation, food decision, random restaurant, food roulette, dining choice">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Foodfate - Say Goodbye to Food Decision Fatigue">
+    <meta property="og:description" content="Intelligent random restaurant recommendations - turn dining decisions into fun adventures">
+    <meta property="og:image" content="./foodfate_logo.png">
+    <meta property="og:url" content="https://foodfate.xyz">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./foodfate_logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    
+    <!-- Language Switch -->
+    <style>
+        .language-switch-nav {
+            background: rgba(255, 107, 53, 0.1) !important;
+            color: #FF6B35 !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+        }
+        .language-switch-nav:hover {
+            background: rgba(255, 107, 53, 0.2) !important;
+            transform: scale(1.05) !important;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Modal for Documents/Beta Info -->
+    <div id="documentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p>We use cookies to improve your experience. By continuing to use our site, you agree to our 
+               <a href="./legal/cookie-policy_en.html">Cookie Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()">Accept</button>
+                <button onclick="declineCookies()">Decline</button>
+                <button onclick="showCookieSettings()">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="./foodfate_logo.png" alt="Foodfate Logo">
+                Foodfate
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="./legal/privacy-policy_en.html">Privacy Policy</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="./index.html" class="language-switch-nav">🇹🇼 中文</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Say Goodbye to Food Decision Fatigue</h1>
+            <p>Unlock culinary surprises with one click! Smart random restaurant recommendations</p>
+            <div class="cta-buttons">
+                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
+                    🚀 Try Web Version
+                </a>
+                <a href="#download" class="btn btn-secondary">
+                    📱 Join Beta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">🎯 Why Choose Foodfate?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🤔 Solving Modern Dining Dilemmas</h3>
+                    <p>Modern people face dining decision challenges:</p>
+                    <ul>
+                        <li><strong>Choice Paralysis</strong>: Too many options lead to decision fatigue</li>
+                        <li><strong>Time Waste</strong>: Browsing multiple platforms is time-consuming</li>
+                        <li><strong>Lack of Novelty</strong>: Repeatedly choosing familiar restaurants</li>
+                        <li><strong>Scattered Information</strong>: Restaurant data spread across platforms</li>
+                    </ul>
+                </div>
+                <div class="about-features">
+                    <h3>✨ Our Unique Solutions</h3>
+                    <div class="feature-highlight">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎲</span>
+                            <div>
+                                <h4>Psychology-Driven Design</h4>
+                                <p>Using behavioral economics and gamification to reduce decision anxiety</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎯</span>
+                            <div>
+                                <h4>Personalization & Randomness Balance</h4>
+                                <p>Recommendations match preferences while maintaining surprise elements</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🌟</span>
+                            <div>
+                                <h4>Multi-Scenario Support</h4>
+                                <p>Supporting individual dining and various life scenarios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">✨ Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>One-Click Random Recommendation</h3>
+                    <p>Smart recommendations based on location and preferences</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎡</div>
+                    <h3>Food Roulette</h3>
+                    <p>Fun roulette design that turns restaurant selection into entertainment</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Smart Learning</h3>
+                    <p>Records user preferences to optimize recommendation accuracy</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Map Integration</h3>
+                    <p>Complete Google Maps integration for one-click navigation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Smart Filtering</h3>
+                    <p>Personalized filtering by price, distance, cuisine, and ratings</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💝</div>
+                    <h3>Favorites Management</h3>
+                    <p>Create multiple favorite lists for different restaurant types</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="app-preview">
+        <div class="container">
+            <div class="preview-container">
+                <div class="preview-content">
+                    <h2>🎨 Modern Design</h2>
+                    <p>Warm orange theme with glassmorphism effects for a comfortable visual experience. Supports dark/light modes for different usage scenarios.</p>
+                    <ul style="margin: 1rem 0; color: #666;">
+                        <li>🎨 Beautiful UI Design</li>
+                        <li>🔄 Smooth Animations</li>
+                        <li>📱 Responsive Design</li>
+                        <li>⚡ Fast Loading Experience</li>
+                    </ul>
+                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('app_open')">
+                        Try Web Version →
+                    </a>
+                </div>
+                <div class="phone-mockup">
+                    <div class="mock-phone">
+                        <div class="mock-screen">
+                            <div class="mock-content">
+                                <h3>Foodfate</h3>
+                                <div class="mock-roulette">
+                                    <span>🧭</span>
+                                </div>
+                                <p style="color: #666; font-size: 0.9rem;">Spin the wheel, discover surprises!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Development Section -->
+    <section id="future" class="future">
+        <div class="container">
+            <h2 class="section-title">🚀 Future Development</h2>
+            <div class="future-content">
+                <div class="development-phases">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 1</span>
+                            <h3>🎯 MVP Stage</h3>
+                            <p class="phase-status">In Progress</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>✅ Location-based smart recommendations</li>
+                            <li>✅ Food roulette decision tool</li>
+                            <li>✅ Google Maps integration</li>
+                            <li>✅ Basic filtering features</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 2</span>
+                            <h3>🧠 Intelligence Stage</h3>
+                            <p class="phase-status">In Development</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>🔄 User preference learning</li>
+                            <li>🔄 Multi-platform integration</li>
+                            <li>🔄 Group decision features</li>
+                            <li>🔄 Full-process integration</li>
+                            <li>🔄 Travel mode recommendations</li>
+                            <li>🔄 Social sharing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 3</span>
+                            <h3>🌟 Complete Ecosystem</h3>
+                            <p class="phase-status">Planned</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>📱 iOS Application</li>
+                            <li>🎨 Dark mode support</li>
+                            <li>📊 Dining history analysis</li>
+                            <li>🔗 Booking & delivery integration</li>
+                            <li>🗺️ AR navigation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="innovation-features">
+                    <h3>💡 Innovation Features Outlook</h3>
+                    <div class="innovation-grid">
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🏥</span>
+                            <div>
+                                <h4>Healthy Dining Mode</h4>
+                                <p>Integrate calorie and nutrition data to recommend restaurants that match health goals</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🎤</span>
+                            <div>
+                                <h4>Voice Assistant Integration</h4>
+                                <p>Support voice control, such as "help me choose a nearby Italian restaurant"</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🌐</span>
+                            <div>
+                                <h4>Multi-language Internationalization</h4>
+                                <p>Support multiple languages, covering food recommendations in major global cities</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🤖</span>
+                            <div>
+                                <h4>AI Food Advisor</h4>
+                                <p>Personalized AI assistant providing dining advice and in-depth restaurant analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">🧪 Beta Experience</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
+                Foodfate is currently in beta testing. Join our testing community!
+            </p>
+            <div class="download-buttons">
+                <button class="download-btn" onclick="showBetaInfo('android')">
+                    <span>🤖</span>
+                    <div>
+                        <div style="font-size: 0.8rem;">Android Beta</div>
+                        <div style="font-weight: bold;">APK Download</div>
+                    </div>
+                </button>
+                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank">
+                    <span>🌐</span>
+                    <div>
+                        <div style="font-size: 0.8rem;">Web Version</div>
+                        <div style="font-weight: bold;">Try Now</div>
+                    </div>
+                </a>
+                <button class="download-btn" style="opacity: 0.6; cursor: not-allowed;">
+                    <span>🍎</span>
+                    <div>
+                        <div style="font-size: 0.8rem;">iOS Version</div>
+                        <div style="font-weight: bold;">Coming Soon</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="beta-info">
+                <h4>📝 Beta Testing Notes</h4>
+                <ul>
+                    <li>• iOS version is in development</li>
+                    <li>• Try the Web version for the complete experience</li>
+                    <li>• Your feedback helps us improve the product</li>
+                    <li>• Android APK supports Android 7.0+</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ Foodfate</h3>
+                    <p style="color: #ccc;">Where food meets fate - intelligent restaurant recommendations</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="mailto:foodfate2025@gmail.com" style="color: #FF6B35;">📧 foodfate2025@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <a href="https://app.foodfate.xyz" target="_blank">Web Version</a>
+                    <a href="#" onclick="showBetaInfo('android')">Android Beta</a>
+                    <a href="#features">Features</a>
+                    <a href="mailto:foodfate2025@gmail.com">Feedback</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <a href="mailto:foodfate2025@gmail.com">Customer Service</a>
+                    <a href="mailto:foodfate2025@gmail.com">Business</a>
+                    <a href="mailto:foodfate2025@gmail.com">Media</a>
+                    <a href="mailto:foodfate2025@gmail.com">Beta Application</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <p style="margin: 0; color: #999; font-size: 0.9rem;">
+                                © 2025 Foodfate. All rights reserved | Powered by Foodfate Team
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="./legal/privacy-policy_en.html" style="color: #999; font-size: 0.9rem;">Privacy Policy</a>
+                            <a href="./legal/terms-of-service_en.html" style="color: #999; font-size: 0.9rem;">Terms of Service</a>
+                            <a href="./legal/cookie-policy_en.html" style="color: #999; font-size: 0.9rem;">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/main_en.js"></script>
+</body>
+</html> 

@@ -1,495 +1,108 @@
-// 點擊外部關閉 modal
-        window.onclick = function(event) {
-            const modal = document.getElementById('documentModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodfate - 智能隨機餐廳推薦 APP</title>
+    <title>Foodfate - 智能隨機餐廳推薦 APP | 告別選擇困難</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Foodfate 是專為解決「今天吃什麼」而設計的智能餐廳推薦 APP。一鍵隨機推薦、美食輪盤、個人化偏好學習，讓用餐決策變成有趣的冒險！現正開放內測。">
+    <meta name="keywords" content="餐廳推薦,美食APP,隨機推薦,選擇困難,台北美食,美食輪盤,Foodfate">
+    <meta name="author" content="Foodfate Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://foodfate.app/">
+    <meta property="og:title" content="Foodfate - 智能隨機餐廳推薦 APP">
+    <meta property="og:description" content="告別選擇困難！一鍵解鎖美食驚喜，智能隨機餐廳推薦，讓用餐決策變成有趣的冒險。">
+    <meta property="og:image" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://foodfate.app/">
+    <meta property="twitter:title" content="Foodfate - 智能隨機餐廳推薦 APP">
+    <meta property="twitter:description" content="告別選擇困難！一鍵解鎖美食驚喜，智能隨機餐廳推薦。">
+    <meta property="twitter:image" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./foodfate_logo.png">
+    <link rel="apple-touch-icon" href="./foodfate_logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- Language Switch -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .language-switch-nav {
+            background: rgba(255, 107, 53, 0.1) !important;
+            color: #FF6B35 !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #2e2e2e;
-            overflow-x: hidden;
-        }
-        
-        /* 背景動畫 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 184, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 138, 91, 0.1) 0%, transparent 50%);
-            animation: backgroundPulse 8s ease-in-out infinite alternate;
-        }
-        
-        @keyframes backgroundPulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.6; }
-        }
-        
-        /* 導航欄 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #FF6B35;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #2e2e2e;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #FF6B35;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #fef3f0 0%, #fff8f6 100%);
-            position: relative;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #FF6B35 0%, #FFB800 50%, #FF8A5B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #666;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #FF6B35 0%, #FF8A5B 100%);
-            color: white;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
-        }
-        
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.9);
-            color: #FF6B35;
-            border: 2px solid #FF6B35;
-            backdrop-filter: blur(20px);
-        }
-        
-        .btn-secondary:hover {
-            background: #FF6B35;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 5rem 0;
-            background: white;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 800;
-            color: #FF6B35;
-            margin-bottom: 3rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 107, 53, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #FF6B35, #FFB800, #FF8A5B);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2e2e2e;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* App Preview Section */
-        .app-preview {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #fef3f0 0%, #fff8f6 100%);
-            text-align: center;
-        }
-        
-        .preview-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .preview-content {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-        
-        .preview-content h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FF6B35;
-            margin-bottom: 1.5rem;
-        }
-        
-        .preview-content p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .phone-mockup {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .mock-phone {
-            width: 300px;
-            height: 600px;
-            background: linear-gradient(135deg, #2e2e2e 0%, #4a4a4a 100%);
-            border-radius: 30px;
-            padding: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        
-        .mock-screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, #fef3f0 0%, #fff8f6 100%);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .mock-content {
-            text-align: center;
-        }
-        
-        .mock-content h3 {
-            color: #FF6B35;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .mock-roulette {
-            width: 150px;
-            height: 150px;
-            border: 3px solid #FF6B35;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem 0;
-            background: rgba(255, 107, 53, 0.1);
-            animation: spin 3s linear infinite;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Download Section */
-        .download {
-            padding: 5rem 0;
-            background: white;
-            text-align: center;
-        }
-        
-        .download-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .download-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: #2e2e2e;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .download-btn:hover {
-            background: #FF6B35;
-            transform: translateY(-2px);
-        }
-        
-        /* Footer */
-        .footer {
-            background: #2e2e2e;
-            color: white;
-            padding: 3rem 0;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .footer-section h3 {
-            color: #FF6B35;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section a:hover {
-            color: #FF6B35;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid #444;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            text-align: center;
-            color: #ccc;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .close {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #ccc;
-        }
-        
-        .close:hover {
-            color: #FF6B35;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .preview-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .preview-content {
-                text-align: center;
-            }
+        .language-switch-nav:hover {
+            background: rgba(255, 107, 53, 0.2) !important;
+            transform: scale(1.05) !important;
         }
     </style>
+    
+    <!-- Google Analytics (will be activated after cookie consent) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Foodfate",
+        "description": "智能隨機餐廳推薦 APP，解決選擇困難的最佳解決方案",
+        "applicationCategory": "Lifestyle",
+        "operatingSystem": "Android, Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TWD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Foodfate Team"
+        }
+    }
+    </script>
 </head>
 <body>
+
+    <!-- Cookie 同意橫幅 -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p>我們使用 Cookie 來改善您的體驗。繼續使用即表示您同意我們的 
+               <a href="./legal/cookie-policy.html">Cookie 政策</a>。
+            </p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()">接受</button>
+                <button onclick="declineCookies()">拒絕</button>
+                <button onclick="showCookieSettings()">設定</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 導航欄 -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">🍽️ Foodfate</a>
+            <a href="#" class="logo">
+                <img src="./foodfate_logo.png" alt="Foodfate Logo">
+                Foodfate
+            </a>
             <ul class="nav-links">
+                <li><a href="#about">關於我們</a></li>
                 <li><a href="#features">功能特色</a></li>
                 <li><a href="#download">下載應用</a></li>
-                <li><a href="#privacy" onclick="openModal('privacy')">隱私政策</a></li>
-                <li><a href="#terms" onclick="openModal('terms')">服務條款</a></li>
+                <li><a href="./legal/privacy-policy.html">隱私政策</a></li>
                 <li><a href="#contact">聯絡我們</a></li>
+                <li><a href="./index_en.html" class="language-switch-nav">🇺🇸 English</a></li>
             </ul>
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
@@ -499,12 +112,57 @@
             <h1>告別選擇困難</h1>
             <p>一鍵解鎖美食驚喜！智能隨機餐廳推薦，讓用餐決策變成有趣的冒險</p>
             <div class="cta-buttons">
-                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
+                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('try_click')">
                     🚀 立即體驗 Web 版
                 </a>
-                <a href="#download" class="btn btn-secondary">
+                <a href="#download" class="btn btn-secondary" onclick="smoothScroll('#download')">
                     📱 內測體驗
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">🎯 為什麼選擇 Foodfate？</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🤔 解決現代人的飲食困境</h3>
+                    <p>現代人面臨的飲食決策困境主要來自以下痛點：</p>
+                    <ul>
+                        <li><strong>選擇障礙</strong>：餐飲選擇過多，導致決策疲勞，使用者常因無法快速決定「吃什麼」而感到壓力</li>
+                        <li><strong>時間浪費</strong>：在眾多平台上瀏覽、篩選餐廳耗時，降低用餐體驗</li>
+                        <li><strong>缺乏新鮮感</strong>：用戶傾向重複選擇熟悉餐廳，難以發現新餐廳或菜系</li>
+                        <li><strong>資訊分散</strong>：餐廳資訊散落在不同平台，需頻繁跳轉App</li>
+                    </ul>
+                </div>
+                <div class="about-features">
+                    <h3>✨ 我們的獨特解決方案</h3>
+                    <div class="feature-highlight">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎲</span>
+                            <div>
+                                <h4>心理學導向設計</h4>
+                                <p>運用行為經濟學與遊戲化設計，降低決策焦慮，增加掌控感與接受度</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎯</span>
+                            <div>
+                                <h4>個性化與隨機性平衡</h4>
+                                <p>確保推薦既符合偏好又充滿新鮮感，讓每次選擇都是驚喜冒險</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🌟</span>
+                            <div>
+                                <h4>多場景適用</h4>
+                                <p>支持個人用餐、快速決策等多種需求，適合各種生活情境</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -560,7 +218,13 @@
                 <div class="preview-content">
                     <h2>🎨 現代化設計</h2>
                     <p>溫暖橘色系配合玻璃擬態效果，創造舒適的視覺體驗。支援深色/淺色模式，適應不同使用場景。</p>
-                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
+                    <ul style="margin: 1rem 0; color: #666;">
+                        <li>🎨 精美的 UI 設計</li>
+                        <li>🔄 流暢的動畫效果</li>
+                        <li>📱 響應式設計</li>
+                        <li>⚡ 快速載入體驗</li>
+                    </ul>
+                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('app_open')">
                         立即試用 Web 版 →
                     </a>
                 </div>
@@ -570,9 +234,99 @@
                             <div class="mock-content">
                                 <h3>Foodfate</h3>
                                 <div class="mock-roulette">
-                                    <span>🎲</span>
+                                    <span>🧭</span>
                                 </div>
                                 <p style="color: #666; font-size: 0.9rem;">轉動輪盤，發現驚喜！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Development Section -->
+    <section id="future" class="future">
+        <div class="container">
+            <h2 class="section-title">🚀 未來發展規劃</h2>
+            <div class="future-content">
+                <div class="development-phases">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 1</span>
+                            <h3>🎯 MVP 階段</h3>
+                            <p class="phase-status">進行中</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>✅ 基於位置的智能隨機推薦</li>
+                            <li>✅ 美食輪盤決策工具</li>
+                            <li>✅ Google Maps 數據整合</li>
+                            <li>✅ 基本篩選功能</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 2</span>
+                            <h3>🧠 智能化階段</h3>
+                            <p class="phase-status">開發中</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>🔄 用戶偏好學習系統</li>
+                            <li>🔄 多平台數據整合</li>
+                            <li>🔄 團體決策功能</li>
+                            <li>🔄 全流程整合（導航、訂位、外送）</li>
+                            <li>🔄 旅遊模式與當地特色推薦</li>
+                            <li>🔄 社交分享機制</li>
+                            <li>🔄 飲料推薦模式</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 3</span>
+                            <h3>🌟 完整生態</h3>
+                            <p class="phase-status">規劃中</p>
+                        </div>
+                        <ul class="phase-features">
+                            <li>📱 iOS 應用程式</li>
+                            <li>🎨 深色模式支援</li>
+                            <li>📊 用餐紀錄分析</li>
+                            <li>🔗 訂位外送整合</li>
+                            <li>🗺️ AR 實景導覽</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="innovation-features">
+                    <h3>💡 創新功能展望</h3>
+                    <div class="innovation-grid">
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🏥</span>
+                            <div>
+                                <h4>健康飲食模式</h4>
+                                <p>整合卡路里與營養數據，推薦符合健康目標的餐廳選擇</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🎤</span>
+                            <div>
+                                <h4>語音助手整合</h4>
+                                <p>支持聲控操作，例如「幫我選一家附近的義大利餐廳」</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🌐</span>
+                            <div>
+                                <h4>多語言國際化</h4>
+                                <p>支援多國語言，覆蓋全球主要城市的美食推薦</p>
+                            </div>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="innovation-icon">🤖</span>
+                            <div>
+                                <h4>AI 美食顧問</h4>
+                                <p>個人化 AI 助手，提供飲食建議與餐廳深度分析</p>
                             </div>
                         </div>
                     </div>
@@ -589,28 +343,38 @@
                 Foodfate 目前處於內測階段，歡迎搶先體驗我們的創新功能！
             </p>
             <div class="download-buttons">
-                <a href="#" class="download-btn" onclick="showBetaInfo('android')">
+                <button class="download-btn" onclick="showBetaInfo('android')">
                     <span>🤖</span>
                     <div>
                         <div style="font-size: 0.8rem;">Android 內測版</div>
                         <div style="font-weight: bold;">APK 下載</div>
                     </div>
-                </a>
-                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank">
+                </button>
+                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank" onclick="trackEvent('web_app_click', 'conversion', 'download_section')">
                     <span>🌐</span>
                     <div>
                         <div style="font-size: 0.8rem;">Web 版本</div>
                         <div style="font-weight: bold;">立即體驗</div>
                     </div>
                 </a>
+                <button class="download-btn" style="opacity: 0.6; cursor: not-allowed;" title="iOS 版本開發中">
+                    <span>🍎</span>
+                    <div>
+                        <div style="font-size: 0.8rem;">iOS 版本</div>
+                        <div style="font-weight: bold;">開發中</div>
+                    </div>
+                </button>
             </div>
-            <div style="margin-top: 2rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 10px;">
-                <h4 style="color: #FF6B35; margin-bottom: 0.5rem;">📝 內測須知</h4>
-                <p style="color: #666; font-size: 0.9rem; margin: 0;">
-                    • iOS 版本開發中，敬請期待！<br>
-                    • 建議先使用 Web 版本體驗完整功能<br>
-                    • 內測期間您的寶貴意見將幫助我們改善產品
-                </p>
+            
+            <div class="beta-info">
+                <h4>📝 內測須知</h4>
+                <ul>
+                    <li>• iOS 版本開發中，敬請期待！</li>
+                    <li>• 建議先使用 Web 版本體驗完整功能</li>
+                    <li>• 內測期間您的寶貴意見將幫助我們改善產品</li>
+                    <li>• Android APK 檔案支援 Android 7.0 以上版本</li>
+                    <li>• 內測版本會定期更新，建議關注我們的最新消息</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -622,6 +386,9 @@
                 <div class="footer-section">
                     <h3>🍽️ Foodfate</h3>
                     <p style="color: #ccc;">讓美食與你相遇，告別選擇困難的智能餐廳推薦 APP</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="mailto:foodfate2025@gmail.com" style="color: #FF6B35;">📧 foodfate2025@gmail.com</a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -629,29 +396,51 @@
                     <a href="https://app.foodfate.xyz" target="_blank">Web 版本</a>
                     <a href="#" onclick="showBetaInfo('android')">Android 內測</a>
                     <a href="#features">功能介紹</a>
-                    <a href="#contact">意見回饋</a>
+                    <a href="mailto:foodfate2025@gmail.com">意見回饋</a>
                 </div>
                 
                 <div class="footer-section">
                     <h3>法律文件</h3>
-                    <a href="#" onclick="openModal('privacy')">隱私政策</a>
-                    <a href="#" onclick="openModal('terms')">服務條款</a>
-                    <a href="#" onclick="openModal('cookies')">Cookie 政策</a>
-                    <a href="#" onclick="openModal('data')">數據處理說明</a>
+                    <a href="./legal/privacy-policy.html">隱私政策</a>
+                    <a href="./legal/terms-of-service.html">服務條款</a>
+                    <a href="./legal/cookie-policy.html">Cookie 政策</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>社群媒體</h3>
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="https://github.com/foodfate" target="_blank">GitHub</a>
                 </div>
                 
                 <div class="footer-section">
                     <h3>聯絡我們</h3>
-                    <a href="mailto:support@foodfate.com">support@foodfate.com</a>
-                    <a href="#">開發者部落格</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">意見回饋</a>
+                    <a href="mailto:foodfate2025@gmail.com">客服信箱</a>
+                    <a href="mailto:foodfate2025@gmail.com">商業合作</a>
+                    <a href="mailto:foodfate2025@gmail.com">媒體聯絡</a>
+                    <a href="mailto:foodfate2025@gmail.com">內測申請</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Foodfate. 版權所有。</p>
+                <div class="container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <p style="margin: 0; color: #999; font-size: 0.9rem;">
+                                © 2025 Foodfate. 版權所有 | Foodfate Team
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="./legal/privacy-policy.html" style="color: #999; font-size: 0.9rem;">隱私權政策</a>
+                            <a href="./legal/terms-of-service.html" style="color: #999; font-size: 0.9rem;">服務條款</a>
+                            <a href="./legal/cookie-policy.html" style="color: #999; font-size: 0.9rem;">Cookie 政策</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+
         </div>
     </footer>
 
@@ -665,182 +454,29 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
+    <script src="./assets/js/main.js"></script>
+    
+    <!-- 頁面載入完成後的統計動畫 -->
     <script>
-        // Modal 功能
-        function openModal(type) {
-            const modal = document.getElementById('documentModal');
-            const content = document.getElementById('modalContent');
+        document.addEventListener('DOMContentLoaded', function() {
+            // 延遲啟動統計動畫
+            setTimeout(() => {
+                const statsSection = document.getElementById('stats');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateStats();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                observer.observe(statsSection);
+            }, 1000);
             
-            let title = '';
-            let body = '';
-            
-            switch(type) {
-                case 'privacy':
-                    title = '隱私政策';
-                    body = `
-                        <h2>隱私政策</h2>
-                        <p><strong>最後更新：2025年1月</strong></p>
-                        
-                        <h3>1. 資料收集</h3>
-                        <p>我們收集的資料包括：</p>
-                        <ul>
-                            <li>位置資訊（用於餐廳推薦）</li>
-                            <li>用餐偏好（用於個人化推薦）</li>
-                            <li>應用使用統計（用於改善服務）</li>
-                        </ul>
-                        
-                        <h3>2. 資料使用</h3>
-                        <p>您的資料僅用於：</p>
-                        <ul>
-                            <li>提供餐廳推薦服務</li>
-                            <li>改善應用功能</li>
-                            <li>客戶服務支援</li>
-                        </ul>
-                        
-                        <h3>3. 資料保護</h3>
-                        <p>我們採用業界標準的加密技術保護您的資料，絕不會未經同意分享給第三方。</p>
-                        
-                        <h3>4. 用戶權利</h3>
-                        <p>您有權：</p>
-                        <ul>
-                            <li>查看我們持有的您的資料</li>
-                            <li>要求修正或刪除您的資料</li>
-                            <li>隨時撤回同意</li>
-                        </ul>
-                    `;
-                    break;
-                    
-                case 'terms':
-                    title = '服務條款';
-                    body = `
-                        <h2>服務條款</h2>
-                        <p><strong>最後更新：2025年1月</strong></p>
-                        
-                        <h3>1. 服務說明</h3>
-                        <p>Foodfate 是一款餐廳推薦應用，提供基於位置的個人化餐廳建議。</p>
-                        
-                        <h3>2. 使用規則</h3>
-                        <ul>
-                            <li>用戶必須年滿 13 歲方可使用本服務</li>
-                            <li>禁止濫用或破壞服務</li>
-                            <li>不得上傳違法或不當內容</li>
-                        </ul>
-                        
-                        <h3>3. 免責聲明</h3>
-                        <p>我們努力提供準確的餐廳資訊，但不保證所有資訊的完全準確性。用戶應自行驗證餐廳資訊。</p>
-                        
-                        <h3>4. 服務變更</h3>
-                        <p>我們保留隨時修改或終止服務的權利，但會提前通知用戶重大變更。</p>
-                    `;
-                    break;
-                    
-                case 'cookies':
-                    title = 'Cookie 政策';
-                    body = `
-                        <h2>Cookie 政策</h2>
-                        <p><strong>最後更新：2025年1月</strong></p>
-                        
-                        <h3>什麼是 Cookies？</h3>
-                        <p>Cookies 是小型文字檔案，當您造訪我們的網站時會儲存在您的裝置上。</p>
-                        
-                        <h3>我們如何使用 Cookies？</h3>
-                        <ul>
-                            <li><strong>必要 Cookies：</strong>確保網站正常運作</li>
-                            <li><strong>功能 Cookies：</strong>記住您的偏好設定</li>
-                            <li><strong>分析 Cookies：</strong>了解網站使用情況</li>
-                        </ul>
-                        
-                        <h3>管理 Cookies</h3>
-                        <p>您可以透過瀏覽器設定控制或刪除 Cookies。請注意，停用某些 Cookies 可能影響網站功能。</p>
-                    `;
-                    break;
-                    
-                case 'data':
-                    title = '數據處理說明';
-                    body = `
-                        <h2>數據處理說明</h2>
-                        <p><strong>最後更新：2025年1月</strong></p>
-                        
-                        <h3>資料處理目的</h3>
-                        <p>我們處理您的個人資料是為了：</p>
-                        <ul>
-                            <li>提供個人化餐廳推薦</li>
-                            <li>改善服務品質</li>
-                            <li>確保應用安全性</li>
-                        </ul>
-                        
-                        <h3>法律依據</h3>
-                        <p>我們處理您資料的法律依據包括：</p>
-                        <ul>
-                            <li>您的明確同意</li>
-                            <li>履行服務合約的需要</li>
-                            <li>合法利益（改善服務）</li>
-                        </ul>
-                        
-                        <h3>資料保存期限</h3>
-                        <p>我們只會在必要期間保存您的資料，通常為：</p>
-                        <ul>
-                            <li>帳戶資料：直到您刪除帳戶</li>
-                            <li>使用記錄：最多保存 2 年</li>
-                            <li>分析資料：去識別化後保存</li>
-                        </ul>
-                    `;
-                    break;
-            }
-            
-            content.innerHTML = body;
-            modal.style.display = 'block';
-        }
-        
-        function closeModal() {
-            document.getElementById('documentModal').style.display = 'none';
-        }
-        
-        // 顯示內測資訊
-        function showBetaInfo(platform) {
-            const modal = document.getElementById('documentModal');
-            const content = document.getElementById('modalContent');
-            
-            let title = '';
-            let body = '';
-            
-            if (platform === 'android') {
-                title = 'Android 內測版下載';
-                body = `
-                    <h2>📱 Android 內測版</h2>
-                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <h3 style="color: #FF6B35;">🚀 搶先體驗</h3>
-                        <p>感謝您對 Foodfate 的興趣！目前我們正在進行內測，歡迎加入我們的測試行列。</p>
-                    </div>
-                    
-                    <h3>📋 內測申請方式</h3>
-                    <ol>
-                        <li>發送郵件至 <strong>beta@foodfate.xyz</strong></li>
-                        <li>郵件主旨：<strong>[Android 內測申請] 您的姓名</strong></li>
-                        <li>內容包含：
-                            <ul>
-                                <li>Android 設備型號和版本</li>
-                                <li>簡單自我介紹</li>
-                                <li>期待使用的場景</li>
-                            </ul>
-                        </li>
-                    </ol>
-                    
-                    <h3>🎯 內測期間享有</h3>
-                    <ul>
-                        <li>✅ 搶先體驗最新功能</li>
-                        <li>✅ 直接與開發團隊交流</li>
-                        <li>✅ 影響產品發展方向</li>
-                        <li>✅ 正式版推出時的早鳥優惠</li>
-                    </ul>
-                    
-                    <div style="background: rgba(255, 107, 53, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <h4 style="color: #FF6B35;">💡 暫時無法下載？</h4>
-                        <p style="margin: 0;">建議您先<a href="https://app.foodfate.xyz" target="_blank" style="color: #FF6B35; font-weight: bold;">體驗 Web 版本</a>，享受完整的 Foodfate 功能！</p>
-                    </div>
-                `;
-            }
-            
-            content.innerHTML = body;
-            modal.style.display = 'block';
-        }
+            // 記錄頁面載入
+            trackConversionFunnel('landing');
+        });
+    </script>
+</body>
+</html>
