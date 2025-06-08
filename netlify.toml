@@ -21,12 +21,17 @@
   to = "/legal/cookie-policy.html"
   status = 301
 
-# SPA 重定向（如果需要）
+# 錯誤頁面
+[[redirects]]
+  from = "/404"
+  to = "/404.html"
+  status = 404
+
+# SPA 重定向（確保所有路由都指向 index.html）
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = {Role = ["admin"]}
 
 # 安全標頭
 [[headers]]
@@ -71,12 +76,6 @@
   [headers.values]
     Content-Type = "application/vnd.android.package-archive"
     Content-Disposition = "attachment"
-
-# 錯誤頁面
-[[redirects]]
-  from = "/404"
-  to = "/404.html"
-  status = 404
 
 # 表單處理（如果需要）
 [forms]
