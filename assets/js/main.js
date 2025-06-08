@@ -327,17 +327,81 @@ function sendBetaRequest() {
     const mailtoLink = `mailto:foodfate2025@gmail.com?subject=${subject}&body=${body}`;
     
     // 記錄申請事件
-    gtag('event', 'beta_request', {
-        'event_category': 'engagement',
-        'event_label': 'email_click',
-        'value': 1
-    });
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'beta_request', {
+            'event_category': 'engagement',
+            'event_label': 'email_click',
+            'value': 1
+        });
+    }
     
-    // 打開郵件應用程式
-    window.location.href = mailtoLink;
+    try {
+        // 嘗試打開郵件應用程式
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+            // iOS 設備
+            window.open(mailtoLink, '_blank');
+        } else if (navigator.userAgent.match(/Android/i)) {
+            // Android 設備
+            window.location.href = mailtoLink;
+        } else {
+            // 桌面設備
+            const link = document.createElement('a');
+            link.href = mailtoLink;
+            link.target = '_blank';
+            link.click();
+        }
+        
+        // 顯示成功提示
+        showNotification('📧 已自動生成申請郵件，請完善資訊後發送！', 'success');
+        
+        // 如果郵件應用無法打開，提供備選方案
+        setTimeout(() => {
+            if (confirm('郵件應用無法自動打開？\n點擊確定複製郵件地址到剪貼板')) {
+                copyToClipboard('foodfate2025@gmail.com');
+                showNotification('📋 郵件地址已複製到剪貼板', 'info');
+            }
+        }, 3000);
+        
+    } catch (error) {
+        console.error('郵件打開失敗:', error);
+        // 備選方案：複製郵件地址
+        copyToClipboard('foodfate2025@gmail.com');
+        showNotification('📋 郵件地址已複製：foodfate2025@gmail.com', 'info');
+    }
+}
+
+// 複製到剪貼板功能
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            console.log('已複製到剪貼板');
+        }).catch(err => {
+            console.error('複製失敗:', err);
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
     
-    // 顯示提示
-    showNotification('已自動生成申請郵件，請完善資訊後發送！', 'success');
+    try {
+        document.execCommand('copy');
+        console.log('使用 fallback 方法複製成功');
+    } catch (err) {
+        console.error('Fallback 複製也失敗:', err);
+    }
+    
+    document.body.removeChild(textArea);
 }
 
 // 通知功能
