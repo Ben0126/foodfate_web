@@ -27,12 +27,6 @@
   to = "/404.html"
   status = 404
 
-# SPA 重定向（確保所有路由都指向 index.html）
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 # 安全標頭
 [[headers]]
   for = "/*"
@@ -44,30 +38,34 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://www.google-analytics.com; frame-src https://www.google.com; object-src 'none';"
 
-# Cache 設定
+# 靜態資源 MIME 類型和快取設定
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000"
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
   for = "/*.png"
   [headers.values]
+    Content-Type = "image/png"
     Cache-Control = "public, max-age=31536000"
 
 [[headers]]
   for = "/*.jpg"
   [headers.values]
+    Content-Type = "image/jpeg"
     Cache-Control = "public, max-age=31536000"
 
 # APK 文件 MIME 類型
