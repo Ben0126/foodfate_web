@@ -154,9 +154,6 @@ foodfate_web/
 - 🐛 Bug 回報：通過 GitHub Issues
 - 💬 功能建議：foodfate2025@gmail.com
 
-## 📄 授權
-
-本項目採用 MIT 授權條款。詳見 LICENSE 文件。
 
 ---
 
