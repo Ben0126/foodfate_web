@@ -218,11 +218,11 @@ function showBetaInfo(platform) {
                 <h3>📦 APK 下載</h3>
                 <div class="download-options">
                     <button onclick="downloadAPK('latest')" class="btn btn-primary">
-                        <span>📱</span> 下載最新版本 (v1.0.0-beta)
+                        <span>📱</span> 下載最新版本 (v0.0.38-beta)
                     </button>
-                    <button onclick="downloadAPK('stable')" class="btn btn-secondary">
-                        <span>🔒</span> 下載穩定版本 (v0.9.5-beta)
-                    </button>
+                    // <button onclick="downloadAPK('stable')" class="btn btn-secondary">
+                    //     <span>🔒</span> 下載穩定版本 (v0.9.5-beta)
+                    // </button>
                 </div>
                 
                 <div class="apk-info" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 8px;">
@@ -286,7 +286,7 @@ function downloadAPK(version) {
     // 模擬 APK 下載
     const apkUrls = {
         'latest': '/downloads/foodfate_app_v0.0.38-beta.apk',
-        'stable': '/downloads/foodfate-v0.9.5-beta.apk'
+        // 'stable': '/downloads/foodfate-v0.9.5-beta.apk'
     };
     
     const downloadUrl = apkUrls[version];
