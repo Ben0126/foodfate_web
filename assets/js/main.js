@@ -220,9 +220,6 @@ function showBetaInfo(platform) {
                     <button onclick="downloadAPK('latest')" class="btn btn-primary">
                         <span>📱</span> 下載最新版本 (v0.0.38-beta)
                     </button>
-                    // <button onclick="downloadAPK('stable')" class="btn btn-secondary">
-                    //     <span>🔒</span> 下載穩定版本 (v0.9.5-beta)
-                    // </button>
                 </div>
                 
                 <div class="apk-info" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 8px;">
