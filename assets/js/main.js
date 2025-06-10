@@ -285,7 +285,7 @@ function downloadAPK(version) {
     
     // 模擬 APK 下載
     const apkUrls = {
-        'latest': '/downloads/foodfate_app_v0.0.39-beta.apk',
+        'latest': '/downloads/foodfate_app_v0.0.38-beta.apk',
         'stable': '/downloads/foodfate-v0.9.5-beta.apk'
     };
     
