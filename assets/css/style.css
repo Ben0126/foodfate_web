@@ -554,6 +554,30 @@ body::before {
     margin: 0;
 }
 
+/* 故事化內容樣式 */
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 107, 53, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid #FF6B35;
+}
+
+.story-highlight {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FF6B35;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 184, 0, 0.1));
+    border-radius: 15px;
+    border: 2px solid rgba(255, 107, 53, 0.2);
+}
+
 /* Future Development Section */
 .future {
     padding: 5rem 0;
