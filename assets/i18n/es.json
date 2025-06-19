@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Foodfate - Di Adiós a la Fatiga de Decisión Alimentaria",
+    "description": "Foodfate es una aplicación inteligente de recomendación de restaurantes que utiliza algoritmos aleatorios inteligentes para resolver tu dilema de 'qué comer' con divertida toma de decisiones estilo ruleta.",
+    "keywords": "recomendación de restaurantes, decisión de comida, restaurante aleatorio, ruleta de comida, elección de cena",
+    "og": {
+      "title": "Foodfate - Di Adiós a la Fatiga de Decisión Alimentaria",
+      "description": "Recomendaciones inteligentes de restaurantes aleatorios - convierte las decisiones de cena en aventuras divertidas"
+    }
+  },
+  "navigation": {
+    "about": "Acerca de",
+    "features": "Características",
+    "download": "Descargar",
+    "privacy": "Política de Privacidad",
+    "contact": "Contacto",
+    "language_switch": "中文"
+  },
+  "hero": {
+    "title": "Di Adiós a la Fatiga de Decisión Alimentaria",
+    "subtitle": "¡Desbloquea sorpresas culinarias con un clic! Recomendaciones inteligentes de restaurantes aleatorios",
+    "try_web": "🚀 Probar Versión Web",
+    "join_beta": "📱 Unirse a Beta"
+  },
+  "about": {
+    "title": "🍜 Conocemos Tu Historia",
+    "story_title": "💭 Hora del Almuerzo en la Oficina - Una Escena Familiar",
+    "story_highlight": "¿Te suena familiar?",
+    "solution_title": "✨ Foodfate nació para cambiar todo esto"
+  },
+  "features": {
+    "title": "🌟 Haciendo del Descubrimiento de Comida una Alegría Diaria",
+    "cards": {
+      "lunch": {
+        "title": "Salvador del Descanso para Almorzar",
+        "description": "¿Solo 30 minutos para almorzar? Encuentra comida deliciosa a 5 minutos de distancia con un clic."
+      },
+      "dating": {
+        "title": "No Más Citas Incómodas",
+        "description": "\"¿Qué quieres comer?\" ya no es un asesino de citas. Gira la rueda, deja que la sorpresa añada diversión a tu cita."
+      },
+      "learning": {
+        "title": "Conoce Mejor Tu Gusto Con el Tiempo",
+        "description": "Recuerda cada elección y reacción, como tu amigo más comprensivo."
+      }
+    }
+  },
+  "download": {
+    "title": "🧪 Experiencia Beta",
+    "subtitle": "Foodfate está actualmente en pruebas beta. ¡Únete a nuestra comunidad de pruebas!",
+    "buttons": {
+      "android": {
+        "label": "Android Beta",
+        "action": "Descarga APK"
+      },
+      "web": {
+        "label": "Versión Web",
+        "action": "Probar Ahora"
+      },
+      "ios": {
+        "label": "Versión iOS",
+        "action": "Próximamente"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Donde la comida encuentra el destino - recomendaciones inteligentes de restaurantes",
+    "copyright": "© 2025 Foodfate. Todos los derechos reservados"
+  }
+}

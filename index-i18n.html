@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Foodfate - 智慧隨機餐廳推薦</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="" data-i18n-content="meta.description">
+    <meta name="keywords" content="" data-i18n-content="meta.keywords">
+    <meta name="author" content="Foodfate Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://foodfate.app/">
+    <meta property="og:title" content="" data-i18n-content="meta.og.title">
+    <meta property="og:description" content="" data-i18n-content="meta.og.description">
+    <meta property="og:image" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://foodfate.app/">
+    <meta property="twitter:title" content="" data-i18n-content="meta.twitter.title">
+    <meta property="twitter:description" content="" data-i18n-content="meta.twitter.description">
+    <meta property="twitter:image" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css?v=20250103">
+    
+    <!-- i18n System -->
+    <script src="./assets/js/i18n.js?v=1.0.0"></script>
+    
+    <!-- Language Switcher Styles -->
+    <style>
+        .language-switch-nav {
+            background: rgba(255, 107, 53, 0.1) !important;
+            color: #FF6B35 !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 20px !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+        .language-switch-nav:hover {
+            background: rgba(255, 107, 53, 0.2) !important;
+            transform: scale(1.05) !important;
+        }
+        
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+        }
+        
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .lang-option:hover {
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        .lang-option.active {
+            background: rgba(255, 107, 53, 0.2);
+            font-weight: bold;
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4VNX8XZ9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B4VNX8XZ9B');
+    </script>
+</head>
+
+<body>
+    <!-- 維護通知橫幅 -->
+    <div id="maintenanceBanner" class="maintenance-banner">
+        <div class="maintenance-content">
+            <div class="maintenance-icon">🔧</div>
+            <div class="maintenance-text">
+                <h3 data-i18n="maintenance.title">應用程式升級中</h3>
+                <p data-i18n-html="maintenance.description">Foodfate 應用程式目前正在進行版本升級，暫時無法使用。預計於 <strong>6月22日</strong> 恢復正常服務。感謝您的耐心等候！</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie 同意橫幅 -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p>
+                <span data-i18n="cookies.banner.text">我們使用 Cookie 來改善您的體驗。繼續使用即表示您同意我們的</span>
+                <a href="./legal/cookie-policy.html" data-i18n="cookies.banner.policy_link">Cookie 政策</a>。
+            </p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" data-i18n="cookies.banner.accept">接受</button>
+                <button onclick="declineCookies()" data-i18n="cookies.banner.decline">拒絕</button>
+                <button onclick="showCookieSettings()" data-i18n="cookies.banner.settings">設定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="./foodfate_logo.png" alt="Foodfate Logo">
+                <span data-i18n="navigation.logo">Foodfate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="navigation.about">關於我們</a></li>
+                <li><a href="#features" data-i18n="navigation.features">功能特色</a></li>
+                <li><a href="#download" data-i18n="navigation.download">下載應用</a></li>
+                <li><a href="./legal/privacy-policy.html" data-i18n="navigation.privacy">隱私政策</a></li>
+                <li><a href="#contact" data-i18n="navigation.contact">聯絡我們</a></li>
+                <li>
+                    <button class="language-switch-nav" data-lang="en">🇺🇸 English</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">告別選擇困難</h1>
+            <p data-i18n="hero.subtitle">一鍵解鎖美食驚喜！智慧隨機餐廳推薦，讓用餐決策變成有趣的冒險</p>
+            <div class="cta-buttons">
+                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('try_click')">
+                    <span data-i18n="hero.try_web">🚀 立即體驗 Web 版</span>
+                </a>
+                <a href="#download" class="btn btn-secondary" onclick="smoothScroll('#download')">
+                    <span data-i18n="hero.join_beta">📱 內測體驗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about.title">🍜 你的故事，我們都懂</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-i18n="about.story_title">💭 午休時間，辦公室裡的熟悉對話</h3>
+                    <p class="story-text" data-i18n="about.story_p1">「今天要吃什麼？」小雅又一次看著手機螢幕發呆。打開美食app，滑了十分鐘還是沒有結論。同事們在群組裡討論了半小時，從日式料理聊到義大利麵，最後還是去了樓下那家吃過無數次的便當店。</p>
+                    
+                    <p class="story-text" data-i18n="about.story_p2">下班後和男朋友約會，又是同樣的劇本。「你想吃什麼？」「都可以啊，你決定。」兩個人站在路邊，各自滑著手機，卻都不知道該選哪一家。最後錯過了黃金用餐時間，隨便找了一家店，體驗平平。</p>
+                    
+                    <p class="story-highlight" data-i18n="about.story_highlight">這樣的情境，你是不是也很熟悉？</p>
+                </div>
+                <div class="about-features">
+                    <h3 data-i18n="about.solution_title">✨ Foodfate 的誕生，就是為了改變這一切</h3>
+                    <div class="feature-highlight">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎲</span>
+                            <div>
+                                <h4 data-i18n="about.features.games.title">讓選擇變成遊戲</h4>
+                                <p data-i18n="about.features.games.description">還記得小時候轉輪盤的興奮嗎？我們把這份期待感帶回你的用餐決策中，讓每次選擇都充滿驚喜。</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🎯</span>
+                            <div>
+                                <h4 data-i18n="about.features.understand.title">懂你比你更懂自己</h4>
+                                <p data-i18n="about.features.understand.description">我們記住你每一次的選擇和反應，漸漸理解你的口味。就像老朋友一樣，總能推薦到你心坎裡的餐廳。</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🌟</span>
+                            <div>
+                                <h4 data-i18n="about.features.moments.title">每一刻都有最佳選擇</h4>
+                                <p data-i18n="about.features.moments.description">趕時間的午餐、浪漫的約會、朋友聚餐，不同的時刻有不同的需要。我們懂得什麼時候該推薦什麼。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="features.title">🌟 讓美食探索成為生活中的小確幸</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3 data-i18n="features.cards.lunch.title">忙碌午休的救星</h3>
+                    <p data-i18n="features.cards.lunch.description">只剩30分鐘午休？一鍵找到附近5分鐘內能到達的美食，不用再為選擇而煩惱，把時間留給享受美食。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💕</div>
+                    <h3 data-i18n="features.cards.dating.title">約會不再尷尬</h3>
+                    <p data-i18n="features.cards.dating.description">「你想吃什麼？」不再是約會殺手。轉動輪盤，讓驚喜為約會增添樂趣，每次都是新的探索冒險。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 data-i18n="features.cards.learning.title">越來越懂你的口味</h3>
+                    <p data-i18n="features.cards.learning.description">記住每次你的選擇和反應，就像身邊最了解你的朋友。時間越久，推薦越精準，總能找到讓你驚喜的美食。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3 data-i18n="features.cards.navigation.title">找到了，也要到得了</h3>
+                    <p data-i18n="features.cards.navigation.description">推薦餐廳只是開始，一鍵導航帶你直達目的地。走路、騎車、開車，選擇最適合的交通方式享受美食之旅。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 data-i18n="features.cards.group.title">聚餐不再眾口難調</h3>
+                    <p data-i18n="features.cards.group.description">朋友聚餐最怕意見不合？告訴我們每個人的喜好，我們找出讓所有人都滿意的選擇，讓聚餐回歸快樂時光。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 data-i18n="features.cards.memory.title">美食回憶永不遺失</h3>
+                    <p data-i18n="features.cards.memory.description">那家讓你念念不忘的小店，那次完美的約會餐廳，通通收藏起來。分類整理你的美食回憶，隨時重溫美好時光。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="app-preview">
+        <div class="container">
+            <div class="preview-container">
+                <div class="preview-content">
+                    <h2 data-i18n="app_preview.title">🎨 現代化設計</h2>
+                    <p data-i18n="app_preview.description">溫暖橘色系配合玻璃擬態效果，創造舒適的視覺體驗。支援深色/淺色模式，適應不同使用場景。</p>
+                    <ul style="margin: 1rem 0; color: #666;">
+                        <li data-i18n="app_preview.features.ui">🎨 精美的 UI 設計</li>
+                        <li data-i18n="app_preview.features.animation">🔄 流暢的動畫效果</li>
+                        <li data-i18n="app_preview.features.responsive">📱 響應式設計</li>
+                        <li data-i18n="app_preview.features.fast">⚡ 快速載入體驗</li>
+                    </ul>
+                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('app_open')">
+                        <span data-i18n="app_preview.try_now">立即試用 Web 版 →</span>
+                    </a>
+                </div>
+                <div class="phone-mockup">
+                    <div class="mock-phone">
+                        <div class="mock-screen">
+                            <div class="mock-content">
+                                <h3>Foodfate</h3>
+                                <div class="mock-roulette">
+                                    <span>🧭</span>
+                                </div>
+                                <p style="color: #666; font-size: 0.9rem;" data-i18n="app_preview.roulette_text">轉動輪盤，發現驚喜！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title" data-i18n="download.title">🧪 搶先體驗</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;" data-i18n="download.subtitle">
+                Foodfate 目前處於測試體驗階段，歡迎搶先體驗我們的創新功能！
+            </p>
+            <div class="download-buttons">
+                <button class="download-btn" onclick="showBetaInfo('android')">
+                    <span>🤖</span>
+                    <div>
+                        <div style="font-size: 0.8rem;" data-i18n="download.buttons.android.label">Android 內測版</div>
+                        <div style="font-weight: bold;" data-i18n="download.buttons.android.action">APK 下載</div>
+                    </div>
+                </button>
+                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank" onclick="trackEvent('web_app_click', 'conversion', 'download_section')">
+                    <span>🌐</span>
+                    <div>
+                        <div style="font-size: 0.8rem;" data-i18n="download.buttons.web.label">Web 版本</div>
+                        <div style="font-weight: bold;" data-i18n="download.buttons.web.action">立即體驗</div>
+                    </div>
+                </a>
+                <button class="download-btn" style="opacity: 0.6; cursor: not-allowed;" title="iOS 版本開發中">
+                    <span>🍎</span>
+                    <div>
+                        <div style="font-size: 0.8rem;" data-i18n="download.buttons.ios.label">iOS 版本</div>
+                        <div style="font-weight: bold;" data-i18n="download.buttons.ios.action">開發中</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ Foodfate</h3>
+                    <p style="color: #ccc;" data-i18n="footer.tagline">讓美食與你相遇，告別選擇困難的智慧餐廳推薦 APP</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="mailto:foodfate2025@gmail.com" style="color: #FF6B35;">📧 <span data-i18n="footer.email">foodfate2025@gmail.com</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="footer.sections.product.title">產品體驗</h3>
+                    <a href="https://app.foodfate.xyz" target="_blank" data-i18n="footer.sections.product.links.web">Web 版本</a>
+                    <a href="#" onclick="showBetaInfo('android')" data-i18n="footer.sections.product.links.android">Android 內測</a>
+                    <a href="#features" data-i18n="footer.sections.product.links.features">功能介紹</a>
+                    <a href="mailto:foodfate2025@gmail.com" data-i18n="footer.sections.product.links.feedback">意見回饋</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="footer.sections.legal.title">法律文件</h3>
+                    <a href="./legal/privacy-policy.html" data-i18n="footer.sections.legal.links.privacy">隱私政策</a>
+                    <a href="./legal/terms-of-service.html" data-i18n="footer.sections.legal.links.terms">服務條款</a>
+                    <a href="./legal/cookie-policy.html" data-i18n="footer.sections.legal.links.cookies">Cookie 政策</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="footer.sections.contact.title">聯絡我們</h3>
+                    <a href="mailto:foodfate2025@gmail.com" data-i18n="footer.sections.contact.links.support">客服信箱</a>
+                    <a href="mailto:foodfate2025@gmail.com" data-i18n="footer.sections.contact.links.business">商業合作</a>
+                    <a href="mailto:foodfate2025@gmail.com" data-i18n="footer.sections.contact.links.media">媒體聯絡</a>
+                    <a href="mailto:foodfate2025@gmail.com" data-i18n="footer.sections.contact.links.beta">內測申請</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="container">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <p style="margin: 0; color: #999; font-size: 0.9rem;" data-i18n="footer.copyright">
+                                © 2025 Foodfate. 版權所有 | Foodfate Team
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="./legal/privacy-policy.html" style="color: #999; font-size: 0.9rem;" data-i18n="footer.sections.legal.links.privacy">隱私權政策</a>
+                            <a href="./legal/terms-of-service.html" style="color: #999; font-size: 0.9rem;" data-i18n="footer.sections.legal.links.terms">服務條款</a>
+                            <a href="./legal/cookie-policy.html" style="color: #999; font-size: 0.9rem;" data-i18n="footer.sections.legal.links.cookies">Cookie 政策</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="documentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent">
+                <!-- 動態載入內容 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/main.js?v=20240729"></script>
+    
+    <!-- i18n Enhanced JavaScript -->
+    <script>
+        // 監聽語言變更事件
+        window.addEventListener('languageChanged', function(event) {
+            console.log('Language changed to:', event.detail.language);
+            
+            // 可以在這裡添加語言變更後的額外處理
+            // 例如重新載入某些動態內容
+        });
+        
+        // 頁面載入完成後的處理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化現有的功能
+            // initNavbar, initCookieBanner 等在 main.js 中定義
+            
+            // 等待 i18n 初始化完成
+            window.addEventListener('languageChanged', function() {
+                // 更新動態生成的內容（如果有的話）
+                updateDynamicContent();
+            });
+        });
+        
+        function updateDynamicContent() {
+            // 這個函數可以用來更新任何動態生成的內容
+            // 例如重新設置 modal 內容、通知等
+        }
+        
+        // 增強的 showBetaInfo 函數，支援多語言
+        function showBetaInfo(platform) {
+            const modal = document.getElementById('documentModal');
+            const content = document.getElementById('modalContent');
+            
+            if (platform === 'android') {
+                const i18n = window.i18n;
+                
+                const body = `
+                    <h2>${i18n.t('modals.beta.android.title')}</h2>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <h3 style="color: #FF6B35;">${i18n.t('modals.beta.android.early_access.title')}</h3>
+                        <p>${i18n.t('modals.beta.android.early_access.description')}</p>
+                    </div>
+                    
+                    <div id="apkDownloadSection">
+                        <h3>${i18n.t('modals.beta.android.download.title')}</h3>
+                        <div class="download-options">
+                            <button onclick="downloadAPK('latest')" class="btn btn-primary">
+                                ${i18n.t('modals.beta.android.download.button')}
+                            </button>
+                        </div>
+                        
+                        <div class="apk-info" style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 8px;">
+                            <h4 style="color: #FF6B35;">${i18n.t('modals.beta.android.install_notes.title')}</h4>
+                            <ul style="color: #666; font-size: 0.9rem;">
+                                ${i18n.t('modals.beta.android.install_notes.items').map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3>${i18n.t('modals.beta.android.beta_application.title')}</h3>
+                    <div style="background: rgba(255, 107, 53, 0.1); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #FF6B35; margin-bottom: 1rem;">${i18n.t('modals.beta.android.beta_application.button_title')}</h4>
+                        <p style="margin-bottom: 1rem; color: #666;">${i18n.t('modals.beta.android.beta_application.button_desc')}</p>
+                        <button onclick="sendBetaRequest()" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
+                            ${i18n.t('modals.beta.android.beta_application.button_text')}
+                        </button>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #888;">
+                            ${i18n.t('modals.beta.android.beta_application.button_note')}
+                        </p>
+                    </div>
+                    
+                    <h3>${i18n.t('modals.beta.android.benefits.title')}</h3>
+                    <ul>
+                        ${i18n.t('modals.beta.android.benefits.items').map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    
+                    <div style="background: rgba(255, 107, 53, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: #FF6B35;">${i18n.t('modals.beta.android.alternative.title')}</h4>
+                        <p style="margin: 0;">${i18n.t('modals.beta.android.alternative.description')}</p>
+                    </div>
+                `;
+                
+                content.innerHTML = body;
+            }
+            
+            modal.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

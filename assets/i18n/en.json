@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "title": "Foodfate - Say Goodbye to Food Decision Fatigue",
+    "description": "Foodfate is an intelligent restaurant recommendation app that uses smart random algorithms to solve your 'what to eat' dilemma with fun roulette-style decision making.",
+    "keywords": "restaurant recommendation, food decision, random restaurant, food roulette, dining choice",
+    "og": {
+      "title": "Foodfate - Say Goodbye to Food Decision Fatigue",
+      "description": "Intelligent random restaurant recommendations - turn dining decisions into fun adventures"
+    },
+    "twitter": {
+      "title": "Foodfate - Say Goodbye to Food Decision Fatigue",
+      "description": "Intelligent random restaurant recommendations - turn dining decisions into fun adventures"
+    }
+  },
+  "navigation": {
+    "logo": "Foodfate",
+    "about": "About",
+    "features": "Features",
+    "download": "Download",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "language_switch": "中文"
+  },
+  "hero": {
+    "title": "Say Goodbye to Food Decision Fatigue",
+    "subtitle": "Unlock culinary surprises with one click! Smart random restaurant recommendations",
+    "try_web": "🚀 Try Web Version",
+    "join_beta": "📱 Join Beta"
+  },
+  "maintenance": {
+    "title": "App Under Upgrade",
+    "description": "Foodfate app is currently undergoing version upgrade and is temporarily unavailable. Expected to resume normal service on <strong>June 22nd</strong>. Thank you for your patience!"
+  },
+  "about": {
+    "title": "🍜 We Know Your Story",
+    "story_title": "💭 Lunchtime at the Office - A Familiar Scene",
+    "story_p1": "\"What should we eat?\" Sarah stares at her phone screen again. After browsing food apps for ten minutes, she still can't make a decision. Colleagues debate for half an hour in the group chat, discussing everything from Japanese cuisine to Italian pasta, but they end up at the same lunch box place downstairs that they've visited countless times.",
+    "story_p2": "After work, it's the same script with her boyfriend. \"What do you want to eat?\" \"Anything's fine, you decide.\" Two people standing on the street, each scrolling through their phones, but neither knows which restaurant to choose. They miss the prime dining hours and settle for a random place with mediocre experience.",
+    "story_highlight": "Does this sound familiar to you?",
+    "solution_title": "✨ Foodfate was born to change all this",
+    "features": {
+      "games": {
+        "title": "Turn Choices into Games",
+        "description": "Remember the excitement of spinning a wheel as a child? We bring that anticipation back to your dining decisions, making every choice a delightful surprise."
+      },
+      "understand": {
+        "title": "We Know You Better Than You Know Yourself",
+        "description": "We remember every choice and reaction you make, gradually understanding your taste. Like an old friend, we always recommend restaurants that touch your heart."
+      },
+      "moments": {
+        "title": "Perfect Choice for Every Moment",
+        "description": "Rush lunch breaks, romantic dates, friend gatherings - different moments have different needs. We know what to recommend when."
+      }
+    }
+  },
+  "features": {
+    "title": "🌟 Making Food Discovery a Daily Joy",
+    "cards": {
+      "lunch": {
+        "title": "Lunch Break Lifesaver",
+        "description": "Only 30 minutes for lunch? Find delicious food within 5 minutes' reach with one click. No more stress about choosing - save time for enjoying great food."
+      },
+      "dating": {
+        "title": "No More Awkward Dates",
+        "description": "\"What do you want to eat?\" is no longer a date killer. Spin the wheel, let surprise add fun to your date, every time is a new adventure."
+      },
+      "learning": {
+        "title": "Knows Your Taste Better Over Time",
+        "description": "Remember every choice and reaction, just like your most understanding friend. The longer you use it, the more precise recommendations become, always finding food that surprises you."
+      },
+      "navigation": {
+        "title": "Found It, Now Get There",
+        "description": "Recommending restaurants is just the beginning. One-click navigation takes you straight to your destination. Walking, biking, driving - choose the best way to enjoy your food journey."
+      },
+      "group": {
+        "title": "Group Dining Made Easy",
+        "description": "Tired of conflicting opinions when dining with friends? Tell us everyone's preferences, and we'll find choices that satisfy everyone, bringing back the joy of gathering."
+      },
+      "memory": {
+        "title": "Food Memories Never Lost",
+        "description": "That unforgettable little restaurant, that perfect date spot - save them all. Organize your food memories by category, relive wonderful moments anytime."
+      }
+    }
+  },
+  "app_preview": {
+    "title": "🎨 Modern Design",
+    "description": "Warm orange theme with glassmorphism effects for a comfortable visual experience. Supports dark/light modes for different usage scenarios.",
+    "features": {
+      "ui": "🎨 Beautiful UI Design",
+      "animation": "🔄 Smooth Animations",
+      "responsive": "📱 Responsive Design",
+      "fast": "⚡ Fast Loading Experience"
+    },
+    "try_now": "Try Web Version →",
+    "roulette_text": "Spin the wheel, discover surprises!"
+  },
+  "future": {
+    "title": "🚀 Future Development",
+    "phases": {
+      "current": {
+        "title": "🎯 MVP Stage",
+        "status": "In Progress",
+        "features": [
+          "✅ Location-based smart recommendations",
+          "✅ Food roulette decision tool",
+          "✅ Google Maps integration",
+          "✅ Basic filtering features"
+        ]
+      },
+      "coming": {
+        "title": "🧠 Intelligence Stage",
+        "status": "In Development",
+        "features": [
+          "🔄 User preference learning",
+          "🔄 Multi-platform integration",
+          "🔄 Group decision features",
+          "🔄 Full-process integration",
+          "🔄 Travel mode recommendations",
+          "🔄 Social sharing"
+        ]
+      },
+      "future": {
+        "title": "🌟 Complete Ecosystem",
+        "status": "Planned",
+        "features": [
+          "📱 iOS Application",
+          "🎨 Dark mode support",
+          "📊 Dining history analysis",
+          "🔗 Booking & delivery integration",
+          "🗺️ AR navigation"
+        ]
+      }
+    },
+    "innovation": {
+      "title": "💡 Innovation Features Outlook",
+      "features": {
+        "health": {
+          "title": "Healthy Dining Mode",
+          "description": "Integrate calorie and nutrition data to recommend restaurants that match health goals"
+        },
+        "voice": {
+          "title": "Voice Assistant Integration",
+          "description": "Support voice control, such as \"help me choose a nearby Italian restaurant\""
+        },
+        "travel": {
+          "title": "Multi-language Internationalization",
+          "description": "Support multiple languages, covering food recommendations in major global cities"
+        },
+        "ai": {
+          "title": "AI Food Advisor",
+          "description": "Personalized AI assistant providing dining advice and in-depth restaurant analysis"
+        }
+      }
+    }
+  },
+  "download": {
+    "title": "🧪 Beta Experience",
+    "subtitle": "Foodfate is currently in beta testing. Join our testing community!",
+    "buttons": {
+      "android": {
+        "label": "Android Beta",
+        "action": "APK Download"
+      },
+      "web": {
+        "label": "Web Version",
+        "action": "Try Now"
+      },
+      "ios": {
+        "label": "iOS Version",
+        "action": "Coming Soon"
+      }
+    },
+    "beta_info": {
+      "title": "📝 Beta Testing Notes",
+      "items": [
+        "• iOS version is in development",
+        "• Try the Web version for the complete experience",
+        "• Your feedback helps us improve the product",
+        "• Android APK supports Android 7.0+"
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Where food meets fate - intelligent restaurant recommendations",
+    "email": "foodfate2025@gmail.com",
+    "sections": {
+      "product": {
+        "title": "Product",
+        "links": {
+          "web": "Web Version",
+          "android": "Android Beta",
+          "features": "Features",
+          "feedback": "Feedback"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "links": {
+          "privacy": "Privacy Policy",
+          "terms": "Terms of Service",
+          "cookies": "Cookie Policy"
+        }
+      },
+      "social": {
+        "title": "Social Media",
+        "links": {
+          "facebook": "Facebook",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "github": "GitHub"
+        }
+      },
+      "contact": {
+        "title": "Contact Us",
+        "links": {
+          "support": "Customer Service",
+          "business": "Business",
+          "media": "Media",
+          "beta": "Beta Application"
+        }
+      }
+    },
+    "copyright": "© 2025 Foodfate. All rights reserved | Powered by Foodfate Team"
+  },
+  "modals": {
+    "beta": {
+      "android": {
+        "title": "📱 Android Beta Version",
+        "early_access": {
+          "title": "🚀 Early Access",
+          "description": "Thank you for your interest in Foodfate! We're currently conducting beta testing and welcome you to join our testing community."
+        },
+        "download": {
+          "title": "📦 APK Download",
+          "button": "📱 Download Latest Version (v0.0.38-beta)"
+        },
+        "install_notes": {
+          "title": "⚠️ Installation Notes",
+          "items": [
+            "Requires Android 7.0 (API level 24) or higher",
+            "First-time installation requires allowing \"Unknown sources\"",
+            "Recommend uninstalling old version before installing new one",
+            "Beta version may have stability issues, please be patient"
+          ]
+        },
+        "beta_application": {
+          "title": "📋 Simple Beta Application",
+          "button_title": "🚀 One-Click Beta Application",
+          "button_desc": "Click the button below to auto-generate application email",
+          "button_text": "📧 Apply for Beta Now",
+          "button_note": "Will automatically open your email application"
+        },
+        "benefits": {
+          "title": "🎯 Beta Testing Benefits",
+          "items": [
+            "✅ Early access to latest features",
+            "✅ Direct communication with development team",
+            "✅ Influence product development direction",
+            "✅ Early bird discounts when official version launches"
+          ]
+        },
+        "alternative": {
+          "title": "💡 Can't download right now?",
+          "description": "We recommend trying the <a href=\"https://app.foodfate.xyz\" target=\"_blank\" style=\"color: #FF6B35; font-weight: bold;\">Web version</a> first for the complete Foodfate experience!"
+        }
+      }
+    }
+  },
+  "notifications": {
+    "download_start": "Downloading Foodfate {{version}} version...",
+    "download_error": "Download link temporarily unavailable, please try again later",
+    "beta_email_generated": "Beta application email has been generated, please complete the information and send!",
+    "email_copied": "📋 Email address copied to clipboard",
+    "email_address_copied": "📋 Email address copied: foodfate2025@gmail.com"
+  },
+  "cookies": {
+    "banner": {
+      "text": "We use cookies to improve your experience. By continuing to use our site, you agree to our",
+      "policy_link": "Cookie Policy",
+      "accept": "Accept",
+      "decline": "Decline",
+      "settings": "Settings"
+    }
+  }
+}

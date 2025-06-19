@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Foodfate - 食事決定疲労にサヨナラ",
+    "description": "Foodfateは、スマートランダムアルゴリズムを使用して「何を食べるか」のジレンマを楽しいルーレット式決定で解決するインテリジェントなレストラン推薦アプリです。",
+    "keywords": "レストラン推薦, 食事決定, ランダムレストラン, フードルーレット, 食事選択",
+    "og": {
+      "title": "Foodfate - 食事決定疲労にサヨナラ",
+      "description": "インテリジェントなランダムレストラン推薦 - 食事の決定を楽しい冒険に変える"
+    }
+  },
+  "navigation": {
+    "about": "私たちについて",
+    "features": "機能",
+    "download": "ダウンロード",
+    "privacy": "プライバシーポリシー",
+    "contact": "お問い合わせ",
+    "language_switch": "中文"
+  },
+  "hero": {
+    "title": "食事決定疲労にサヨナラ",
+    "subtitle": "ワンクリックで料理の驚きを解放！スマートランダムレストラン推薦",
+    "try_web": "🚀 Web版を試す",
+    "join_beta": "📱 ベータに参加"
+  },
+  "about": {
+    "title": "🍜 あなたの物語を知っています",
+    "story_title": "💭 オフィスでのランチタイム - 馴染みのあるシーン",
+    "story_highlight": "聞き覚えがありますか？",
+    "solution_title": "✨ Foodfateはこれらすべてを変えるために生まれました"
+  },
+  "features": {
+    "title": "🌟 食の発見を日々の喜びに",
+    "cards": {
+      "lunch": {
+        "title": "ランチブレイクの救世主",
+        "description": "ランチに30分しかない？ワンクリックで5分以内に到達できる美味しい食べ物を見つけます。"
+      },
+      "dating": {
+        "title": "もう気まずいデートはない",
+        "description": "「何を食べたい？」はもうデートキラーではありません。ルーレットを回して、サプライズがデートを楽しくします。"
+      },
+      "learning": {
+        "title": "時間とともにあなたの味をより良く知る",
+        "description": "あなたの最も理解のある友人のように、すべての選択と反応を覚えています。"
+      }
+    }
+  },
+  "download": {
+    "title": "🧪 ベータ体験",
+    "subtitle": "Foodfateは現在ベータテスト中です。私たちのテストコミュニティに参加してください！",
+    "buttons": {
+      "android": {
+        "label": "Android ベータ",
+        "action": "APK ダウンロード"
+      },
+      "web": {
+        "label": "Web版",
+        "action": "今すぐ試す"
+      },
+      "ios": {
+        "label": "iOS版",
+        "action": "近日公開"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "食べ物が運命と出会う場所 - インテリジェントなレストラン推薦",
+    "copyright": "© 2025 Foodfate. 全権利保留"
+  }
+}

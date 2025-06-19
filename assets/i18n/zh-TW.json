@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "title": "Foodfate - 智慧隨機餐廳推薦",
+    "description": "Foodfate 是專為解決「今天吃什麼」而設計的智慧餐廳推薦 APP。一鍵隨機推薦、美食輪盤、個人化偏好學習，讓用餐決策變成有趣的冒險！現正開放內測。",
+    "keywords": "餐廳推薦,美食APP,隨機推薦,選擇困難,台北美食,美食輪盤,台灣美食,Food,Foodfate,Taiwan Food,restaurant,Taiwan restaurant,Taiwan food,Taiwan restaurant app,Taiwan food app,Taiwan restaurant recommendation,Taiwan food recommendation,Taiwan restaurant app,Taiwan food app",
+    "og": {
+      "title": "Foodfate - 智慧隨機餐廳推薦 APP",
+      "description": "告別選擇困難！一鍵解鎖美食驚喜，智慧隨機餐廳推薦，讓用餐決策變成有趣的冒險。"
+    },
+    "twitter": {
+      "title": "Foodfate - 智慧隨機餐廳推薦 APP",
+      "description": "告別選擇困難！一鍵解鎖美食驚喜，智慧隨機餐廳推薦。"
+    }
+  },
+  "navigation": {
+    "logo": "Foodfate",
+    "about": "關於我們",
+    "features": "功能特色",
+    "download": "下載應用",
+    "privacy": "隱私政策",
+    "contact": "聯絡我們",
+    "language_switch": "English"
+  },
+  "hero": {
+    "title": "告別選擇困難",
+    "subtitle": "一鍵解鎖美食驚喜！智慧隨機餐廳推薦，讓用餐決策變成有趣的冒險",
+    "try_web": "🚀 立即體驗 Web 版",
+    "join_beta": "📱 內測體驗"
+  },
+  "maintenance": {
+    "title": "應用程式升級中",
+    "description": "Foodfate 應用程式目前正在進行版本升級，暫時無法使用。預計於 <strong>6月22日</strong> 恢復正常服務。感謝您的耐心等候！"
+  },
+  "about": {
+    "title": "🍜 你的故事，我們都懂",
+    "story_title": "💭 午休時間，辦公室裡的熟悉對話",
+    "story_p1": "「今天要吃什麼？」小雅又一次看著手機螢幕發呆。打開美食app，滑了十分鐘還是沒有結論。同事們在群組裡討論了半小時，從日式料理聊到義大利麵，最後還是去了樓下那家吃過無數次的便當店。",
+    "story_p2": "下班後和男朋友約會，又是同樣的劇本。「你想吃什麼？」「都可以啊，你決定。」兩個人站在路邊，各自滑著手機，卻都不知道該選哪一家。最後錯過了黃金用餐時間，隨便找了一家店，體驗平平。",
+    "story_highlight": "這樣的情境，你是不是也很熟悉？",
+    "solution_title": "✨ Foodfate 的誕生，就是為了改變這一切",
+    "features": {
+      "games": {
+        "title": "讓選擇變成遊戲",
+        "description": "還記得小時候轉輪盤的興奮嗎？我們把這份期待感帶回你的用餐決策中，讓每次選擇都充滿驚喜。"
+      },
+      "understand": {
+        "title": "懂你比你更懂自己",
+        "description": "我們記住你每一次的選擇和反應，漸漸理解你的口味。就像老朋友一樣，總能推薦到你心坎裡的餐廳。"
+      },
+      "moments": {
+        "title": "每一刻都有最佳選擇",
+        "description": "趕時間的午餐、浪漫的約會、朋友聚餐，不同的時刻有不同的需要。我們懂得什麼時候該推薦什麼。"
+      }
+    }
+  },
+  "features": {
+    "title": "🌟 讓美食探索成為生活中的小確幸",
+    "cards": {
+      "lunch": {
+        "title": "忙碌午休的救星",
+        "description": "只剩30分鐘午休？一鍵找到附近5分鐘內能到達的美食，不用再為選擇而煩惱，把時間留給享受美食。"
+      },
+      "dating": {
+        "title": "約會不再尷尬",
+        "description": "「你想吃什麼？」不再是約會殺手。轉動輪盤，讓驚喜為約會增添樂趣，每次都是新的探索冒險。"
+      },
+      "learning": {
+        "title": "越來越懂你的口味",
+        "description": "記住每次你的選擇和反應，就像身邊最了解你的朋友。時間越久，推薦越精準，總能找到讓你驚喜的美食。"
+      },
+      "navigation": {
+        "title": "找到了，也要到得了",
+        "description": "推薦餐廳只是開始，一鍵導航帶你直達目的地。走路、騎車、開車，選擇最適合的交通方式享受美食之旅。"
+      },
+      "group": {
+        "title": "聚餐不再眾口難調",
+        "description": "朋友聚餐最怕意見不合？告訴我們每個人的喜好，我們找出讓所有人都滿意的選擇，讓聚餐回歸快樂時光。"
+      },
+      "memory": {
+        "title": "美食回憶永不遺失",
+        "description": "那家讓你念念不忘的小店，那次完美的約會餐廳，通通收藏起來。分類整理你的美食回憶，隨時重溫美好時光。"
+      }
+    }
+  },
+  "app_preview": {
+    "title": "🎨 現代化設計",
+    "description": "溫暖橘色系配合玻璃擬態效果，創造舒適的視覺體驗。支援深色/淺色模式，適應不同使用場景。",
+    "features": {
+      "ui": "🎨 精美的 UI 設計",
+      "animation": "🔄 流暢的動畫效果",
+      "responsive": "📱 響應式設計",
+      "fast": "⚡ 快速載入體驗"
+    },
+    "try_now": "立即試用 Web 版 →",
+    "roulette_text": "轉動輪盤，發現驚喜！"
+  },
+  "future": {
+    "title": "🌟 讓美食探索變得更美好",
+    "phases": {
+      "current": {
+        "title": "🎯 解決選擇困難",
+        "status": "已上線",
+        "features": [
+          "✅ 一鍵找到附近美食，告別選擇障礙",
+          "✅ 輪盤轉出驚喜，讓決策變成遊戲",
+          "✅ 智能地圖導航，輕鬆抵達目的地",
+          "✅ 個人化篩選，符合你的需求與預算"
+        ]
+      },
+      "coming": {
+        "title": "🧠 更懂你的需要",
+        "status": "開發中",
+        "features": [
+          "🔄 記住你的喜好，推薦越來越精準",
+          "🔄 整合更多美食資訊，選擇更豐富",
+          "🔄 多人決策功能，聚餐不再困難",
+          "🔄 一站式服務，從推薦到訂位到外送",
+          "🔄 旅行模式，探索當地特色美食",
+          "🔄 與朋友分享，美食體驗更有趣",
+          "🔄 下午茶時光，飲料推薦也很棒"
+        ]
+      },
+      "future": {
+        "title": "🌟 全方位美食夥伴",
+        "status": "規劃中",
+        "features": [
+          "📱 iPhone 用戶也能享受完整體驗",
+          "🌙 夜貓族專屬的深色模式",
+          "📊 回顧你的美食足跡和成長",
+          "🔗 從推薦到用餐，一氣呵成的完整體驗",
+          "🗺️ AR 實景導覽，像遊戲一樣有趣"
+        ]
+      }
+    },
+    "innovation": {
+      "title": "💡 讓生活更美好的想像",
+      "features": {
+        "health": {
+          "title": "健康也能很美味",
+          "description": "想要減重、增肌、或只是吃得更健康？我們幫你找到美味又符合健康目標的餐廳選擇。"
+        },
+        "voice": {
+          "title": "用說的就能找美食",
+          "description": "解放雙手！騎車時對著手機說「找家附近的義大利餐廳」，Foodfate 就懂你的需要。"
+        },
+        "travel": {
+          "title": "旅行也不怕踩雷",
+          "description": "不管是東京的拉麵、巴黎的可頌，還是紐約的漢堡，讓 Foodfate 陪你探索世界美食。"
+        },
+        "ai": {
+          "title": "專屬的美食顧問",
+          "description": "就像有個最懂美食的朋友隨時在身邊，為你分析餐廳特色、推薦最適合的選擇。"
+        }
+      }
+    }
+  },
+  "download": {
+    "title": "🧪 搶先體驗",
+    "subtitle": "Foodfate 目前處於測試體驗階段，歡迎搶先體驗我們的創新功能！",
+    "buttons": {
+      "android": {
+        "label": "Android 內測版",
+        "action": "APK 下載"
+      },
+      "web": {
+        "label": "Web 版本",
+        "action": "立即體驗"
+      },
+      "ios": {
+        "label": "iOS 版本",
+        "action": "開發中"
+      }
+    },
+    "beta_info": {
+      "title": "📝 內測須知",
+      "items": [
+        "• iOS 版本開發中，敬請期待！",
+        "• 建議先使用 Web 版本體驗完整功能",
+        "• 內測期間您的寶貴意見將幫助我們改善產品",
+        "• Android APK 檔案支援 Android 7.0 以上版本",
+        "• 內測版本會定期更新，建議關注我們的最新消息"
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "讓美食與你相遇，告別選擇困難的智慧餐廳推薦 APP",
+    "email": "foodfate2025@gmail.com",
+    "sections": {
+      "product": {
+        "title": "產品體驗",
+        "links": {
+          "web": "Web 版本",
+          "android": "Android 內測",
+          "features": "功能介紹",
+          "feedback": "意見回饋"
+        }
+      },
+      "legal": {
+        "title": "法律文件",
+        "links": {
+          "privacy": "隱私政策",
+          "terms": "服務條款",
+          "cookies": "Cookie 政策"
+        }
+      },
+      "social": {
+        "title": "社群媒體",
+        "links": {
+          "facebook": "Facebook",
+          "instagram": "Instagram",
+          "twitter": "Twitter",
+          "github": "GitHub"
+        }
+      },
+      "contact": {
+        "title": "聯絡我們",
+        "links": {
+          "support": "客服信箱",
+          "business": "商業合作",
+          "media": "媒體聯絡",
+          "beta": "內測申請"
+        }
+      }
+    },
+    "copyright": "© 2025 Foodfate. 版權所有 | Foodfate Team"
+  },
+  "modals": {
+    "beta": {
+      "android": {
+        "title": "📱 Android 內測版",
+        "early_access": {
+          "title": "🚀 搶先體驗",
+          "description": "感謝您對 Foodfate 的興趣！目前我們正在進行內測，歡迎加入我們的測試行列。"
+        },
+        "download": {
+          "title": "📦 APK 下載",
+          "button": "📱 下載最新版本 (v0.0.38-beta)"
+        },
+        "install_notes": {
+          "title": "⚠️ 安裝須知",
+          "items": [
+            "需要 Android 7.0 (API level 24) 或更高版本",
+            "首次安裝需要允許「未知來源」應用安裝",
+            "建議先卸載舊版本再安裝新版本",
+            "內測版本可能存在不穩定情況，請多包涵"
+          ]
+        },
+        "beta_application": {
+          "title": "📋 簡易內測申請",
+          "button_title": "🚀 一鍵申請內測",
+          "button_desc": "點擊下方按鈕，自動生成申請郵件",
+          "button_text": "📧 立即申請內測",
+          "button_note": "將自動打開您的郵件應用程式"
+        },
+        "benefits": {
+          "title": "🎯 內測期間享有",
+          "items": [
+            "✅ 搶先體驗最新功能",
+            "✅ 直接與開發團隊交流",
+            "✅ 影響產品發展方向",
+            "✅ 正式版推出時的早鳥優惠"
+          ]
+        },
+        "alternative": {
+          "title": "💡 暫時無法下載？",
+          "description": "建議您先<a href=\"https://app.foodfate.xyz\" target=\"_blank\" style=\"color: #FF6B35; font-weight: bold;\">體驗 Web 版本</a>，享受完整的 Foodfate 功能！"
+        }
+      }
+    }
+  },
+  "notifications": {
+    "download_start": "開始下載 Foodfate {{version}}版本...",
+    "download_error": "下載連結暫時無法使用，請稍後再試",
+    "beta_email_generated": "📧 已自動生成申請郵件，請完善資訊後發送！",
+    "email_copied": "📋 郵件地址已複製到剪貼板",
+    "email_address_copied": "📋 郵件地址已複製：foodfate2025@gmail.com"
+  },
+  "cookies": {
+    "banner": {
+      "text": "我們使用 Cookie 來改善您的體驗。繼續使用即表示您同意我們的",
+      "policy_link": "Cookie 政策",
+      "accept": "接受",
+      "decline": "拒絕",
+      "settings": "設定"
+    }
+  }
+}
