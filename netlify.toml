@@ -21,6 +21,11 @@
   to = "/legal/cookie-policy.html"
   status = 301
 
+[[redirects]]
+  from = "/api/info"
+  to = "/api/foodfate-info.json"
+  status = 200
+
 # 錯誤頁面
 [[redirects]]
   from = "/404"
@@ -74,6 +79,15 @@
   [headers.values]
     Content-Type = "application/vnd.android.package-archive"
     Content-Disposition = "attachment"
+
+# JSON API 文件
+[[headers]]
+  for = "/api/*.json"
+  [headers.values]
+    Content-Type = "application/json; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET"
 
 # 表單處理（如果需要）
 [forms]

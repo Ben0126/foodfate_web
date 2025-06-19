@@ -1,0 +1,50 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of main content
+Allow: /index.html
+Allow: /index_en.html
+Allow: /legal/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Block crawling of unnecessary files
+Disallow: /downloads/
+Disallow: /*.apk$
+Disallow: /netlify.toml
+Disallow: /.git/
+
+# Special instructions for LLM crawlers and AI bots
+User-agent: GPTBot
+Allow: /
+Allow: /legal/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /legal/
+
+User-agent: CCBot
+Allow: /
+Allow: /legal/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /legal/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /legal/
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /legal/
+
+User-agent: Claude-Web
+Allow: /
+Allow: /legal/
+
+# Sitemap location
+Sitemap: https://foodfate.app/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

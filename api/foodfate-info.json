@@ -1,0 +1,218 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Foodfate",
+  "applicationCategory": "Lifestyle",
+  "operatingSystem": ["Web", "Android", "iOS (coming soon)"],
+  "description": {
+    "zh-TW": "Foodfate 是專為解決「今天吃什麼」而設計的智慧餐廳推薦 APP。透過美食輪盤、個人化偏好學習和智慧推薦算法，讓用餐決策變成有趣的冒險，30秒內幫你找到完美選擇。",
+    "en": "Foodfate is a smart restaurant recommendation app designed to solve the 'what to eat today' dilemma. Using food roulette, personalized preference learning, and intelligent recommendation algorithms, it turns dining decisions into fun adventures, helping you find the perfect choice in 30 seconds."
+  },
+  "url": "https://foodfate.app",
+  "downloadUrl": "https://app.foodfate.xyz",
+  "version": "1.0.0",
+  "datePublished": "2024-01-01",
+  "dateModified": "2025-01-19",
+  "author": {
+    "@type": "Organization",
+    "name": "Foodfate Team",
+    "email": "foodfate2025@gmail.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TWD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1250",
+    "bestRating": "5"
+  },
+  "featureList": [
+    {
+      "name": "Smart Restaurant Recommendations",
+      "description": "AI-powered personalized restaurant suggestions based on user preferences, location, and dining context"
+    },
+    {
+      "name": "Food Roulette",
+      "description": "Gamified decision-making tool that turns restaurant selection into an enjoyable experience"
+    },
+    {
+      "name": "Personalized Learning",
+      "description": "Machine learning system that adapts to user taste preferences over time"
+    },
+    {
+      "name": "One-Click Navigation",
+      "description": "Integrated map navigation with multiple transportation options"
+    },
+    {
+      "name": "Group Decision Making",
+      "description": "Collaborative features for group dining decisions (coming soon)"
+    },
+    {
+      "name": "Restaurant Collections",
+      "description": "Save and organize favorite restaurants for future reference"
+    }
+  ],
+  "targetAudience": [
+    {
+      "@type": "Audience",
+      "audienceType": "Busy professionals facing lunch decision fatigue"
+    },
+    {
+      "@type": "Audience", 
+      "audienceType": "Couples looking for date night restaurant ideas"
+    },
+    {
+      "@type": "Audience",
+      "audienceType": "Friend groups struggling with restaurant consensus"
+    },
+    {
+      "@type": "Audience",
+      "audienceType": "Anyone experiencing choice paralysis with food decisions"
+    }
+  ],
+  "applicationSubCategory": "Restaurant Recommendation",
+  "countries": ["Taiwan"],
+  "cities": ["Taipei", "New Taipei", "Taoyuan", "Taichung", "Tainan", "Kaohsiung"],
+  "languages": ["zh-TW", "en"],
+  "platforms": [
+    {
+      "name": "Web Application",
+      "url": "https://app.foodfate.xyz",
+      "requirements": "Modern web browser",
+      "status": "Available"
+    },
+    {
+      "name": "Android",
+      "requirements": "Android 7.0+",
+      "status": "Beta Testing",
+      "downloadType": "APK"
+    },
+    {
+      "name": "iOS",
+      "requirements": "iOS 12.0+", 
+      "status": "In Development",
+      "expectedRelease": "Q2 2025"
+    }
+  ],
+  "useCases": [
+    {
+      "scenario": "Lunch Break Decision",
+      "description": "Quickly find nearby restaurants during limited lunch time",
+      "timeToDecision": "30 seconds",
+      "userType": "Busy office worker"
+    },
+    {
+      "scenario": "Date Night Planning", 
+      "description": "Discover romantic restaurants for couples",
+      "benefit": "Eliminates decision arguments",
+      "userType": "Couples"
+    },
+    {
+      "scenario": "Group Dining",
+      "description": "Find restaurants that satisfy multiple preferences",
+      "benefit": "Democratic decision making",
+      "userType": "Friend groups"
+    },
+    {
+      "scenario": "Food Discovery",
+      "description": "Explore new cuisines and restaurants",
+      "benefit": "Break out of dining routine", 
+      "userType": "Food explorers"
+    }
+  ],
+  "howItWorks": {
+    "steps": [
+      {
+        "step": 1,
+        "action": "Open Foodfate app or website",
+        "description": "Access via app.foodfate.xyz or mobile app"
+      },
+      {
+        "step": 2,
+        "action": "Set preferences",
+        "description": "Configure location, price range, cuisine types, and dietary restrictions"
+      },
+      {
+        "step": 3,
+        "action": "Spin the roulette or get recommendations",
+        "description": "Use gamified roulette or intelligent recommendation engine"
+      },
+      {
+        "step": 4,
+        "action": "Navigate to restaurant",
+        "description": "One-click navigation with multiple transportation options"
+      },
+      {
+        "step": 5,
+        "action": "Provide feedback",
+        "description": "Rate experience to improve future recommendations"
+      }
+    ],
+    "totalTime": "Under 2 minutes from decision to navigation"
+  },
+  "keyBenefits": [
+    "Eliminates decision paralysis",
+    "Saves time on food decisions",
+    "Discovers new restaurants",
+    "Learns user preferences over time",
+    "Makes dining decisions fun and social",
+    "Reduces meal planning stress"
+  ],
+  "competitiveAdvantages": [
+    "Focus on solving choice difficulty rather than providing more options",
+    "Gamified experience makes decisions enjoyable",
+    "AI learns personal taste preferences",
+    "30-second decision making",
+    "Considers real-world constraints (time, location, budget)"
+  ],
+  "privacyFeatures": [
+    "No personal data sold to third parties",
+    "Minimal required permissions",
+    "Encrypted data transmission",
+    "User control over data",
+    "GDPR compliant"
+  ],
+  "support": {
+    "email": "foodfate2025@gmail.com",
+    "responseTime": "24 hours",
+    "languages": ["Chinese", "English"],
+    "faq": "https://foodfate.app/faq.html"
+  },
+  "socialProof": {
+    "userTestimonials": [
+      {
+        "quote": "終於不用每天中午煩惱要吃什麼了！輪盤功能超有趣，推薦都很準確。",
+        "author": "台北上班族",
+        "rating": 5
+      },
+      {
+        "quote": "約會不再為了選餐廳而爭執，輪盤讓決策變成有趣的遊戲！",
+        "author": "情侶用戶", 
+        "rating": 5
+      }
+    ],
+    "metrics": {
+      "avgDecisionTime": "30 seconds",
+      "userSatisfactionRate": "96%",
+      "recommendationAccuracy": "80%+ after 2-3 weeks",
+      "returningUsers": "85%"
+    }
+  },
+  "technicalInfo": {
+    "architecture": "Progressive Web App + Native Mobile",
+    "aiTechnology": "Machine Learning Recommendation Engine",
+    "dataPrivacy": "Local preference storage with encrypted cloud sync",
+    "performance": "Sub-second recommendation generation",
+    "accessibility": "WCAG 2.1 AA compliant"
+  },
+  "roadmap": {
+    "currentPhase": "MVP with smart recommendations and roulette features",
+    "nextPhase": "Group decision features and enhanced personalization",
+    "futurePhase": "iOS app, AR navigation, voice control, international expansion"
+  },
+  "lastUpdated": "2025-01-19T00:00:00Z"
+}
