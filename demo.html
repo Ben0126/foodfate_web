@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">Foodfate i18n Demo</title>
+    
+    <!-- i18n System -->
+    <script src="./assets/js/i18n.js?v=1.0.0"></script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .demo-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #FF6B35;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 107, 53, 0.1);
+            color: #FF6B35;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 107, 53, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .lang-btn.active {
+            background: #FF6B35;
+            color: white;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .current-lang-info {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 data-i18n="demo.title">🌍 Foodfate 國際化系統演示</h1>
+        <p data-i18n="demo.subtitle">這個演示展示了 Foodfate 網站的動態多語言切換功能</p>
+    </header>
+
+    <div class="demo-section">
+        <h2 data-i18n="demo.language_switcher.title">🔄 語言切換器</h2>
+        <p data-i18n="demo.language_switcher.description">點擊下方按鈕切換語言，整個頁面將會動態更新：</p>
+        
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="zh-TW">🇹🇼 中文</button>
+            <button class="lang-btn" data-lang="en">🇺🇸 English</button>
+            <button class="lang-btn" data-lang="es">🇪🇸 Español</button>
+            <button class="lang-btn" data-lang="ja">🇯🇵 日本語</button>
+        </div>
+        
+        <div class="current-lang-info">
+            <strong data-i18n="demo.current_language">當前語言：</strong>
+            <span id="currentLangDisplay">-</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 data-i18n="demo.features.title">✨ 主要功能</h2>
+        
+        <div class="feature-list">
+            <div class="feature-card">
+                <h3 data-i18n="demo.features.automatic.title">🤖 自動語言檢測</h3>
+                <p data-i18n="demo.features.automatic.description">根據用戶的瀏覽器設定和偏好自動選擇語言</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 data-i18n="demo.features.dynamic.title">⚡ 動態切換</h3>
+                <p data-i18n="demo.features.dynamic.description">無需重新載入頁面，即時切換所有內容的語言</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 data-i18n="demo.features.fallback.title">🔄 回退機制</h3>
+                <p data-i18n="demo.features.fallback.description">如果翻譯缺失，自動使用英文作為備用語言</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 data-i18n="demo.features.meta.title">📄 Meta 標籤更新</h3>
+                <p data-i18n="demo.features.meta.description">自動更新頁面標題、描述等 SEO 相關標籤</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 data-i18n="demo.example.title">💡 使用範例</h2>
+        
+        <div class="info-box">
+            <h4 data-i18n="demo.example.navigation.title">導航選單</h4>
+            <nav>
+                <a href="#" data-i18n="navigation.about">關於我們</a> | 
+                <a href="#" data-i18n="navigation.features">功能特色</a> | 
+                <a href="#" data-i18n="navigation.download">下載應用</a> | 
+                <a href="#" data-i18n="navigation.contact">聯絡我們</a>
+            </nav>
+        </div>
+        
+        <div class="info-box">
+            <h4 data-i18n="demo.example.hero.title">主要標語</h4>
+            <h3 data-i18n="hero.title">告別選擇困難</h3>
+            <p data-i18n="hero.subtitle">一鍵解鎖美食驚喜！智慧隨機餐廳推薦，讓用餐決策變成有趣的冒險</p>
+        </div>
+        
+        <div class="info-box">
+            <h4 data-i18n="demo.example.features.title">功能介紹</h4>
+            <ul>
+                <li data-i18n="features.cards.lunch.title">忙碌午休的救星</li>
+                <li data-i18n="features.cards.dating.title">約會不再尷尬</li>
+                <li data-i18n="features.cards.learning.title">越來越懂你的口味</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 data-i18n="demo.implementation.title">🛠️ 實作方式</h2>
+        <p data-i18n="demo.implementation.description">要使元素支援國際化，只需要添加相應的屬性：</p>
+        
+        <pre><code>&lt;h1 data-i18n="hero.title"&gt;告別選擇困難&lt;/h1&gt;
+&lt;p data-i18n="hero.subtitle"&gt;副標題內容&lt;/p&gt;
+&lt;button data-lang="en"&gt;🇺🇸 English&lt;/button&gt;</code></pre>
+    </div>
+
+    <footer>
+        <p data-i18n="demo.footer">
+            這個演示展示了 Foodfate 國際化系統的核心功能。
+            真實網站包含更多語言和完整的內容翻譯。
+        </p>
+    </footer>
+
+    <script>
+        // 更新當前語言顯示
+        function updateCurrentLanguageDisplay() {
+            const langInfo = window.i18n.getCurrentLanguageInfo();
+            const display = document.getElementById('currentLangDisplay');
+            display.textContent = `${langInfo.flag} ${langInfo.name} (${langInfo.code})`;
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === langInfo.code) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // 監聽語言變更事件
+        window.addEventListener('languageChanged', function(event) {
+            console.log('語言已變更為:', event.detail.language);
+            updateCurrentLanguageDisplay();
+        });
+
+        // 頁面載入完成後的處理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待 i18n 系統初始化
+            setTimeout(() => {
+                updateCurrentLanguageDisplay();
+            }, 100);
+        });
+
+        // 添加語言切換按鈕的事件監聽
+        document.addEventListener('click', function(e) {
+            if (e.target.hasAttribute('data-lang')) {
+                const lang = e.target.getAttribute('data-lang');
+                window.i18n.changeLanguage(lang);
+            }
+        });
+    </script>
+
+    <!-- 添加演示專用的語言文件 -->
+    <script>
+        // 為演示頁面擴展語言文件
+        window.addEventListener('languageChanged', function() {
+            // 這裡可以載入演示專用的翻譯內容
+            const demoTranslations = {
+                'zh-TW': {
+                    'demo.title': '🌍 Foodfate 國際化系統演示',
+                    'demo.subtitle': '這個演示展示了 Foodfate 網站的動態多語言切換功能',
+                    'demo.language_switcher.title': '🔄 語言切換器',
+                    'demo.language_switcher.description': '點擊下方按鈕切換語言，整個頁面將會動態更新：',
+                    'demo.current_language': '當前語言：',
+                    'demo.features.title': '✨ 主要功能',
+                    'demo.features.automatic.title': '🤖 自動語言檢測',
+                    'demo.features.automatic.description': '根據用戶的瀏覽器設定和偏好自動選擇語言',
+                    'demo.features.dynamic.title': '⚡ 動態切換',
+                    'demo.features.dynamic.description': '無需重新載入頁面，即時切換所有內容的語言',
+                    'demo.features.fallback.title': '🔄 回退機制',
+                    'demo.features.fallback.description': '如果翻譯缺失，自動使用英文作為備用語言',
+                    'demo.features.meta.title': '📄 Meta 標籤更新',
+                    'demo.features.meta.description': '自動更新頁面標題、描述等 SEO 相關標籤',
+                    'demo.example.title': '💡 使用範例',
+                    'demo.example.navigation.title': '導航選單',
+                    'demo.example.hero.title': '主要標語',
+                    'demo.example.features.title': '功能介紹',
+                    'demo.implementation.title': '🛠️ 實作方式',
+                    'demo.implementation.description': '要使元素支援國際化，只需要添加相應的屬性：',
+                    'demo.footer': '這個演示展示了 Foodfate 國際化系統的核心功能。真實網站包含更多語言和完整的內容翻譯。'
+                },
+                'en': {
+                    'demo.title': '🌍 Foodfate i18n System Demo',
+                    'demo.subtitle': 'This demo showcases the dynamic multi-language switching functionality of the Foodfate website',
+                    'demo.language_switcher.title': '🔄 Language Switcher',
+                    'demo.language_switcher.description': 'Click the buttons below to switch languages, the entire page will update dynamically:',
+                    'demo.current_language': 'Current Language:',
+                    'demo.features.title': '✨ Key Features',
+                    'demo.features.automatic.title': '🤖 Automatic Language Detection',
+                    'demo.features.automatic.description': 'Automatically selects language based on user browser settings and preferences',
+                    'demo.features.dynamic.title': '⚡ Dynamic Switching',
+                    'demo.features.dynamic.description': 'Switch all content language instantly without page reload',
+                    'demo.features.fallback.title': '🔄 Fallback Mechanism',
+                    'demo.features.fallback.description': 'Automatically uses English as backup when translations are missing',
+                    'demo.features.meta.title': '📄 Meta Tag Updates',
+                    'demo.features.meta.description': 'Automatically updates page title, description and other SEO-related tags',
+                    'demo.example.title': '💡 Usage Examples',
+                    'demo.example.navigation.title': 'Navigation Menu',
+                    'demo.example.hero.title': 'Main Tagline',
+                    'demo.example.features.title': 'Feature Introduction',
+                    'demo.implementation.title': '🛠️ Implementation',
+                    'demo.implementation.description': 'To make elements support internationalization, simply add the appropriate attributes:',
+                    'demo.footer': 'This demo showcases the core functionality of the Foodfate internationalization system. The real website includes more languages and complete content translations.'
+                }
+            };
+
+            // 合併演示翻譯到現有的翻譯中
+            const currentLang = window.i18n.currentLanguage;
+            if (demoTranslations[currentLang]) {
+                Object.assign(window.i18n.translations[currentLang], demoTranslations[currentLang]);
+                window.i18n.updatePageLanguage();
+            }
+        });
+    </script>
+</body>
+</html>
