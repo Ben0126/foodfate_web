@@ -27,9 +27,9 @@
     "try_web": "🚀 Try Web Version",
     "join_beta": "📱 Join Beta"
   },
-  "maintenance": {
-    "title": "App Under Upgrade",
-    "description": "Foodfate app is currently undergoing version upgrade and is temporarily unavailable. Expected to resume normal service on <strong>June 22nd</strong>. Thank you for your patience!"
+  "announcement": {
+    "title": "New Version in Development",
+    "description": "We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service."
   },
   "about": {
     "title": "🍜 We Know Your Story",
