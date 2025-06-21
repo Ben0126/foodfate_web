@@ -27,9 +27,9 @@
     "try_web": "🚀 立即體驗 Web 版",
     "join_beta": "📱 內測體驗"
   },
-  "maintenance": {
-    "title": "應用程式升級中",
-    "description": "Foodfate 應用程式目前正在進行版本升級，暫時無法使用。預計於 <strong>6月22日</strong> 恢復正常服務。感謝您的耐心等候！"
+  "announcement": {
+    "title": "新版本開發中",
+    "description": "Foodfate 正在開發更強大的新版本，敬請期待！現有的 <strong>Web 版本依然可以正常使用</strong>，歡迎繼續體驗我們的服務。"
   },
   "about": {
     "title": "🍜 你的故事，我們都懂",

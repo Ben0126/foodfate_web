@@ -35,8 +35,8 @@ body::before {
 
 
 
-/* 維護通知橫幅 */
-.maintenance-banner {
+/* 訊息公布欄 */
+.announcement-banner {
     position: fixed;
     top: 0;
     width: 100%;
@@ -48,7 +48,7 @@ body::before {
     animation: slideDown 0.6s ease-out;
 }
 
-.maintenance-content {
+.announcement-content {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -59,18 +59,18 @@ body::before {
     text-align: center;
 }
 
-.maintenance-icon {
+.announcement-icon {
     font-size: 2rem;
     animation: bounce 2s infinite;
 }
 
-.maintenance-text h3 {
+.announcement-text h3 {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-.maintenance-text p {
+.announcement-text p {
     font-size: 1.1rem;
     font-weight: 400;
     opacity: 0.95;
@@ -102,7 +102,7 @@ body::before {
 /* 導航欄 */
 .navbar {
     position: fixed;
-    top: 80px; /* 調整位置以避免與維護橫幅重疊 */
+    top: 80px; /* 調整位置以避免與公告橫幅重疊 */
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
@@ -172,7 +172,7 @@ body::before {
     text-align: center;
     background: linear-gradient(135deg, #fef3f0 0%, #fff8f6 100%);
     position: relative;
-    padding-top: 160px; /* 為維護橫幅和導航欄預留空間 */
+    padding-top: 160px; /* 為公告橫幅和導航欄預留空間 */
 }
 
 .hero-content {
@@ -924,29 +924,29 @@ body::before {
         display: block;
     }
 
-    /* 維護橫幅手機版 */
-    .maintenance-content {
+    /* 公告橫幅手機版 */
+    .announcement-content {
         flex-direction: row;
         text-align: center;
         gap: 0.8rem;
         padding: 0 1rem;
     }
 
-    .maintenance-text h3 {
+    .announcement-text h3 {
         font-size: 1.2rem;
     }
 
-    .maintenance-text p {
+    .announcement-text p {
         font-size: 1rem;
     }
 
-    .maintenance-icon {
+    .announcement-icon {
         font-size: 1.5rem;
         min-width: 40px;
     }
 
     .navbar {
-        top: 70px; /* 手機版維護橫幅較小 */
+        top: 70px; /* 手機版公告橫幅較小 */
     }
 
     .hero {
@@ -1029,23 +1029,23 @@ body::before {
 }
 
 @media (max-width: 480px) {
-    /* 極小螢幕的維護橫幅優化 */
-    .maintenance-content {
+    /* 極小螢幕的公告橫幅優化 */
+    .announcement-content {
         flex-direction: column;
         gap: 0.5rem;
         padding: 0 0.5rem;
     }
 
-    .maintenance-text h3 {
+    .announcement-text h3 {
         font-size: 1.1rem;
         margin-bottom: 0.3rem;
     }
 
-    .maintenance-text p {
+    .announcement-text p {
         font-size: 0.9rem;
     }
 
-    .maintenance-icon {
+    .announcement-icon {
         font-size: 1.3rem;
     }
 
