@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnalytics();
     initScrollAnimations();
     initMobileMenu();
+    initAnnouncementBanner();
 });
 
 // 導航欄功能
@@ -42,6 +43,66 @@ function initMobileMenu() {
                 mobileMenuBtn.innerHTML = '☰';
             }
         });
+    }
+}
+
+// 公告橫幅功能
+function initAnnouncementBanner() {
+    const announcementBanner = document.getElementById('announcementBanner');
+    const announcementClosed = localStorage.getItem('announcementClosed');
+    
+    // 如果用戶已關閉公告，則隱藏橫幅
+    if (announcementClosed === 'true' && announcementBanner) {
+        announcementBanner.style.display = 'none';
+        // 調整導航欄位置
+        adjustNavbarPosition(false);
+    }
+}
+
+// 關閉公告功能
+function closeAnnouncement() {
+    const announcementBanner = document.getElementById('announcementBanner');
+    
+    if (announcementBanner) {
+        // 添加淡出動畫
+        announcementBanner.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        announcementBanner.style.opacity = '0';
+        announcementBanner.style.transform = 'translateY(-100%)';
+        
+        // 動畫完成後隱藏元素
+        setTimeout(() => {
+            announcementBanner.style.display = 'none';
+            // 調整導航欄位置
+            adjustNavbarPosition(false);
+        }, 300);
+        
+        // 記住用戶的選擇
+        localStorage.setItem('announcementClosed', 'true');
+        localStorage.setItem('announcementClosedTime', Date.now());
+        
+        // 記錄關閉事件
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'announcement_closed', {
+                'event_category': 'engagement',
+                'event_label': 'user_action',
+                'value': 1
+            });
+        }
+    }
+}
+
+// 調整導航欄位置
+function adjustNavbarPosition(hasAnnouncement) {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        if (hasAnnouncement) {
+            // 有公告時的位置（原位置）
+            navbar.style.top = '80px';
+        } else {
+            // 沒有公告時的位置
+            navbar.style.top = '0px';
+            navbar.style.transition = 'top 0.3s ease';
+        }
     }
 }
 

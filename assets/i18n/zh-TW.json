@@ -29,7 +29,8 @@
   },
   "announcement": {
     "title": "新版本開發中",
-    "description": "Foodfate 正在開發更強大的新版本，敬請期待！現有的 <strong>Web 版本依然可以正常使用</strong>，歡迎繼續體驗我們的服務。"
+    "description": "Foodfate 正在開發更強大的新版本，敬請期待！現有的 <strong>Web 版本依然可以正常使用</strong>，歡迎繼續體驗我們的服務。",
+    "close_label": "關閉公告"
   },
   "about": {
     "title": "🍜 你的故事，我們都懂",
