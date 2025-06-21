@@ -34,27 +34,52 @@
 ```
 foodfate_web/
 ├── index.html                 # 主頁面
+├── index_en.html             # 英文主頁面
+├── faq.html                  # 中文常見問題頁面（LLM 優化）
+├── faq_en.html               # 英文常見問題頁面（LLM 優化）
+├── sitemap.xml               # 網站地圖（LLM 爬蟲優化）
+├── robots.txt                # 爬蟲指令（支援 LLM 機器人）
 ├── 404.html                  # 錯誤頁面
-├── netlify.toml              # Netlify 配置
+├── netlify.toml              # Netlify 配置（含 API 重定向）
+├── api/
+│   └── foodfate-info.json    # 結構化數據 API 端點（LLM 優化）
 ├── assets/
 │   ├── css/
 │   │   └── style.css         # 主要樣式文件
-│   └── js/
-│       └── main.js           # 主要 JavaScript 文件
+│   ├── js/
+│   │   ├── main.js           # 主要 JavaScript 文件
+│   │   └── i18n.js           # 國際化支援
+│   └── i18n/
+│       ├── zh-TW.json        # 繁體中文語言包
+│       ├── en.json           # 英文語言包
+│       ├── ja.json           # 日文語言包
+│       └── es.json           # 西班牙文語言包
 ├── legal/
-│   ├── privacy-policy.html   # 隱私政策
-│   ├── terms-of-service.html # 服務條款
-│   └── cookie-policy.html    # Cookie 政策
+│   ├── privacy-policy.html   # 中文隱私政策
+│   ├── privacy-policy_en.html # 英文隱私政策
+│   ├── terms-of-service.html # 中文服務條款
+│   ├── terms-of-service_en.html # 英文服務條款
+│   ├── cookie-policy.html    # 中文 Cookie 政策
+│   └── cookie-policy_en.html # 英文 Cookie 政策
 ├── downloads/
 │   ├── README.md             # 下載說明
-│   ├── foodfate_app_v0.0.39-beta.apk  # 最新內測版
-│   └── foodfate-v0.9.5-beta.apk  # 穩定內測版
+│   └── foodfate_app_v0.0.38-beta.apk  # 最新內測版
 ├── foodfate_logo.png         # 品牌 Logo
+├── favicon.png               # 網站圖標
 ├── APP logo.png             # APP 圖標
+├── LLM-OPTIMIZATION-SUMMARY.md # LLM 優化總結文檔
+├── I18N_GUIDE.md            # 國際化指南
 └── README.md                # 此文件
 ```
 
 ## ✨ 網站特色
+
+### 🤖 LLM 搜索優化
+- **AI 爬蟲友好**：專門配置支援 GPTBot、ClaudeBot、CCBot 等主要 LLM 爬蟲
+- **結構化數據豐富**：完整的 Schema markup 讓 AI 能準確理解網站內容
+- **自然語言 FAQ**：15+ 個以對話方式撰寫的問答，適合 LLM 引用和回答
+- **API 端點**：提供 `/api/foodfate-info.json` 結構化數據供 AI 系統存取
+- **多語言優化**：中英雙語完整支援，提升國際化 LLM 發現性
 
 ### 🎯 故事化體驗
 - **首頁故事**：從用戶真實生活場景出發，訴說選擇困難的共同經歷
@@ -194,11 +219,41 @@ foodfate_web/
 
 ## 📝 更新紀錄
 
+### v2.1.0 - LLM 優化版 (2025-01-19)
+- 🤖 **完整 LLM 搜索優化**：全面實施 LLM-OPTIMIZATION-SUMMARY.md 所有需求
+- 🔍 **技術優化**：
+  - ✅ 新增 `sitemap.xml` 包含多語言支援和適當優先級
+  - ✅ 優化 `robots.txt` 特別支援 LLM 爬蟲（GPTBot、ClaudeBot、CCBot 等）
+  - ✅ 建立 `/api/foodfate-info.json` 結構化數據端點（219 行詳細資料）
+  - ✅ 配置 `netlify.toml` API 重定向和安全標頭
+- 📊 **結構化數據標記**：實施多層次 Schema markup
+  - ✅ MobileApplication schema 完整應用資訊
+  - ✅ Organization schema 詳細組織資料
+  - ✅ Product schema 包含評分和評論
+  - ✅ HowTo schema 使用步驟指南
+  - ✅ WebSite schema 搜索功能支援
+  - ✅ FAQPage schema 自然語言問答
+- ❓ **內容優化**：
+  - ✅ 建立中文 FAQ 頁面（35KB，640行，15+ 詳細問答）
+  - ✅ 建立英文 FAQ 頁面（28KB，520行，完整翻譯）
+  - ✅ 自然語言查詢優化，問題以用戶詢問 LLM 的方式撰寫
+  - ✅ 互動式搜索和分類功能
+- 🌐 **LLM 特定功能**：
+  - ✅ 爬蟲友好結構，明確支援 AI 爬蟲
+  - ✅ 豐富元數據和結構化回答
+  - ✅ 完整雙語言支援（中文/英文）
+  - ✅ API 易訪問性（`/api/info` 重定向）
+- 🎯 **用戶體驗改進**：
+  - ✅ FAQ 整合到主導航
+  - ✅ 一致的多語言切換體驗
+  - ✅ FAQ 頁面內搜索和類別篩選
+- 📈 **預期效益**：提升在 LLM 搜索結果中的可發現性和引用準確性
+
 ### v2.0.0 - 故事化改版 (2025-06-18)
 - ✨ 全面重新設計網站內容，從技術導向改為故事化敘述
 - 🎯 新增用戶生活場景描述，提升情感連結
 - 🎨 更新視覺設計，添加故事文本專屬樣式
-- � 新增訊息公布系統，支援中英文雙語
+- 📢 新增訊息公布系統，支援中英文雙語
 - 📱 優化響應式設計，確保故事內容在各裝置完美呈現
 
 ---
