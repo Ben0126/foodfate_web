@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# 重定向規則
+# 重定向規則 - 主要語言版本
 [[redirects]]
   from = "/privacy"
   to = "/legal/privacy-policy.html"
@@ -21,6 +21,29 @@
   to = "/legal/cookie-policy.html"
   status = 301
 
+# 移除重複的國際化版本重定向
+[[redirects]]
+  from = "/index-i18n.html"
+  to = "/"
+  status = 301
+
+# 確保主頁面的正確重定向
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/zh"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/en"
+  to = "/index_en.html"
+  status = 301
+
+# API 端點
 [[redirects]]
   from = "/api/info"
   to = "/api/foodfate-info.json"
@@ -31,6 +54,17 @@
   from = "/404"
   to = "/404.html"
   status = 404
+
+# 處理 trailing slash
+[[redirects]]
+  from = "/index.html/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index_en.html/"
+  to = "/index_en.html"
+  status = 301
 
 # 安全標頭
 [[headers]]

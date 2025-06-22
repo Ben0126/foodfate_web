@@ -20,13 +20,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://foodfate.app/index_en.html"/>
     </url>
     
-    <!-- Web Application -->
-    <url>
-        <loc>https://app.foodfate.xyz</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+    <!-- Note: index-i18n.html is excluded as it's set to noindex -->
     
     <!-- FAQ Pages -->
     <url>
