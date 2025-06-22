@@ -57,11 +57,37 @@ body::before {
     gap: 1rem;
     padding: 0 2rem;
     text-align: center;
+    position: relative;
 }
 
 .announcement-icon {
     font-size: 2rem;
     animation: bounce 2s infinite;
+}
+
+.announcement-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1002;
+}
+
+.announcement-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .announcement-text h3 {
@@ -945,6 +971,13 @@ body::before {
         min-width: 40px;
     }
 
+    .announcement-close {
+        right: 0.5rem;
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+
     .navbar {
         top: 70px; /* 手機版公告橫幅較小 */
     }
@@ -1047,6 +1080,13 @@ body::before {
 
     .announcement-icon {
         font-size: 1.3rem;
+    }
+
+    .announcement-close {
+        right: 0.3rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
     }
 
     .navbar {

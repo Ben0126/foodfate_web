@@ -29,7 +29,8 @@
   },
   "announcement": {
     "title": "New Version in Development",
-    "description": "We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service."
+    "description": "We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service.",
+    "close_label": "Close announcement"
   },
   "about": {
     "title": "🍜 We Know Your Story",
