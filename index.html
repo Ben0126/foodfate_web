@@ -284,7 +284,13 @@
                 <h3>🚀 加入等候名單</h3>
                 <p>APP 發行時，我們將第一時間透過 Email 通知您</p>
                 
-                <form id="waitlistForm">
+                <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <!-- 隱藏的蜜罐欄位用於防止垃圾郵件 -->
+                    <input type="hidden" name="form-name" value="waitlist" />
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
+                    
                     <div class="form-group">
                         <input 
                             type="email" 
