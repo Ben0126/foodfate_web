@@ -93,63 +93,9 @@
 </head>
 
 <body>
-    <!-- Waitlist Modal -->
-    <div id="waitlistOverlay" class="waitlist-overlay">
-        <div class="waitlist-modal">
-            <button class="waitlist-close" onclick="closeWaitlist()">&times;</button>
-            
-            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="waitlist-logo">
-            
-            <h2 class="waitlist-title">Get Early Access to Foodfate 2.0</h2>
-            <p class="waitlist-subtitle">
-                The new version is coming soon! Join our waitlist for exclusive early access to smart food recommendations
-            </p>
-            
-            <div id="waitlistMessage" class="waitlist-message"></div>
-            
-            <form id="waitlistForm" class="waitlist-form" name="waitlist-en" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-                <input 
-                    type="text" 
-                    id="waitlistName" 
-                    class="waitlist-input" 
-                    placeholder="Enter your name" 
-                    required
-                >
-                <input 
-                    type="email" 
-                    id="waitlistEmail" 
-                    class="waitlist-input" 
-                    placeholder="Enter your email address" 
-                    required
-                >
-                <button type="submit" class="waitlist-submit" id="waitlistSubmit">
-                    <span id="submitText">Join Waitlist</span>
-                </button>
-            </form>
-            
-            <div class="waitlist-features">
-                <h4>Early Access Features:</h4>
-                <ul>
-                    <li>New AI-powered recommendation algorithm</li>
-                    <li>Personalized food preference learning</li>
-                    <li>Group decision-making features</li>
-                    <li>AR menu preview</li>
-                    <li>Social sharing and reviews</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Announcement Banner -->
-    <div id="announcementBanner" class="announcement-banner">
-        <div class="announcement-content">
-            <div class="announcement-icon">🚀</div>
-            <div class="announcement-text">
-                <h3>New Version in Development</h3>
-                <p>We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service.</p>
-            </div>
-            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">×</button>
-        </div>
+    <!-- Language Switch -->
+    <div class="language-switch">
+        <a href="./index.html">🇹🇼 中文</a>
     </div>
 
     <!-- Main Waitlist Container -->
@@ -167,7 +113,12 @@
                 <h3>🚀 Join Our Waitlist</h3>
                 <p>We'll notify you via email as soon as the APP is released</p>
                 
-                <form id="waitlistForm">
+                <form id="waitlistForm" name="waitlist-en" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
+                    <!-- Hidden honeypot field for spam protection -->
+                    <input type="hidden" name="form-name" value="waitlist-en" />
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
                     <div class="form-group">
                         <input 
                             type="email" 
@@ -188,6 +139,11 @@
                             placeholder="Your Name (Optional)"
                         >
                     </div>
+                    
+                    <!-- Additional hidden fields for tracking -->
+                    <input type="hidden" name="submitted_at" id="submitted_at" />
+                    <input type="hidden" name="source" value="website_waitlist_en" />
+                    <input type="hidden" name="user_agent" id="user_agent" />
                     
                     <button type="submit" class="waitlist-submit" id="submitBtn">
                         ✨ Join Waitlist
@@ -268,7 +224,7 @@
     <!-- JavaScript -->
     <script src="./assets/js/main.js?v=20250103-waitlist"></script>
     <script>
-        // Waitlist form handling
+        // Waitlist form handling - Using Netlify Forms
         document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -277,6 +233,10 @@
             const name = document.getElementById('name').value;
             const successMsg = document.getElementById('successMessage');
             const errorMsg = document.getElementById('errorMessage');
+            
+            // Set hidden field values
+            document.getElementById('submitted_at').value = new Date().toISOString();
+            document.getElementById('user_agent').value = navigator.userAgent;
             
             // Reset message states
             successMsg.style.display = 'none';
@@ -288,29 +248,38 @@
             submitBtn.disabled = true;
             
             try {
-                // Here you can integrate actual form submission service (like Netlify Forms, Google Forms, or backend API)
-                // Currently using simulated submission
-                await simulateFormSubmission(email, name);
+                // Use Fetch API to submit form to Netlify
+                const formData = new FormData(document.getElementById('waitlistForm'));
                 
-                // Success handling
-                successMsg.style.display = 'block';
-                document.getElementById('waitlistForm').style.display = 'none';
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
                 
-                // Analytics event tracking
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'waitlist_signup', {
-                        'event_category': 'engagement',
-                        'event_label': 'email_signup',
-                        'value': 1
-                    });
+                if (response.ok) {
+                    // Success handling
+                    successMsg.style.display = 'block';
+                    document.getElementById('waitlistForm').style.display = 'none';
+                    
+                    // Analytics event tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'waitlist_signup', {
+                            'event_category': 'engagement',
+                            'event_label': 'email_signup',
+                            'value': 1
+                        });
+                    }
+                    
+                    // Store to local storage
+                    localStorage.setItem('waitlistSignup', JSON.stringify({
+                        email: email,
+                        name: name,
+                        timestamp: new Date().toISOString()
+                    }));
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
-                // Store to local storage
-                localStorage.setItem('waitlistSignup', JSON.stringify({
-                    email: email,
-                    name: name,
-                    timestamp: new Date().toISOString()
-                }));
                 
             } catch (error) {
                 console.error('Submission failed:', error);
@@ -331,20 +300,7 @@
                 submitBtn.disabled = false;
             }
         });
-        
-        // Simulate form submission (replace with real API call in production)
-        async function simulateFormSubmission(email, name) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // 90% success rate simulation
-                    if (Math.random() > 0.1) {
-                        resolve({ success: true });
-                    } else {
-                        reject(new Error('Simulated network error'));
-                    }
-                }, 1000 + Math.random() * 2000); // 1-3 second delay
-            });
-        }
+
         
         // Check if already registered
         document.addEventListener('DOMContentLoaded', function() {
