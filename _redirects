@@ -1,0 +1,7 @@
+# Netlify Redirects Configuration
+
+# Form submission redirects
+/thank-you.html  /thank-you.html  200
+
+# Fallback redirects
+/*  /index.html  200 

@@ -34,10 +34,14 @@
 ## 🚀 快速部署
 =======
 ## 🚀 最新功能亮點
->>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
 
-### ✨ 全新等候名單系統
+### ✨ 全新等候名單系統 - Netlify Forms 整合 🆕
+- **免費表單處理**：使用 Netlify Forms，每月 100 次提交額度
 - **智慧表單驗證**：實時驗證、多層次檢查、臨時信箱過濾
+- **防垃圾郵件保護**：蜜罐欄位 + Netlify 內建安全防護
+- **自動通知系統**：表單提交即時 Email 通知
+- **感謝頁面重定向**：提交成功後的優雅用戶體驗
+- **資料匯出功能**：支援 CSV/JSON 格式匯出
 - **社群媒體分享**：支援 Facebook、LINE、Twitter、Telegram 一鍵分享
 - **增強用戶體驗**：玻璃擬態設計、動畫反饋、響應式布局
 - **多語言支援**：完整的中英雙語界面
@@ -87,6 +91,36 @@ foodfate_web/
 ├── favicon.png               # 網站圖標
 └── README.md                 # 此文件 ✨ 更新
 ```
+
+## 📝 Netlify Forms 表單系統
+
+### 🔧 表單設置特色
+- **零設定部署**：表單自動被 Netlify 識別和處理
+- **內建安全性**：HTTPS 加密 + 垃圾郵件過濾
+- **即時通知**：支援 Email、Slack、Webhook 通知
+- **資料管理**：Netlify 後台直接查看和匯出提交記錄
+- **無伺服器**：完全免費，無需額外後端設置
+
+### 📊 收集的資料欄位
+```javascript
+{
+  "email": "用戶電子郵件（必填）",
+  "name": "用戶姓名（選填）",
+  "submitted_at": "提交時間戳",
+  "source": "來源標識 (website_waitlist)",
+  "user_agent": "瀏覽器資訊",
+  "form-name": "表單識別 (waitlist)"
+}
+```
+
+### 🛡️ 安全防護措施
+- **蜜罐欄位 (bot-field)**：隱藏欄位阻擋自動化提交
+- **表單識別**：防止 CSRF 攻擊
+- **頻率限制**：Netlify 內建的提交頻率保護
+- **HTTPS 強制**：所有數據加密傳輸
+
+### 📈 管理和監控
+詳細的設置和管理指南請參考：[NETLIFY_FORMS_SETUP.md](./NETLIFY_FORMS_SETUP.md)
 
 ## 🎯 等候名單功能特色
 
@@ -169,13 +203,20 @@ foodfate_web/
 ```bash
 # 1. 確保所有文件都在正確位置
 git add .
-git commit -m "Waitlist page with enhanced features"
+git commit -m "Add Netlify Forms integration with waitlist functionality"
 git push origin main
 
 # 2. Netlify 自動部署
 # 建議設定：
 # Build command: echo 'Static site, no build required'
 # Publish directory: .
+
+# 3. 表單設置（部署後自動完成）
+# Netlify 會自動識別表單並在後台建立 "waitlist" 表單
+# 前往 Netlify 控制台 → 你的網站 → Forms 查看提交記錄
+
+# 4. 設置通知（可選）
+# 在 Forms 設置中添加 Email 通知，每次有新提交時收到通知
 ```
 
 ### 本地開發
