@@ -1,0 +1,110 @@
+{
+    "name": "Foodfate - 智慧餐廳推薦 APP",
+    "short_name": "Foodfate",
+    "description": "告別選擇困難！智慧餐廳推薦 APP，使用 AI 技術為您推薦最適合的美食體驗。",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#FF6B35",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "zh-TW",
+    "dir": "ltr",
+    "categories": ["food", "lifestyle", "social"],
+    "shortcuts": [
+        {
+            "name": "加入等候名單",
+            "short_name": "等候名單",
+            "description": "搶先體驗全新功能",
+            "url": "/#waitlistForm",
+            "icons": [
+                {
+                    "src": "./favicon.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "網頁版體驗",
+            "short_name": "網頁版",
+            "description": "立即體驗現有功能",
+            "url": "/demo.html",
+            "icons": [
+                {
+                    "src": "./favicon.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "下載測試版",
+            "short_name": "測試版",
+            "description": "下載 Android 測試版 APP",
+            "url": "/downloads/",
+            "icons": [
+                {
+                    "src": "./favicon.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./favicon.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./favicon.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./favicon.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./favicon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "./foodfate_logo.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "platform": "narrow",
+            "label": "Foodfate 主畫面"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.foodfate.app",
+            "id": "com.foodfate.app"
+        }
+    ],
+    "prefer_related_applications": false
+} 
