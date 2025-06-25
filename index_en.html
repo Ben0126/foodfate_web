@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodfate - Say Goodbye to Food Decision Fatigue</title>
-    <meta name="description" content="Foodfate is an intelligent restaurant recommendation app that uses smart random algorithms to solve your 'what to eat' dilemma with fun roulette-style decision making.">
-    <meta name="keywords" content="restaurant recommendation, food decision, random restaurant, food roulette, dining choice">
+    <title>Foodfate - Coming Soon | Join Waitlist</title>
     
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Foodfate - Say Goodbye to Food Decision Fatigue">
-    <meta property="og:description" content="Intelligent random restaurant recommendations - turn dining decisions into fun adventures">
-    <meta property="og:image" content="./foodfate_logo.png">
-    <meta property="og:url" content="https://foodfate.xyz">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Foodfate APP is under upgrade! Join our waitlist to experience the new smart restaurant recommendation features. Say goodbye to choice paralysis!">
+    <meta name="keywords" content="Foodfate,restaurant recommendation,food app,waitlist,coming soon,Taiwan food,smart recommendation">
+    <meta name="author" content="Foodfate Team">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://foodfate.app/index_en.html">
+    <meta property="og:title" content="Foodfate - Coming Soon | Join Waitlist">
+    <meta property="og:description" content="Foodfate APP is under upgrade! Join our waitlist to experience the new smart restaurant recommendation features.">
+    <meta property="og:image" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://foodfate.app/index_en.html">
+    <meta property="twitter:title" content="Foodfate - Coming Soon | Join Waitlist">
+    <meta property="twitter:description" content="Foodfate APP is under upgrade! Join our waitlist to experience the new smart restaurant recommendation features.">
+    <meta property="twitter:image" content="https://foodfate.app/foodfate_logo.png">
     
     <!-- Canonical and Language Links -->
     <link rel="canonical" href="https://foodfate.app/index_en.html">
@@ -28,66 +38,148 @@
     <link rel="apple-touch-icon" href="./favicon.png">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=20250103">
+    <link rel="stylesheet" href="./assets/css/style.css?v=20250103-waitlist">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    
-    <!-- Language Switch -->
+    <!-- Language Switch Style -->
     <style>
-        .language-switch-nav {
-            background: rgba(255, 107, 53, 0.1) !important;
-            color: #FF6B35 !important;
-            padding: 0.5rem 1rem !important;
-            border-radius: 20px !important;
-            font-size: 0.9rem !important;
-            transition: all 0.3s ease !important;
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
-        .language-switch-nav:hover {
-            background: rgba(255, 107, 53, 0.2) !important;
-            transform: scale(1.05) !important;
+        
+        .language-switch a {
+            background: rgba(255, 255, 255, 0.9);
+            color: #FF6B35;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-switch a:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
         }
     </style>
+    
+    <!-- Google Analytics (will be activated after cookie consent) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Foodfate",
+        "url": "https://foodfate.app",
+        "logo": "https://foodfate.app/foodfate_logo.png",
+        "description": "Smart restaurant recommendation APP that solves choice paralysis",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "foodfate2025@gmail.com",
+            "contactType": "customer service"
+        },
+        "sameAs": [
+            "https://app.foodfate.xyz"
+        ]
+    }
+    </script>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B4VNX8XZ9B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B4VNX8XZ9B');
-</script>
-
 <body>
-
-
-    <!-- Announcement Banner -->
-    <div id="announcementBanner" class="announcement-banner">
-        <div class="announcement-content">
-            <div class="announcement-icon">🚀</div>
-            <div class="announcement-text">
-                <h3>New Version in Development</h3>
-                <p>We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service.</p>
-            </div>
-            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">×</button>
-        </div>
+    <!-- Language Switch -->
+    <div class="language-switch">
+        <a href="./index.html">🇹🇼 中文</a>
     </div>
 
-    <!-- Modal for Documents/Beta Info -->
-    <div id="documentModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalContent"></div>
+    <!-- Main Waitlist Container -->
+    <div class="waitlist-container">
+        <div class="waitlist-content">
+            <!-- Logo -->
+            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="waitlist-logo">
+            
+            <!-- Main Title -->
+            <h1 class="waitlist-title">Foodfate</h1>
+            <p class="waitlist-subtitle">Smart Restaurant Recommendation APP<br>Under Upgrade - Experience New Features Soon</p>
+            
+            <!-- Waitlist Form -->
+            <div class="waitlist-form">
+                <h3>🚀 Join Our Waitlist</h3>
+                <p>We'll notify you via email as soon as the APP is released</p>
+                
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Enter Your Email" 
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Your Name (Optional)"
+                        >
+                    </div>
+                    
+                    <button type="submit" class="waitlist-submit" id="submitBtn">
+                        ✨ Join Waitlist
+                    </button>
+                </form>
+                
+                <!-- Success/Error Messages -->
+                <div id="successMessage" class="success-message">
+                    🎉 Congratulations! You've successfully joined our waitlist<br>
+                    We'll notify you first when the APP is released
+                </div>
+                
+                <div id="errorMessage" class="error-message">
+                    ❌ Submission failed, please try again later<br>
+                    Or contact us: foodfate2025@gmail.com
+                </div>
+                
+                <!-- Benefits -->
+                <div class="waitlist-benefits">
+                    <h4>Get Early Access to New Features:</h4>
+                    <div class="benefit-item">Smart AI Restaurant Recommendation Engine</div>
+                    <div class="benefit-item">Personalized Food Preference Learning</div>
+                    <div class="benefit-item">Food Roulette Decision System</div>
+                    <div class="benefit-item">One-Click Map Navigation</div>
+                    <div class="benefit-item">Group Decision Assistant Tool</div>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="waitlist-footer">
+                <p style="color: #666; margin-bottom: 1rem;">Already a beta user?</p>
+                <a href="./demo.html" class="existing-users-link">
+                    🌐 Try Web Version
+                </a>
+                <a href="./downloads/" class="existing-users-link">
+                    📱 Download Beta APP
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Cookie Banner -->
     <div id="cookieBanner" class="cookie-banner" style="display: none;">
         <div class="cookie-content">
-            <p>We use cookies to improve your experience. By continuing to use our site, you agree to our 
-               <a href="./legal/cookie-policy_en.html">Cookie Policy</a>.
+            <p>We use cookies to improve your experience. By continuing to use this website, you agree to our 
+                <a href="./legal/cookie-policy_en.html" target="_blank">Cookie Policy</a>.
             </p>
             <div class="cookie-buttons">
                 <button onclick="acceptCookies()">Accept</button>
@@ -97,344 +189,110 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="./foodfate_logo.png" alt="Foodfate Logo">
-                Foodfate
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="./faq_en.html">FAQ</a></li>
-                <li><a href="./legal/privacy-policy_en.html">Privacy Policy</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="./index.html" class="language-switch-nav">🇹🇼 中文</a></li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Say Goodbye to Food Decision Fatigue</h1>
-            <p>Unlock culinary surprises with one click! Smart random restaurant recommendations</p>
-            <div class="cta-buttons">
-                <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank">
-                    🚀 Try Web Version
-                </a>
-                <a href="#download" class="btn btn-secondary">
-                    📱 Join Beta
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">🍜 We Know Your Story</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>💭 Lunchtime at the Office - A Familiar Scene</h3>
-                    <p class="story-text">"What should we eat?" Sarah stares at her phone screen again. After browsing food apps for ten minutes, she still can't make a decision. Colleagues debate for half an hour in the group chat, discussing everything from Japanese cuisine to Italian pasta, but they end up at the same lunch box place downstairs that they've visited countless times.</p>
-                    
-                    <p class="story-text">After work, it's the same script with her boyfriend. "What do you want to eat?" "Anything's fine, you decide." Two people standing on the street, each scrolling through their phones, but neither knows which restaurant to choose. They miss the prime dining hours and settle for a random place with mediocre experience.</p>
-                    
-                    <p class="story-highlight">Does this sound familiar to you?</p>
-                </div>
-                <div class="about-features">
-                    <h3>✨ Foodfate was born to change all this</h3>
-                    <div class="feature-highlight">
-                        <div class="highlight-item">
-                            <span class="highlight-icon">🎲</span>
-                            <div>
-                                <h4>Turn Choices into Games</h4>
-                                <p>Remember the excitement of spinning a wheel as a child? We bring that anticipation back to your dining decisions, making every choice a delightful surprise.</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">🎯</span>
-                            <div>
-                                <h4>We Know You Better Than You Know Yourself</h4>
-                                <p>We remember every choice and reaction you make, gradually understanding your taste. Like an old friend, we always recommend restaurants that touch your heart.</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">🌟</span>
-                            <div>
-                                <h4>Perfect Choice for Every Moment</h4>
-                                <p>Rush lunch breaks, romantic dates, friend gatherings - different moments have different needs. We know what to recommend when.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">🌟 Making Food Discovery a Daily Joy</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <h3>Lunch Break Lifesaver</h3>
-                    <p>Only 30 minutes for lunch? Find delicious food within 5 minutes' reach with one click. No more stress about choosing - save time for enjoying great food.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">💕</div>
-                    <h3>No More Awkward Dates</h3>
-                    <p>"What do you want to eat?" is no longer a date killer. Spin the wheel, let surprise add fun to your date, every time is a new adventure.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>Knows Your Taste Better Over Time</h3>
-                    <p>Remember every choice and reaction, just like your most understanding friend. The longer you use it, the more precise recommendations become, always finding food that surprises you.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Found It, Now Get There</h3>
-                    <p>Recommending restaurants is just the beginning. One-click navigation takes you straight to your destination. Walking, biking, driving - choose the best way to enjoy your food journey.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Group Dining Made Easy</h3>
-                    <p>Tired of conflicting opinions when dining with friends? Tell us everyone's preferences, and we'll find choices that satisfy everyone, bringing back the joy of gathering.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Food Memories Never Lost</h3>
-                    <p>That unforgettable little restaurant, that perfect date spot - save them all. Organize your food memories by category, relive wonderful moments anytime.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Preview Section -->
-    <section class="app-preview">
-        <div class="container">
-            <div class="preview-container">
-                <div class="preview-content">
-                    <h2>🎨 Modern Design</h2>
-                    <p>Warm orange theme with glassmorphism effects for a comfortable visual experience. Supports dark/light modes for different usage scenarios.</p>
-                    <ul style="margin: 1rem 0; color: #666;">
-                        <li>🎨 Beautiful UI Design</li>
-                        <li>🔄 Smooth Animations</li>
-                        <li>📱 Responsive Design</li>
-                        <li>⚡ Fast Loading Experience</li>
-                    </ul>
-                    <a href="https://app.foodfate.xyz" class="btn btn-primary" target="_blank" onclick="trackConversionFunnel('app_open')">
-                        Try Web Version →
-                    </a>
-                </div>
-                <div class="phone-mockup">
-                    <div class="mock-phone">
-                        <div class="mock-screen">
-                            <div class="mock-content">
-                                <h3>Foodfate</h3>
-                                <div class="mock-roulette">
-                                    <span>🧭</span>
-                                </div>
-                                <p style="color: #666; font-size: 0.9rem;">Spin the wheel, discover surprises!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Future Development Section -->
-    <section id="future" class="future">
-        <div class="container">
-            <h2 class="section-title">🚀 Future Development</h2>
-            <div class="future-content">
-                <div class="development-phases">
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <span class="phase-number">Phase 1</span>
-                            <h3>🎯 MVP Stage</h3>
-                            <p class="phase-status">In Progress</p>
-                        </div>
-                        <ul class="phase-features">
-                            <li>✅ Location-based smart recommendations</li>
-                            <li>✅ Food roulette decision tool</li>
-                            <li>✅ Google Maps integration</li>
-                            <li>✅ Basic filtering features</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <span class="phase-number">Phase 2</span>
-                            <h3>🧠 Intelligence Stage</h3>
-                            <p class="phase-status">In Development</p>
-                        </div>
-                        <ul class="phase-features">
-                            <li>🔄 User preference learning</li>
-                            <li>🔄 Multi-platform integration</li>
-                            <li>🔄 Group decision features</li>
-                            <li>🔄 Full-process integration</li>
-                            <li>🔄 Travel mode recommendations</li>
-                            <li>🔄 Social sharing</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <span class="phase-number">Phase 3</span>
-                            <h3>🌟 Complete Ecosystem</h3>
-                            <p class="phase-status">Planned</p>
-                        </div>
-                        <ul class="phase-features">
-                            <li>📱 iOS Application</li>
-                            <li>🎨 Dark mode support</li>
-                            <li>📊 Dining history analysis</li>
-                            <li>🔗 Booking & delivery integration</li>
-                            <li>🗺️ AR navigation</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="innovation-features">
-                    <h3>💡 Innovation Features Outlook</h3>
-                    <div class="innovation-grid">
-                        <div class="innovation-item">
-                            <span class="innovation-icon">🏥</span>
-                            <div>
-                                <h4>Healthy Dining Mode</h4>
-                                <p>Integrate calorie and nutrition data to recommend restaurants that match health goals</p>
-                            </div>
-                        </div>
-                        <div class="innovation-item">
-                            <span class="innovation-icon">🎤</span>
-                            <div>
-                                <h4>Voice Assistant Integration</h4>
-                                <p>Support voice control, such as "help me choose a nearby Italian restaurant"</p>
-                            </div>
-                        </div>
-                        <div class="innovation-item">
-                            <span class="innovation-icon">🌐</span>
-                            <div>
-                                <h4>Multi-language Internationalization</h4>
-                                <p>Support multiple languages, covering food recommendations in major global cities</p>
-                            </div>
-                        </div>
-                        <div class="innovation-item">
-                            <span class="innovation-icon">🤖</span>
-                            <div>
-                                <h4>AI Food Advisor</h4>
-                                <p>Personalized AI assistant providing dining advice and in-depth restaurant analysis</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section id="download" class="download">
-        <div class="container">
-            <h2 class="section-title">🧪 Beta Experience</h2>
-            <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
-                Foodfate is currently in beta testing. Join our testing community!
-            </p>
-            <div class="download-buttons">
-                <button class="download-btn" onclick="showBetaInfo('android')">
-                    <span>🤖</span>
-                    <div>
-                        <div style="font-size: 0.8rem;">Android Beta</div>
-                        <div style="font-weight: bold;">APK Download</div>
-                    </div>
-                </button>
-                <a href="https://app.foodfate.xyz" class="download-btn" target="_blank">
-                    <span>🌐</span>
-                    <div>
-                        <div style="font-size: 0.8rem;">Web Version</div>
-                        <div style="font-weight: bold;">Try Now</div>
-                    </div>
-                </a>
-                <button class="download-btn" style="opacity: 0.6; cursor: not-allowed;">
-                    <span>🍎</span>
-                    <div>
-                        <div style="font-size: 0.8rem;">iOS Version</div>
-                        <div style="font-weight: bold;">Coming Soon</div>
-                    </div>
-                </button>
-            </div>
-            
-            <div class="beta-info">
-                <h4>📝 Beta Testing Notes</h4>
-                <ul>
-                    <li>• iOS version is in development</li>
-                    <li>• Try the Web version for the complete experience</li>
-                    <li>• Your feedback helps us improve the product</li>
-                    <li>• Android APK supports Android 7.0+</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>🍽️ Foodfate</h3>
-                    <p style="color: #ccc;">Where food meets fate - intelligent restaurant recommendations</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="mailto:foodfate2025@gmail.com" style="color: #FF6B35;">📧 foodfate2025@gmail.com</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Product</h3>
-                    <a href="https://app.foodfate.xyz" target="_blank">Web Version</a>
-                    <a href="#" onclick="showBetaInfo('android')">Android Beta</a>
-                    <a href="#features">Features</a>
-                    <a href="mailto:foodfate2025@gmail.com">Feedback</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <a href="mailto:foodfate2025@gmail.com">Customer Service</a>
-                    <a href="mailto:foodfate2025@gmail.com">Business</a>
-                    <a href="mailto:foodfate2025@gmail.com">Media</a>
-                    <a href="mailto:foodfate2025@gmail.com">Beta Application</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="container">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <div>
-                            <p style="margin: 0; color: #999; font-size: 0.9rem;">
-                                © 2025 Foodfate. All rights reserved | Powered by Foodfate Team
-                            </p>
-                        </div>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="./legal/privacy-policy_en.html" style="color: #999; font-size: 0.9rem;">Privacy Policy</a>
-                            <a href="./legal/terms-of-service_en.html" style="color: #999; font-size: 0.9rem;">Terms of Service</a>
-                            <a href="./legal/cookie-policy_en.html" style="color: #999; font-size: 0.9rem;">Cookie Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- JavaScript -->
-    <script src="./assets/js/main_en.js?v=20240729"></script>
+    <script src="./assets/js/main.js?v=20250103-waitlist"></script>
+    <script>
+        // Waitlist form handling
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            // Reset message states
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Set loading state
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = '⏳ Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Here you can integrate actual form submission service (like Netlify Forms, Google Forms, or backend API)
+                // Currently using simulated submission
+                await simulateFormSubmission(email, name);
+                
+                // Success handling
+                successMsg.style.display = 'block';
+                document.getElementById('waitlistForm').style.display = 'none';
+                
+                // Analytics event tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'waitlist_signup', {
+                        'event_category': 'engagement',
+                        'event_label': 'email_signup',
+                        'value': 1
+                    });
+                }
+                
+                // Store to local storage
+                localStorage.setItem('waitlistSignup', JSON.stringify({
+                    email: email,
+                    name: name,
+                    timestamp: new Date().toISOString()
+                }));
+                
+            } catch (error) {
+                console.error('Submission failed:', error);
+                errorMsg.style.display = 'block';
+                
+                // Analytics event tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'waitlist_error', {
+                        'event_category': 'error',
+                        'event_label': 'submission_failed',
+                        'value': 0
+                    });
+                }
+            } finally {
+                // Reset button state
+                submitBtn.classList.remove('loading');
+                submitBtn.innerHTML = '✨ Join Waitlist';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Simulate form submission (replace with real API call in production)
+        async function simulateFormSubmission(email, name) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 90% success rate simulation
+                    if (Math.random() > 0.1) {
+                        resolve({ success: true });
+                    } else {
+                        reject(new Error('Simulated network error'));
+                    }
+                }, 1000 + Math.random() * 2000); // 1-3 second delay
+            });
+        }
+        
+        // Check if already registered
+        document.addEventListener('DOMContentLoaded', function() {
+            const existingSignup = localStorage.getItem('waitlistSignup');
+            if (existingSignup) {
+                const data = JSON.parse(existingSignup);
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('waitlistForm').style.display = 'none';
+                
+                // Optional: show welcome back message
+                const successMsg = document.getElementById('successMessage');
+                successMsg.innerHTML = `
+                    🎉 Welcome back!<br>
+                    You joined our waitlist on ${new Date(data.timestamp).toLocaleDateString()}<br>
+                    We'll notify you first when the APP is released
+                `;
+            }
+        });
+        
+        // Page load animation
+        window.addEventListener('load', function() {
+            document.querySelector('.waitlist-content').style.opacity = '1';
+            document.querySelector('.waitlist-content').style.transform = 'translateY(0)';
+        });
+    </script>
 </body>
-</html> 
+</html>
