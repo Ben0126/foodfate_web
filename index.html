@@ -264,9 +264,58 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+    
+    <!-- 等候清單對話窗 -->
+    <div id="waitlistOverlay" class="waitlist-overlay">
+        <div class="waitlist-modal">
+            <button class="waitlist-close" onclick="closeWaitlist()">&times;</button>
+            
+            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="waitlist-logo">
+            
+            <h2 class="waitlist-title">搶先體驗 Foodfate 2.0</h2>
+            <p class="waitlist-subtitle">
+                全新版本即將上線！加入等候清單，搶先體驗智慧美食推薦的全新功能
+            </p>
+            
+            <div id="waitlistMessage" class="waitlist-message"></div>
+            
+            <form id="waitlistForm" class="waitlist-form">
+                <input 
+                    type="text" 
+                    id="waitlistName" 
+                    class="waitlist-input" 
+                    placeholder="請輸入您的姓名" 
+                    required
+                >
+                <input 
+                    type="email" 
+                    id="waitlistEmail" 
+                    class="waitlist-input" 
+                    placeholder="請輸入您的電子郵件" 
+                    required
+                >
+                <button type="submit" class="waitlist-submit" id="waitlistSubmit">
+                    <span id="submitText">加入等候清單</span>
+                </button>
+            </form>
+            
+            <div class="waitlist-features">
+                <h4>搶先體驗內容：</h4>
+                <ul>
+                    <li>全新 AI 智慧推薦算法</li>
+                    <li>個人化美食偏好學習</li>
+                    <li>群組決策功能</li>
+                    <li>AR 菜單預覽</li>
+                    <li>社群分享與評價</li>
+                </ul>
+            </div>
+        </div>
+=======
     <!-- Language Switch -->
     <div class="language-switch">
         <a href="./index_en.html">🇺🇸 English</a>
+>>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
     </div>
 
     <!-- Main Waitlist Container -->
@@ -285,6 +334,13 @@
                 <p>APP 發行時，我們將第一時間透過 Email 通知您</p>
                 
                 <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <!-- 隱藏的蜜罐欄位用於防止垃圾郵件 -->
+                    <input type="hidden" name="form-name" value="waitlist" />
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
+                    
+                <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
                     <!-- 隱藏的蜜罐欄位用於防止垃圾郵件 -->
                     <input type="hidden" name="form-name" value="waitlist" />
                     <div style="display: none;">
@@ -311,6 +367,11 @@
                             placeholder="您的姓名（選填）"
                         >
                     </div>
+                    
+                    <!-- 新增隱藏欄位來記錄更多資訊 -->
+                    <input type="hidden" name="submitted_at" id="submitted_at" />
+                    <input type="hidden" name="source" value="website_waitlist" />
+                    <input type="hidden" name="user_agent" id="user_agent" />
                     
                     <button type="submit" class="waitlist-submit" id="submitBtn">
                         ✨ 加入等候名單
@@ -391,7 +452,7 @@
     <!-- JavaScript -->
     <script src="./assets/js/main.js?v=20250103-waitlist"></script>
     <script>
-        // 等候名單表單處理
+        // 等候名單表單處理 - 使用 Netlify Forms
         document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -400,6 +461,10 @@
             const name = document.getElementById('name').value;
             const successMsg = document.getElementById('successMessage');
             const errorMsg = document.getElementById('errorMessage');
+            
+            // 設置隱藏欄位的值
+            document.getElementById('submitted_at').value = new Date().toISOString();
+            document.getElementById('user_agent').value = navigator.userAgent;
             
             // 重置消息狀態
             successMsg.style.display = 'none';
@@ -411,29 +476,38 @@
             submitBtn.disabled = true;
             
             try {
-                // 這裡可以集成實際的表單提交服務（如 Netlify Forms, Google Forms, 或後端 API）
-                // 目前使用模擬提交
-                await simulateFormSubmission(email, name);
+                // 使用 Fetch API 提交表單到 Netlify
+                const formData = new FormData(document.getElementById('waitlistForm'));
                 
-                // 成功處理
-                successMsg.style.display = 'block';
-                document.getElementById('waitlistForm').style.display = 'none';
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
                 
-                // 分析事件追蹤
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'waitlist_signup', {
-                        'event_category': 'engagement',
-                        'event_label': 'email_signup',
-                        'value': 1
-                    });
+                if (response.ok) {
+                    // 成功處理
+                    successMsg.style.display = 'block';
+                    document.getElementById('waitlistForm').style.display = 'none';
+                    
+                    // 分析事件追蹤
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'waitlist_signup', {
+                            'event_category': 'engagement',
+                            'event_label': 'email_signup',
+                            'value': 1
+                        });
+                    }
+                    
+                    // 存儲到本地存儲
+                    localStorage.setItem('waitlistSignup', JSON.stringify({
+                        email: email,
+                        name: name,
+                        timestamp: new Date().toISOString()
+                    }));
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
-                // 存儲到本地存儲
-                localStorage.setItem('waitlistSignup', JSON.stringify({
-                    email: email,
-                    name: name,
-                    timestamp: new Date().toISOString()
-                }));
                 
             } catch (error) {
                 console.error('提交失敗:', error);
@@ -454,20 +528,7 @@
                 submitBtn.disabled = false;
             }
         });
-        
-        // 模擬表單提交（實際應用中替換為真實的 API 調用）
-        async function simulateFormSubmission(email, name) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // 90% 成功率的模擬
-                    if (Math.random() > 0.1) {
-                        resolve({ success: true });
-                    } else {
-                        reject(new Error('模擬網路錯誤'));
-                    }
-                }, 1000 + Math.random() * 2000); // 1-3秒延遲
-            });
-        }
+
         
         // 檢查是否已經註冊
         document.addEventListener('DOMContentLoaded', function() {

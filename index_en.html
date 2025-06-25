@@ -93,9 +93,63 @@
 </head>
 
 <body>
-    <!-- Language Switch -->
-    <div class="language-switch">
-        <a href="./index.html">🇹🇼 中文</a>
+    <!-- Waitlist Modal -->
+    <div id="waitlistOverlay" class="waitlist-overlay">
+        <div class="waitlist-modal">
+            <button class="waitlist-close" onclick="closeWaitlist()">&times;</button>
+            
+            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="waitlist-logo">
+            
+            <h2 class="waitlist-title">Get Early Access to Foodfate 2.0</h2>
+            <p class="waitlist-subtitle">
+                The new version is coming soon! Join our waitlist for exclusive early access to smart food recommendations
+            </p>
+            
+            <div id="waitlistMessage" class="waitlist-message"></div>
+            
+            <form id="waitlistForm" class="waitlist-form" name="waitlist-en" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input 
+                    type="text" 
+                    id="waitlistName" 
+                    class="waitlist-input" 
+                    placeholder="Enter your name" 
+                    required
+                >
+                <input 
+                    type="email" 
+                    id="waitlistEmail" 
+                    class="waitlist-input" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" class="waitlist-submit" id="waitlistSubmit">
+                    <span id="submitText">Join Waitlist</span>
+                </button>
+            </form>
+            
+            <div class="waitlist-features">
+                <h4>Early Access Features:</h4>
+                <ul>
+                    <li>New AI-powered recommendation algorithm</li>
+                    <li>Personalized food preference learning</li>
+                    <li>Group decision-making features</li>
+                    <li>AR menu preview</li>
+                    <li>Social sharing and reviews</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Banner -->
+    <div id="announcementBanner" class="announcement-banner">
+        <div class="announcement-content">
+            <div class="announcement-icon">🚀</div>
+            <div class="announcement-text">
+                <h3>New Version in Development</h3>
+                <p>We're developing a more powerful new version of Foodfate, stay tuned! The current <strong>Web version remains fully functional</strong>, welcome to continue experiencing our service.</p>
+            </div>
+            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">×</button>
+        </div>
     </div>
 
     <!-- Main Waitlist Container -->

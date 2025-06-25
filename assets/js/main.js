@@ -8,9 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initMobileMenu();
     initAnnouncementBanner();
+<<<<<<< HEAD
+    initWaitlist();
+=======
     if (document.getElementById('waitlistForm')) {
         new FormValidator();
     }
+>>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
 });
 
 // 導航欄功能
@@ -924,6 +928,170 @@ function rejectAllCookies() {
     saveAllCookieSettings();
 }
 
+<<<<<<< HEAD
+// 等候清單功能
+function initWaitlist() {
+    const waitlistShown = localStorage.getItem('waitlistShown');
+    const waitlistClosed = localStorage.getItem('waitlistClosed');
+    
+    // 如果從未顯示過且未被關閉，則在3秒後顯示
+    if (!waitlistShown && !waitlistClosed) {
+        setTimeout(() => {
+            showWaitlist();
+        }, 3000);
+    }
+    
+    // 綁定表單提交事件
+    const waitlistForm = document.getElementById('waitlistForm');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', handleWaitlistSubmit);
+    }
+}
+
+function showWaitlist() {
+    const overlay = document.getElementById('waitlistOverlay');
+    if (overlay) {
+        overlay.classList.add('active');
+        localStorage.setItem('waitlistShown', 'true');
+        
+        // 記錄顯示事件
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_shown', {
+                'event_category': 'engagement',
+                'event_label': 'modal_display',
+                'value': 1
+            });
+        }
+    }
+}
+
+function closeWaitlist() {
+    const overlay = document.getElementById('waitlistOverlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        localStorage.setItem('waitlistClosed', 'true');
+        localStorage.setItem('waitlistClosedTime', Date.now());
+        
+        // 記錄關閉事件
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_closed', {
+                'event_category': 'engagement',
+                'event_label': 'modal_close',
+                'value': 1
+            });
+        }
+    }
+}
+
+function handleWaitlistSubmit(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('waitlistName').value.trim();
+    const email = document.getElementById('waitlistEmail').value.trim();
+    const submitBtn = document.getElementById('waitlistSubmit');
+    const submitText = document.getElementById('submitText');
+    const messageDiv = document.getElementById('waitlistMessage');
+    
+    // 基本驗證
+    if (!name || !email) {
+        showWaitlistMessage('請填寫所有必填欄位', 'error');
+        return;
+    }
+    
+    // Email 格式驗證
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showWaitlistMessage('請輸入有效的電子郵件地址', 'error');
+        return;
+    }
+    
+    // 檢查是否已經註冊
+    const existingEmail = localStorage.getItem('waitlistEmail');
+    if (existingEmail === email) {
+        showWaitlistMessage('此電子郵件已經在等候清單中', 'error');
+        return;
+    }
+    
+    // 設置載入狀態
+    submitBtn.disabled = true;
+    submitText.innerHTML = '<span class="waitlist-loading"></span>送出中...';
+    
+    // 模擬 API 請求
+    setTimeout(() => {
+        // 90% 成功率的模擬
+        const success = Math.random() > 0.1;
+        
+        if (success) {
+            // 成功處理
+            localStorage.setItem('waitlistEmail', email);
+            localStorage.setItem('waitlistName', name);
+            localStorage.setItem('waitlistSignupTime', Date.now());
+            
+            showWaitlistMessage('🎉 恭喜！您已成功加入等候清單！我們會在新版本上線時第一時間通知您。', 'success');
+            
+            // 記錄成功事件
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'conversion',
+                    'event_label': 'email_signup',
+                    'value': 1
+                });
+            }
+            
+            // 隱藏表單，顯示成功狀態
+            const form = document.getElementById('waitlistForm');
+            form.style.display = 'none';
+            
+            // 3秒後自動關閉
+            setTimeout(() => {
+                closeWaitlist();
+            }, 3000);
+            
+        } else {
+            // 失敗處理
+            showWaitlistMessage('送出失敗，請稍後再試', 'error');
+            
+            // 記錄失敗事件
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_error', {
+                    'event_category': 'error',
+                    'event_label': 'submission_failed',
+                    'value': 1
+                });
+            }
+        }
+        
+        // 重置按鈕狀態
+        submitBtn.disabled = false;
+        submitText.textContent = '加入等候清單';
+        
+    }, 2000); // 模擬 2 秒的網路請求時間
+}
+
+function showWaitlistMessage(message, type) {
+    const messageDiv = document.getElementById('waitlistMessage');
+    if (messageDiv) {
+        messageDiv.textContent = message;
+        messageDiv.className = `waitlist-message ${type}`;
+        messageDiv.classList.add('show');
+        
+        // 3秒後隱藏錯誤訊息
+        if (type === 'error') {
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 3000);
+        }
+    }
+}
+
+// 重新開啟等候清單（供測試用）
+function reopenWaitlist() {
+    localStorage.removeItem('waitlistShown');
+    localStorage.removeItem('waitlistClosed');
+    showWaitlist();
+}
+
+=======
 // 增強表單驗證系統
 class FormValidator {
     constructor() {
@@ -1727,3 +1895,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+>>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e

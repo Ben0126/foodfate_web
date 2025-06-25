@@ -33,6 +33,286 @@ body::before {
     100% { opacity: 0.6; }
 }
 
+<<<<<<< HEAD
+/* 等候清單對話窗樣式 */
+.waitlist-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.waitlist-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.waitlist-modal {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 
+        0 20px 40px rgba(255, 107, 53, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.waitlist-overlay.active .waitlist-modal {
+    transform: scale(1) translateY(0);
+}
+
+.waitlist-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FF6B35, #FF8A65, #FF6B35);
+    animation: gradientMove 3s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.waitlist-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.waitlist-close:hover {
+    background: rgba(255, 107, 53, 0.1);
+    color: #FF6B35;
+    transform: scale(1.1);
+}
+
+.waitlist-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 16px;
+    animation: logoFloat 3s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.waitlist-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2e2e2e;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.waitlist-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.waitlist-input {
+    padding: 1rem;
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.waitlist-input:focus {
+    border-color: #FF6B35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.waitlist-input::placeholder {
+    color: #999;
+}
+
+.waitlist-submit {
+    background: linear-gradient(135deg, #FF6B35, #FF8A65);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.waitlist-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.waitlist-submit:hover::before {
+    left: 100%;
+}
+
+.waitlist-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+.waitlist-submit:active {
+    transform: translateY(0);
+}
+
+.waitlist-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.waitlist-features {
+    text-align: left;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.waitlist-features h4 {
+    font-size: 1.1rem;
+    color: #2e2e2e;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.waitlist-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.waitlist-features li {
+    padding: 0.5rem 0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.waitlist-features li::before {
+    content: "✨";
+    font-size: 1rem;
+}
+
+.waitlist-message {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.waitlist-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.waitlist-message.success {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.waitlist-message.error {
+    background: rgba(244, 67, 54, 0.1);
+    color: #F44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.waitlist-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .waitlist-modal {
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+    }
+    
+    .waitlist-title {
+        font-size: 1.6rem;
+    }
+    
+    .waitlist-subtitle {
+        font-size: 1rem;
+    }
+}
+
+=======
 /* 等候名單樣式 - 參考 Mirror Mirror AI */
 .waitlist-container {
     min-height: 100vh;
@@ -44,6 +324,7 @@ body::before {
     position: relative;
     padding: 2rem;
 }
+>>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
 
 .waitlist-content {
     max-width: 600px;

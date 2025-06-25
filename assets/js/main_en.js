@@ -171,4 +171,169 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('active');
         });
     }
+    
+    // Initialize waitlist for English version
+    initWaitlistEN();
 });
+
+// English version waitlist functionality
+function initWaitlistEN() {
+    const waitlistShown = localStorage.getItem('waitlistShown');
+    const waitlistClosed = localStorage.getItem('waitlistClosed');
+    
+    // Show after 3 seconds if never shown and not closed
+    if (!waitlistShown && !waitlistClosed) {
+        setTimeout(() => {
+            showWaitlist();
+        }, 3000);
+    }
+    
+    // Bind form submit event
+    const waitlistForm = document.getElementById('waitlistForm');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', handleWaitlistSubmitEN);
+    }
+}
+
+function showWaitlist() {
+    const overlay = document.getElementById('waitlistOverlay');
+    if (overlay) {
+        overlay.classList.add('active');
+        localStorage.setItem('waitlistShown', 'true');
+        
+        // Track display event
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_shown', {
+                'event_category': 'engagement',
+                'event_label': 'modal_display',
+                'value': 1
+            });
+        }
+    }
+}
+
+function closeWaitlist() {
+    const overlay = document.getElementById('waitlistOverlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        localStorage.setItem('waitlistClosed', 'true');
+        localStorage.setItem('waitlistClosedTime', Date.now());
+        
+        // Track close event
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_closed', {
+                'event_category': 'engagement',
+                'event_label': 'modal_close',
+                'value': 1
+            });
+        }
+    }
+}
+
+function handleWaitlistSubmitEN(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('waitlistName').value.trim();
+    const email = document.getElementById('waitlistEmail').value.trim();
+    const submitBtn = document.getElementById('waitlistSubmit');
+    const submitText = document.getElementById('submitText');
+    const messageDiv = document.getElementById('waitlistMessage');
+    
+    // Basic validation
+    if (!name || !email) {
+        showWaitlistMessageEN('Please fill in all required fields', 'error');
+        return;
+    }
+    
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showWaitlistMessageEN('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    // Check if already registered
+    const existingEmail = localStorage.getItem('waitlistEmail');
+    if (existingEmail === email) {
+        showWaitlistMessageEN('This email is already on the waitlist', 'error');
+        return;
+    }
+    
+    // Set loading state
+    submitBtn.disabled = true;
+    submitText.innerHTML = '<span class="waitlist-loading"></span>Submitting...';
+    
+    // Simulate API request
+    setTimeout(() => {
+        // 90% success rate simulation
+        const success = Math.random() > 0.1;
+        
+        if (success) {
+            // Success handling
+            localStorage.setItem('waitlistEmail', email);
+            localStorage.setItem('waitlistName', name);
+            localStorage.setItem('waitlistSignupTime', Date.now());
+            
+            showWaitlistMessageEN('🎉 Congratulations! You have successfully joined the waitlist! We will notify you as soon as the new version is available.', 'success');
+            
+            // Track success event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'conversion',
+                    'event_label': 'email_signup',
+                    'value': 1
+                });
+            }
+            
+            // Hide form, show success state
+            const form = document.getElementById('waitlistForm');
+            form.style.display = 'none';
+            
+            // Auto close after 3 seconds
+            setTimeout(() => {
+                closeWaitlist();
+            }, 3000);
+            
+        } else {
+            // Failure handling
+            showWaitlistMessageEN('Submission failed, please try again later', 'error');
+            
+            // Track failure event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_error', {
+                    'event_category': 'error',
+                    'event_label': 'submission_failed',
+                    'value': 1
+                });
+            }
+        }
+        
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.textContent = 'Join Waitlist';
+        
+    }, 2000); // Simulate 2 seconds network request time
+}
+
+function showWaitlistMessageEN(message, type) {
+    const messageDiv = document.getElementById('waitlistMessage');
+    if (messageDiv) {
+        messageDiv.textContent = message;
+        messageDiv.className = `waitlist-message ${type}`;
+        messageDiv.classList.add('show');
+        
+        // Hide error messages after 3 seconds
+        if (type === 'error') {
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 3000);
+        }
+    }
+}
+
+// Reopen waitlist (for testing)
+function reopenWaitlist() {
+    localStorage.removeItem('waitlistShown');
+    localStorage.removeItem('waitlistClosed');
+    showWaitlist();
+}

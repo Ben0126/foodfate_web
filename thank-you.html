@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感謝您加入 Foodfate 等候名單！</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="感謝您加入 Foodfate 等候名單！我們將在 APP 發行時第一時間通知您。">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css?v=20250103-waitlist">
+    
+    <!-- Auto redirect after 5 seconds -->
+    <meta http-equiv="refresh" content="5;url=./">
+    
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            padding: 2rem;
+        }
+        
+        .thank-you-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .thank-you-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+        }
+        
+        .thank-you-title {
+            font-size: 2rem;
+            color: #FF6B35;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .thank-you-message {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 2rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: #FF6B35;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #FF6B35;
+            border-color: #FF6B35;
+        }
+        
+        .btn-secondary:hover {
+            background: #FF6B35;
+            color: white;
+        }
+        
+        .features-preview {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .features-title {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-content {
+                padding: 2rem;
+            }
+            
+            .thank-you-title {
+                font-size: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="thank-you-logo">
+            
+            <h1 class="thank-you-title">🎉 感謝您！</h1>
+            
+            <p class="thank-you-message">
+                您已成功加入 Foodfate 等候名單！<br>
+                我們將在 APP 發行時第一時間透過 Email 通知您。
+            </p>
+            
+            <div class="countdown">
+                <span id="countdown">5</span> 秒後自動返回首頁
+            </div>
+            
+            <div class="action-buttons">
+                <a href="./" class="btn btn-primary">立即返回首頁</a>
+                <a href="./demo.html" class="btn btn-secondary">試用網頁版</a>
+            </div>
+            
+            <div class="features-preview">
+                <div class="features-title">即將推出的精彩功能：</div>
+                <div class="features-list">
+                    <div>🤖 智慧 AI 推薦</div>
+                    <div>🎯 個人化偏好</div>
+                    <div>🎲 美食輪盤</div>
+                    <div>🗺️ 地圖導航</div>
+                    <div>👥 群組決策</div>
+                    <div>⭐ 社群評價</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 倒數計時
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = './';
+            }
+        }, 1000);
+        
+        // 記錄頁面瀏覽
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'Thank You - Waitlist',
+                'page_location': window.location.href,
+                'event_category': 'engagement'
+            });
+        }
+        
+        // 記錄轉換完成
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'event_category': 'waitlist',
+                'event_label': 'signup_complete',
+                'value': 1
+            });
+        }
+    </script>
+</body>
+</html> 
