@@ -325,6 +325,53 @@
 </script>
 
 <body>
+    
+    <!-- 等候清單對話窗 -->
+    <div id="waitlistOverlay" class="waitlist-overlay">
+        <div class="waitlist-modal">
+            <button class="waitlist-close" onclick="closeWaitlist()">&times;</button>
+            
+            <img src="./foodfate_logo.png" alt="Foodfate Logo" class="waitlist-logo">
+            
+            <h2 class="waitlist-title">搶先體驗 Foodfate 2.0</h2>
+            <p class="waitlist-subtitle">
+                全新版本即將上線！加入等候清單，搶先體驗智慧美食推薦的全新功能
+            </p>
+            
+            <div id="waitlistMessage" class="waitlist-message"></div>
+            
+            <form id="waitlistForm" class="waitlist-form">
+                <input 
+                    type="text" 
+                    id="waitlistName" 
+                    class="waitlist-input" 
+                    placeholder="請輸入您的姓名" 
+                    required
+                >
+                <input 
+                    type="email" 
+                    id="waitlistEmail" 
+                    class="waitlist-input" 
+                    placeholder="請輸入您的電子郵件" 
+                    required
+                >
+                <button type="submit" class="waitlist-submit" id="waitlistSubmit">
+                    <span id="submitText">加入等候清單</span>
+                </button>
+            </form>
+            
+            <div class="waitlist-features">
+                <h4>搶先體驗內容：</h4>
+                <ul>
+                    <li>全新 AI 智慧推薦算法</li>
+                    <li>個人化美食偏好學習</li>
+                    <li>群組決策功能</li>
+                    <li>AR 菜單預覽</li>
+                    <li>社群分享與評價</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- 訊息公布欄 -->
     <div id="announcementBanner" class="announcement-banner">
