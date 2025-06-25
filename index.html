@@ -10,12 +10,38 @@
     <meta name="keywords" content="Foodfate,餐廳推薦,美食APP,等候名單,即將推出,台灣美食,智慧推薦">
     <meta name="author" content="Foodfate Team">
     
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="application-name" content="Foodfate">
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="msapplication-TileColor" content="#FF6B35">
+    <meta name="msapplication-TileImage" content="./favicon.png">
+    <meta name="apple-mobile-web-app-title" content="Foodfate">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="geo.region" content="TW">
+    <meta name="geo.placename" content="Taiwan">
+    <meta name="ICBM" content="23.8041, 120.9675">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="zh-TW">
+    <meta name="content-language" content="zh-TW">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://foodfate.app/">
     <meta property="og:title" content="Foodfate - 即將推出 | 加入等候名單">
     <meta property="og:description" content="Foodfate APP 升級改版中！加入等候名單，搶先體驗全新版本的智慧餐廳推薦功能。">
     <meta property="og:image" content="https://foodfate.app/foodfate_logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Foodfate - 智慧餐廳推薦 APP">
+    <meta property="og:site_name" content="Foodfate">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -23,6 +49,20 @@
     <meta property="twitter:title" content="Foodfate - 即將推出 | 加入等候名單">
     <meta property="twitter:description" content="Foodfate APP 升級改版中！加入等候名單，搶先體驗全新版本的智慧餐廳推薦功能。">
     <meta property="twitter:image" content="https://foodfate.app/foodfate_logo.png">
+    <meta property="twitter:image:alt" content="Foodfate - 智慧餐廳推薦 APP">
+    <meta property="twitter:creator" content="@foodfate_app">
+    <meta property="twitter:site" content="@foodfate_app">
+    
+    <!-- WhatsApp & Telegram -->
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:secure_url" content="https://foodfate.app/foodfate_logo.png">
+    
+    <!-- LinkedIn -->
+    <meta property="article:author" content="Foodfate Team">
+    <meta property="article:publisher" content="https://foodfate.app">
+    
+    <!-- Pinterest -->
+    <meta name="pinterest-rich-pin" content="true">
     
     <!-- Canonical and Language Links -->
     <link rel="canonical" href="https://foodfate.app/">
@@ -32,13 +72,29 @@
     
     <!-- Meta Robots -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon.png">
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css?v=20250103-waitlist">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./foodfate_logo.png" as="image" type="image/png">
+    <link rel="preload" href="./assets/js/main.js?v=20250103-waitlist" as="script">
     
     <!-- Language Switch Style -->
     <style>
@@ -71,23 +127,138 @@
     <!-- Google Analytics (will be activated after cookie consent) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     
-    <!-- Structured Data -->
+    <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Foodfate",
+        "alternateName": "美食命運輪盤",
         "url": "https://foodfate.app",
-        "logo": "https://foodfate.app/foodfate_logo.png",
-        "description": "智慧餐廳推薦 APP，解決選擇困難的最佳解決方案",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "foodfate2025@gmail.com",
-            "contactType": "customer service"
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://foodfate.app/foodfate_logo.png",
+            "width": 512,
+            "height": 512
         },
+        "image": "https://foodfate.app/foodfate_logo.png",
+        "description": "智慧餐廳推薦 APP，解決選擇困難的最佳解決方案。使用 AI 技術為用戶提供個人化美食推薦。",
+        "foundingDate": "2024",
+        "knowsAbout": ["餐廳推薦", "美食探索", "AI 推薦", "台灣美食", "智慧選擇"],
+        "areaServed": {
+            "@type": "Country",
+            "name": "Taiwan"
+        },
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "email": "foodfate2025@gmail.com",
+                "contactType": "customer service",
+                "availableLanguage": ["Chinese", "English"]
+            }
+        ],
         "sameAs": [
             "https://app.foodfate.xyz"
-        ]
+        ],
+        "potentialAction": {
+            "@type": "JoinAction",
+            "name": "加入等候名單",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://foodfate.app/#waitlistForm"
+            }
+        }
+    }
+    </script>
+    
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Foodfate - 智慧餐廳推薦 APP",
+        "url": "https://foodfate.app",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://foodfate.app/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "inLanguage": ["zh-TW", "en-US"],
+        "copyrightYear": 2024,
+        "publisher": {
+            "@type": "Organization",
+            "name": "Foodfate Team"
+        }
+    }
+    </script>
+    
+    <!-- SoftwareApplication Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Foodfate",
+        "applicationCategory": "Lifestyle",
+        "applicationSubCategory": "Food & Drink",
+        "operatingSystem": ["Android", "iOS", "Web"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TWD"
+        },
+        "description": "智慧餐廳推薦 APP，使用 AI 技術解決用戶的選擇困難。提供個人化美食推薦、餐廳搜尋、美食輪盤等功能。",
+        "screenshot": "https://foodfate.app/foodfate_logo.png",
+        "featureList": [
+            "智慧 AI 餐廳推薦引擎",
+            "個人化美食偏好學習",
+            "美食輪盤決策系統",
+            "一鍵地圖導航功能",
+            "群組決策協助工具"
+        ],
+        "softwareVersion": "即將推出",
+        "datePublished": "2024-01-01",
+        "inLanguage": "zh-TW",
+        "copyrightYear": 2024,
+        "publisher": {
+            "@type": "Organization",
+            "name": "Foodfate Team"
+        },
+        "downloadUrl": "https://foodfate.app/downloads/",
+        "supportingData": {
+            "@type": "DataFeed",
+            "description": "台灣餐廳數據庫"
+        }
+    }
+    </script>
+    
+    <!-- Event Schema for Launch -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Foodfate APP 正式發行",
+        "description": "Foodfate 智慧餐廳推薦 APP 正式發行，提供革命性的美食探索體驗",
+        "startDate": "2025-03-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "location": {
+            "@type": "VirtualLocation",
+            "url": "https://foodfate.app"
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Foodfate Team",
+            "url": "https://foodfate.app"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock"
+        }
     }
     </script>
 </head>
@@ -159,6 +330,28 @@
                     <div class="benefit-item">美食輪盤決策系統</div>
                     <div class="benefit-item">一鍵地圖導航功能</div>
                     <div class="benefit-item">群組決策協助工具</div>
+                </div>
+            </div>
+            
+            <!-- Social Media Share Section -->
+            <div class="share-section">
+                <div class="share-title">📢 分享給朋友，一起期待美食驚喜！</div>
+                <div class="share-buttons">
+                    <button class="share-button share-facebook" onclick="shareToFacebook()">
+                        📘 Facebook
+                    </button>
+                    <button class="share-button share-line" onclick="shareToLine()">
+                        💬 LINE
+                    </button>
+                    <button class="share-button share-twitter" onclick="shareToTwitter()">
+                        🐦 Twitter
+                    </button>
+                    <button class="share-button share-instagram" onclick="shareToInstagram()">
+                        📷 Instagram
+                    </button>
+                    <button class="share-button share-copy" onclick="copyShareLink()">
+                        🔗 複製連結
+                    </button>
                 </div>
             </div>
             

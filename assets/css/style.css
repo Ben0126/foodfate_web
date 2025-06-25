@@ -1374,4 +1374,373 @@ body::before {
         padding: 0.8rem;
         font-size: 0.85rem;
     }
+}
+
+/* 表單驗證樣式 */
+.form-input.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.1rem rgba(220, 53, 69, 0.25);
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.form-input.success {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.1rem rgba(40, 167, 69, 0.25);
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+.field-error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    animation: slideInError 0.3s ease-out;
+}
+
+.field-error-message::before {
+    content: "⚠️";
+    margin-right: 0.5rem;
+}
+
+.form-error-message {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #dc3545;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    animation: slideInError 0.3s ease-out;
+}
+
+@keyframes slideInError {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 社群媒體分享按鈕樣式 */
+.share-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.share-title {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.share-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.share-button:hover::before {
+    left: 100%;
+}
+
+.share-facebook {
+    background: linear-gradient(135deg, #1877f2, #42a5f5);
+    color: white;
+}
+
+.share-facebook:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+}
+
+.share-twitter {
+    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+    color: white;
+}
+
+.share-twitter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(29, 161, 242, 0.4);
+}
+
+.share-line {
+    background: linear-gradient(135deg, #00c300, #00b300);
+    color: white;
+}
+
+.share-line:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 195, 0, 0.4);
+}
+
+.share-copy {
+    background: linear-gradient(135deg, #FF6B35, #FF8A5B);
+    color: white;
+}
+
+.share-copy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.share-instagram {
+    background: linear-gradient(135deg, #E4405F, #F77737, #FCAF45);
+    color: white;
+}
+
+.share-instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(228, 64, 95, 0.4);
+}
+
+/* 分享成功通知 */
+.share-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(40, 167, 69, 0.95);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    z-index: 10000;
+    opacity: 0;
+    animation: shareNotification 2s ease-in-out;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes shareNotification {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* 載入動畫增強 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 107, 53, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading-text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 進度條樣式 */
+.progress-bar {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    width: 0%;
+    border-radius: 2px;
+    animation: progressFill 3s ease-in-out infinite;
+}
+
+@keyframes progressFill {
+    0%, 100% { width: 0%; }
+    50% { width: 100%; }
+}
+
+/* 響應式設計優化 */
+@media (max-width: 768px) {
+    .share-buttons {
+        gap: 0.75rem;
+    }
+    
+    .share-button {
+        padding: 0.625rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .field-error-message {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .share-section {
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .share-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .share-button {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+/* Instagram 分享提示樣式 */
+.instagram-share-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
+    animation: fadeInPrompt 0.3s ease-out;
+}
+
+.prompt-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUpPrompt 0.3s ease-out;
+}
+
+.prompt-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.prompt-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.prompt-message {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.prompt-close {
+    background: linear-gradient(135deg, #E4405F, #F77737);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prompt-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(228, 64, 95, 0.4);
+}
+
+@keyframes fadeInPrompt {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUpPrompt {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.9); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+@media (max-width: 480px) {
+    .prompt-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .prompt-icon {
+        font-size: 2.5rem;
+    }
+    
+    .prompt-title {
+        font-size: 1.3rem;
+    }
 } 

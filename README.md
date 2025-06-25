@@ -1,308 +1,288 @@
-# 🍜 Foodfate 官方網站
+# 🍜 Foodfate 等候名單官方網站
 
-> 告別選擇困難，讓美食探索成為生活中的小確幸
+> 告別選擇困難，讓美食探索成為生活中的小確幸  
+> **現正升級改版中 - 加入等候名單搶先體驗！**
 
-歡迎來到 Foodfate 的世界！這裡不只是一個網站，更是一個關於美食、驚喜和生活故事的溫暖空間。我們相信，每一次用餐都應該是一場愉悅的冒險，而不是令人頭疼的選擇題。
+歡迎來到全新的 Foodfate 等候名單頁面！我們正在進行重大升級改版，將為您帶來更智慧、更個人化的美食推薦體驗。在新版本發布前，邀請您加入等候名單，成為第一批體驗者！
 
-## 🚀 快速部署
+## 🚀 最新功能亮點
 
-### Netlify 部署步驟
+### ✨ 全新等候名單系統
+- **智慧表單驗證**：實時驗證、多層次檢查、臨時信箱過濾
+- **社群媒體分享**：支援 Facebook、LINE、Twitter、Telegram 一鍵分享
+- **增強用戶體驗**：玻璃擬態設計、動畫反饋、響應式布局
+- **多語言支援**：完整的中英雙語界面
 
-1. **準備工作**
-   ```bash
-   # 確保所有文件都在正確位置
-   git add .
-   git commit -m "Initial website setup"
-   git push origin main
-   ```
+### 📊 強化分析與追蹤
+- **詳細事件追蹤**：表單互動、滾動深度、參與時間
+- **Core Web Vitals 監控**：效能指標實時追蹤
+- **A/B 測試支援**：內建實驗變體管理
+- **離線數據儲存**：本地事件暫存機制
 
-2. **Netlify 設定**
-   - 登入 [Netlify](https://netlify.com)
-   - 點擊 "Add new site" → "Import an existing project"
-   - 連結你的 GitHub 倉庫
-   - 部署設定：
-     - Build command: `echo 'No build required'`
-     - Publish directory: `.` (根目錄)
-     - Node version: `18`
+### 🔍 SEO 全面優化
+- **結構化數據豐富**：Organization、WebSite、SoftwareApplication、Event Schema
+- **社群媒體優化**：完整的 Open Graph、Twitter Cards 配置
+- **PWA 就緒**：包含完整的 manifest.json 和服務工作器支援
+- **效能預載**：關鍵資源預連接與預載入
 
-3. **自定義域名**（選擇性）
-   - 在 Netlify 後台設定自定義域名
-   - 更新 DNS 設定指向 Netlify
-
-## 📁 項目結構
+## 📁 項目結構更新
 
 ```
 foodfate_web/
-├── index.html                 # 主頁面
-├── index_en.html             # 英文主頁面
-├── faq.html                  # 中文常見問題頁面（LLM 優化）
-├── faq_en.html               # 英文常見問題頁面（LLM 優化）
-├── sitemap.xml               # 網站地圖（LLM 爬蟲優化）
-├── robots.txt                # 爬蟲指令（支援 LLM 機器人）
+├── index.html                 # 等候名單主頁面（中文版）
+├── index_en.html             # 等候名單主頁面（英文版）
+├── manifest.json             # PWA 清單檔案 ✨ 新增
+├── demo.html                 # 網頁版體驗（現有用戶）
+├── faq.html                  # 中文常見問題頁面
+├── faq_en.html               # 英文常見問題頁面
+├── sitemap.xml               # 網站地圖
+├── robots.txt                # 搜尋引擎指令
 ├── 404.html                  # 錯誤頁面
-├── netlify.toml              # Netlify 配置（含 API 重定向）
-├── api/
-│   └── foodfate-info.json    # 結構化數據 API 端點（LLM 優化）
+├── netlify.toml              # Netlify 配置
 ├── assets/
 │   ├── css/
-│   │   └── style.css         # 主要樣式文件
+│   │   └── style.css         # 包含等候名單、表單驗證、社群分享樣式 ✨ 增強
 │   ├── js/
-│   │   ├── main.js           # 主要 JavaScript 文件
+│   │   ├── main.js           # 新增表單驗證、社群分享、增強分析 ✨ 大幅增強
 │   │   └── i18n.js           # 國際化支援
 │   └── i18n/
 │       ├── zh-TW.json        # 繁體中文語言包
 │       ├── en.json           # 英文語言包
 │       ├── ja.json           # 日文語言包
 │       └── es.json           # 西班牙文語言包
-├── legal/
-│   ├── privacy-policy.html   # 中文隱私政策
-│   ├── privacy-policy_en.html # 英文隱私政策
-│   ├── terms-of-service.html # 中文服務條款
-│   ├── terms-of-service_en.html # 英文服務條款
-│   ├── cookie-policy.html    # 中文 Cookie 政策
-│   └── cookie-policy_en.html # 英文 Cookie 政策
-├── downloads/
-│   ├── README.md             # 下載說明
-│   └── foodfate_app_v0.0.38-beta.apk  # 最新內測版
+├── legal/                    # 法律文件
+├── downloads/                # 測試版下載
+├── api/
+│   └── foodfate-info.json    # 結構化數據 API
 ├── foodfate_logo.png         # 品牌 Logo
 ├── favicon.png               # 網站圖標
-├── APP logo.png             # APP 圖標
-├── LLM-OPTIMIZATION-SUMMARY.md # LLM 優化總結文檔
-├── I18N_GUIDE.md            # 國際化指南
-└── README.md                # 此文件
+└── README.md                 # 此文件 ✨ 更新
 ```
 
-## ✨ 網站特色
+## 🎯 等候名單功能特色
 
-### 🤖 LLM 搜索優化
-- **AI 爬蟲友好**：專門配置支援 GPTBot、ClaudeBot、CCBot 等主要 LLM 爬蟲
-- **結構化數據豐富**：完整的 Schema markup 讓 AI 能準確理解網站內容
-- **自然語言 FAQ**：15+ 個以對話方式撰寫的問答，適合 LLM 引用和回答
-- **API 端點**：提供 `/api/foodfate-info.json` 結構化數據供 AI 系統存取
-- **多語言優化**：中英雙語完整支援，提升國際化 LLM 發現性
+### 🔐 智慧表單驗證系統
+```javascript
+// 實時驗證特性
+- Email 格式驗證（RFC 5322 標準）
+- 臨時信箱域名檢測
+- 姓名格式驗證（支援中英文）
+- 視覺化錯誤反饋
+- 防重複提交機制
+```
 
-### 🎯 故事化體驗
-- **首頁故事**：從用戶真實生活場景出發，訴說選擇困難的共同經歷
-- **情感連結**：用溫暖的語言描述功能，而非冰冷的技術規格
-- **場景化功能**：每個功能都對應具體的生活情境和用戶需求
-- **未來願景**：用人性化語言描述產品發展方向
+### 📱 社群媒體分享功能
+```javascript
+// 支援平台
+- Facebook：智慧連結預覽
+- LINE：台灣市場優化
+- Twitter：包含 hashtags
+- Instagram：複製分享文字
+- 剪貼簿：一鍵複製連結
+```
 
-### 🎨 用戶體驗設計
-- **智慧公告系統**：
-  - 醒目的橘色漸層橫幅，搭配火箭圖標🚀
-  - 支援一鍵關閉功能，記住用戶偏好
-  - 關閉後自動調整導航欄位置，提供流暢體驗
-  - 支援多語言顯示（中文/英文/國際化版本）
-- **響應式設計**：在各種裝置上都能完美呈現故事內容
-- **視覺層次**：故事文本特殊樣式，重點內容高亮顯示
-- **雙語支援**：中英文版本都採用故事化敘述方式
+### 📈 進階分析追蹤
+```javascript
+// 追蹤事件類型
+- 頁面載入效能
+- 表單互動深度
+- 滾動行為分析
+- 社群分享追蹤
+- 用戶參與時間
+- Core Web Vitals
+```
 
-### 🛡️ 法律合規
-- ✅ GDPR 合規的隱私政策
-- ✅ Cookie 同意機制
-- ✅ 完整的服務條款
-- ✅ 資料保護說明
-
-### 📱 技術特性
-- ✅ 響應式設計
-- ✅ PWA 就緒
-- ✅ SEO 優化
-- ✅ Google Analytics 整合
-- ✅ 安全標頭配置
-
-## 🔧 自定義設定
-
-### Analytics 設定
-1. 在 `index.html` 中替換 `GA_MEASUREMENT_ID` 為你的 Google Analytics ID
-2. 在 `assets/js/main.js` 中更新相關配置
-
-### APK 文件上傳
-1. 將實際的 APK 文件放入 `downloads/` 目錄
-2. 更新 `downloads/README.md` 中的文件說明
-3. 確保文件大小不超過 Netlify 限制（100MB）
-
-### 品牌資產更新
-- 替換 `foodfate_logo.png` 為你的品牌 Logo
-- 更新 `APP logo.png` 為實際的 APP 圖標
-- 調整 CSS 中的品牌色彩（#FF6B35）
-
-## 🎨 設計系統
+## 🎨 設計系統更新
 
 ### 色彩配置
 ```css
 :root {
-  --primary-color: #FF6B35;    /* 主品牌色 - 溫暖橘色，象徵美食的熱情 */
-  --secondary-color: #FFB800;  /* 次要色 - 金黃色，代表美好的用餐時光 */
-  --accent-color: #FF8A5B;     /* 強調色 - 柔和橘粉，營造溫馨氛圍 */
-  --text-color: #2e2e2e;       /* 主文字色 - 深灰色，確保閱讀舒適 */
-  --text-muted: #666;          /* 次要文字色 - 中灰色，層次分明 */
+  --primary-color: #FF6B35;      /* 主品牌色 */
+  --secondary-color: #FFB800;    /* 次要色 */
+  --accent-color: #FF8A5B;       /* 強調色 */
+  --success-color: #28a745;      /* 成功狀態 */
+  --error-color: #dc3545;        /* 錯誤狀態 */
+  --text-color: #2e2e2e;         /* 主文字色 */
+  --text-muted: #666;            /* 次要文字色 */
 }
 ```
 
-### 故事化內容樣式
-```css
-.story-text {
-  background: rgba(255, 107, 53, 0.05);  /* 淡橘色背景 */
-  border-left: 4px solid #FF6B35;        /* 左側橘色邊框 */
-  padding: 1rem;                          /* 舒適的內邊距 */
-  border-radius: 12px;                    /* 圓角設計 */
-}
+### 新增組件樣式
+- **表單驗證**：錯誤/成功狀態視覺化
+- **社群分享**：懸浮動畫與品牌色彩
+- **載入動畫**：流暢的等待體驗
+- **通知系統**：優雅的反饋訊息
 
-.story-highlight {
-  background: linear-gradient(135deg, 
-    rgba(255, 107, 53, 0.1), 
-    rgba(255, 184, 0, 0.1));             /* 漸層背景 */
-  border: 2px solid rgba(255, 107, 53, 0.2);
-}
+## 🔧 開發與部署
+
+### 快速部署
+```bash
+# 1. 確保所有文件都在正確位置
+git add .
+git commit -m "Waitlist page with enhanced features"
+git push origin main
+
+# 2. Netlify 自動部署
+# 建議設定：
+# Build command: echo 'Static site, no build required'
+# Publish directory: .
 ```
 
-### 字體系統
-- 主要字體：Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI'
-- 中文字體自動回退到系統字體
-- 故事文本採用較大行高（1.8）提升閱讀體驗
+### 本地開發
+```bash
+# 使用簡單的 HTTP 伺服器
+python -m http.server 8000
+# 或
+npx serve .
+# 或
+php -S localhost:8000
+```
 
-## 📊 監控與分析
+### 環境設定
+```javascript
+// Google Analytics 設定
+// 在 index.html 中替換：
+GA_MEASUREMENT_ID
 
-### Google Analytics 事件
-- `page_view`: 頁面瀏覽
-- `cta_click`: CTA 按鈕點擊
-- `apk_download`: APK 下載
-- `conversion_funnel`: 轉換漏斗追蹤
+// Facebook App ID 設定（可選）
+// 在 meta tags 中設定：
+YOUR_FACEBOOK_APP_ID
+```
+
+## 📊 分析與監控
+
+### Google Analytics 4 事件
+```javascript
+// 自動追蹤事件
+- page_view: 頁面瀏覽
+- waitlist_signup: 等候名單註冊
+- form_interaction: 表單互動
+- share: 社群媒體分享
+- scroll: 滾動深度追蹤
+- web_vitals: 效能指標
+```
+
+### 自定義事件
+```javascript
+// 手動追蹤範例
+trackEvent('custom_action', 'category', 'label', value);
+trackConversionFunnel('step_name');
+```
 
 ### 效能監控
-- Core Web Vitals 監控
-- 錯誤事件追蹤
-- 用戶行為分析
+- **Core Web Vitals**：LCP、FID、CLS 自動追蹤
+- **資源載入時間**：CSS、JS 檔案載入監控
+- **用戶參與度**：活躍時間、滾動深度
 
-## 🔒 安全性
-
-### 安全標頭
-- Content Security Policy (CSP)
-- X-Frame-Options
-- X-XSS-Protection
-- Strict-Transport-Security
+## 🛡️ 安全性與合規
 
 ### 資料保護
-- Cookie 同意管理
-- 資料最小化原則
-- 用戶權利機制
+- **GDPR 合規**：完整的隱私政策
+- **Cookie 管理**：細分化同意機制
+- **本地儲存**：最小化數據收集
 
-## 🚀 部署檢查清單
+### 表單安全
+- **輸入驗證**：前端與模擬後端雙重驗證
+- **防護機制**：防止垃圾郵件與重複提交
+- **數據清理**：輸入內容自動清理
 
-### ✨ 用戶體驗檢查
-- [ ] 故事化內容在各裝置上正常顯示
-- [ ] 公告橫幅醒目且資訊正確
-- [ ] 公告橫幅關閉功能正常運作
-- [ ] 公告關閉後導航欄位置自動調整
-- [ ] 公告關閉狀態正確記憶（重新載入後不顯示）
-- [ ] 公告圖標正確顯示為🚀火箭
-- [ ] 中英文版本的故事敘述完整一致
-- [ ] 故事文本樣式（背景、邊框）正常顯示
-- [ ] 重點內容高亮效果正常
+## 🌍 國際化支援
 
-### 🔧 技術功能檢查
-- [ ] 所有連結都正常運作
-- [ ] 圖片和資源正確載入
-- [ ] 法律文件內容正確
-- [ ] Google Analytics ID 已設定
-- [ ] APK 下載功能正常
-- [ ] 響應式設計在各裝置正常
-- [ ] SEO meta tags 正確設定
-- [ ] Cookie 橫幅正常顯示
-- [ ] 404 頁面正常運作
+### 語言配置
+- **主要語言**：繁體中文（zh-TW）
+- **次要語言**：英文（en-US）
+- **SEO 優化**：hreflang 標籤完整配置
 
-### 📱 多裝置測試
-- [ ] 桌面版：故事排版清晰，公告橫幅適當高度，關閉按鈕(35px)位置正確
-- [ ] 平板版：內容布局合理，文字大小適中，關閉按鈕(30px)觸控友好
-- [ ] 手機版：公告橫幅縱向排列，故事文本易讀，關閉按鈕(28px)易點擊
+### 未來擴展
+- 日文（ja-JP）語言包已準備
+- 西班牙文（es-ES）語言包已準備
 
-## 📞 支援與聯絡
+## 🚀 效能優化
 
-我們深信每個用戶的聲音都很重要，您的回饋將幫助我們創造更好的美食探索體驗：
+### 載入速度優化
+```html
+<!-- 預連接關鍵域名 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-- 📧 **產品建議**：foodfate2025@gmail.com - 分享您的使用體驗和建議
-- 🐛 **問題回報**：通過 GitHub Issues - 幫助我們修復問題
-- 💬 **故事分享**：foodfate2025@gmail.com - 告訴我們 Foodfate 如何改變了您的用餐體驗
-- 🎨 **設計回饋**：對網站的故事化呈現有任何想法，歡迎與我們分享
+<!-- 預載入關鍵資源 -->
+<link rel="preload" href="./foodfate_logo.png" as="image">
+<link rel="preload" href="./assets/js/main.js" as="script">
+```
 
-## 📝 更新紀錄
+### 圖片優化
+- **格式選擇**：PNG 透明背景 Logo
+- **尺寸適配**：響應式圖片載入
+- **延遲載入**：非關鍵圖片延遲載入
 
-### v2.1.2 - SEO索引問題修復 (2025-06-23)
-- 🔍 **完整修復Google Search Console索引問題**：
-  - ✅ 添加canonical標籤到所有HTML頁面，解決重複內容問題
-  - ✅ 實施hreflang標籤系統，正確標示多語言版本關係
-  - ✅ 優化meta robots標籤，明確索引指示
-  - ✅ 修復重定向規則，避免「頁面會重新導向」錯誤
-  - ✅ 清理sitemap.xml，移除noindex頁面
-- 🛠️ **技術改進**：
-  - ✅ 設定index-i18n.html為noindex，避免重複內容競爭
-  - ✅ 添加x-default hreflang指向中文版作為預設語言
-  - ✅ 優化netlify.toml重定向規則，處理trailing slash
-  - ✅ 確保所有legal文件擁有正確的SEO標籤
-- 📊 **預期效果**：
-  - 📈 24-48小時內Google Search Console問題數量減少
-  - 📈 索引頁面數量增加，搜尋可見度提升
-  - 📈 多語言版本在對應地區排名改善
-- 📋 **建立完整修復報告**：SEO_INDEX_FIX_REPORT.md
-- 🎯 **後續監控**：建議每週檢查Google Search Console狀態
+## 📱 PWA 功能
 
-### v2.1.1 - 公告系統優化 (2025-06-20)
-- 🎨 **公告橫幅升級**：
-  - ✅ 新增一鍵關閉功能，支援「X」按鈕關閉公告
-  - ✅ 修正圖標顯示問題，使用火箭圖標🚀取代問號
-  - ✅ 優化文字居中對齊，提升視覺效果
-  - ✅ 實現關閉狀態記憶功能，使用 localStorage 儲存用戶偏好
-  - ✅ 關閉後自動調整導航欄位置，保持界面流暢
-  - ✅ 支援優雅的淡出動畫效果
-- 🌐 **多語言支援**：
-  - ✅ 中文版本關閉按鈕：「關閉公告」
-  - ✅ 英文版本關閉按鈕：「Close announcement」
-  - ✅ 國際化版本完整支援
-- 📱 **響應式優化**：
-  - ✅ 桌面版關閉按鈕尺寸：35px × 35px
-  - ✅ 平板版關閉按鈕尺寸：30px × 30px
-  - ✅ 手機版關閉按鈕尺寸：28px × 28px
-- 📊 **事件追蹤**：新增公告關閉事件追蹤，優化用戶行為分析
+### Progressive Web App 特性
+```json
+// manifest.json 配置
+{
+  "name": "Foodfate - 智慧餐廳推薦 APP",
+  "short_name": "Foodfate",
+  "display": "standalone",
+  "theme_color": "#FF6B35",
+  "background_color": "#ffffff"
+}
+```
 
-### v2.1.0 - LLM 優化版 (2025-06-18)
-- 🤖 **完整 LLM 搜索優化**：全面實施 LLM-OPTIMIZATION-SUMMARY.md 所有需求
-- 🔍 **技術優化**：
-  - ✅ 新增 `sitemap.xml` 包含多語言支援和適當優先級
-  - ✅ 優化 `robots.txt` 特別支援 LLM 爬蟲（GPTBot、ClaudeBot、CCBot 等）
-  - ✅ 建立 `/api/foodfate-info.json` 結構化數據端點（219 行詳細資料）
-  - ✅ 配置 `netlify.toml` API 重定向和安全標頭
-- 📊 **結構化數據標記**：實施多層次 Schema markup
-  - ✅ MobileApplication schema 完整應用資訊
-  - ✅ Organization schema 詳細組織資料
-  - ✅ Product schema 包含評分和評論
-  - ✅ HowTo schema 使用步驟指南
-  - ✅ WebSite schema 搜索功能支援
-  - ✅ FAQPage schema 自然語言問答
-- ❓ **內容優化**：
-  - ✅ 建立中文 FAQ 頁面（35KB，640行，15+ 詳細問答）
-  - ✅ 建立英文 FAQ 頁面（28KB，520行，完整翻譯）
-  - ✅ 自然語言查詢優化，問題以用戶詢問 LLM 的方式撰寫
-  - ✅ 互動式搜索和分類功能
-- 🌐 **LLM 特定功能**：
-  - ✅ 爬蟲友好結構，明確支援 AI 爬蟲
-  - ✅ 豐富元數據和結構化回答
-  - ✅ 完整雙語言支援（中文/英文）
-  - ✅ API 易訪問性（`/api/info` 重定向）
-- 🎯 **用戶體驗改進**：
-  - ✅ FAQ 整合到主導航
-  - ✅ 一致的多語言切換體驗
-  - ✅ FAQ 頁面內搜索和類別篩選
-- 📈 **預期效益**：提升在 LLM 搜索結果中的可發現性和引用準確性
+### 快捷方式
+- **加入等候名單**：直接跳轉表單
+- **網頁版體驗**：現有功能體驗
+- **下載測試版**：Android APK 下載
 
-### v2.0.0 - 故事化改版 (2025-06-18)
-- ✨ 全面重新設計網站內容，從技術導向改為故事化敘述
-- 🎯 新增用戶生活場景描述，提升情感連結
-- 🎨 更新視覺設計，添加故事文本專屬樣式
-- 📢 新增訊息公布系統，支援中英文雙語
-- 📱 優化響應式設計，確保故事內容在各裝置完美呈現
+## 🔮 未來發展計劃
+
+### Phase 1: 等候名單優化（當前）
+- ✅ 智慧表單驗證
+- ✅ 社群媒體分享
+- ✅ 進階分析追蹤
+- ✅ SEO 全面優化
+
+### Phase 2: APP 發布準備
+- 🔄 後端 API 整合
+- 🔄 實時通知系統
+- 🔄 用戶儀表板
+- 🔄 A/B 測試優化
+
+### Phase 3: 正式版發布
+- 📋 完整 APP 功能
+- 📋 用戶數據遷移
+- 📋 社群功能整合
+- 📋 進階推薦算法
+
+## 🤝 貢獻指南
+
+### 程式碼標準
+```javascript
+// JavaScript ES6+ 標準
+// CSS 使用 CSS 自定義屬性
+// HTML5 語義化標籤
+// 響應式設計優先
+```
+
+### 提交格式
+```bash
+# 功能新增
+git commit -m "feat: add social media sharing functionality"
+
+# 錯誤修復
+git commit -m "fix: resolve form validation edge case"
+
+# 樣式調整
+git commit -m "style: improve mobile responsive design"
+```
+
+## 📞 聯繫我們
+
+- **Email**: foodfate2025@gmail.com
+- **網站**: https://foodfate.app
+- **測試版**: https://foodfate.app/downloads/
+- **網頁版**: https://foodfate.app/demo.html
 
 ---
 
-**Made with ❤️ and 🍜 for every food lover**
-
-*每一次選擇都是一個故事，每一餐都是一場冒險*
+**立即加入等候名單，成為第一批體驗全新 Foodfate 的用戶！** 🚀

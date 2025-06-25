@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initMobileMenu();
     initAnnouncementBanner();
+    if (document.getElementById('waitlistForm')) {
+        new FormValidator();
+    }
 });
 
 // 導航欄功能
@@ -920,4 +923,807 @@ function rejectAllCookies() {
     document.getElementById('marketingCookies').checked = false;
     saveAllCookieSettings();
 }
+
+// 增強表單驗證系統
+class FormValidator {
+    constructor() {
+        this.validationRules = {
+            email: {
+                required: true,
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                minLength: 5,
+                maxLength: 254
+            },
+            name: {
+                required: false,
+                minLength: 1,
+                maxLength: 50,
+                pattern: /^[a-zA-Z\u4e00-\u9fa5\s]*$/ // 允許英文、中文、空格
+            }
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        this.setupRealTimeValidation();
+        this.setupFormSubmission();
+    }
+    
+    setupRealTimeValidation() {
+        const emailInput = document.getElementById('email');
+        const nameInput = document.getElementById('name');
+        
+        if (emailInput) {
+            emailInput.addEventListener('input', () => this.validateField('email'));
+            emailInput.addEventListener('blur', () => this.validateField('email'));
+        }
+        
+        if (nameInput) {
+            nameInput.addEventListener('input', () => this.validateField('name'));
+            nameInput.addEventListener('blur', () => this.validateField('name'));
+        }
+    }
+    
+    validateField(fieldName) {
+        const field = document.getElementById(fieldName);
+        const value = field.value.trim();
+        const rules = this.validationRules[fieldName];
+        const errors = [];
+        
+        // 清除之前的錯誤狀態
+        this.clearFieldError(field);
+        
+        // 必填驗證
+        if (rules.required && !value) {
+            errors.push(fieldName === 'email' ? 'Email 為必填欄位' : '姓名為必填欄位');
+        }
+        
+        // 只在有值時進行其他驗證
+        if (value) {
+            // 長度驗證
+            if (rules.minLength && value.length < rules.minLength) {
+                errors.push(`最少需要 ${rules.minLength} 個字符`);
+            }
+            if (rules.maxLength && value.length > rules.maxLength) {
+                errors.push(`最多只能 ${rules.maxLength} 個字符`);
+            }
+            
+            // 格式驗證
+            if (rules.pattern && !rules.pattern.test(value)) {
+                if (fieldName === 'email') {
+                    errors.push('請輸入有效的 Email 格式');
+                } else if (fieldName === 'name') {
+                    errors.push('姓名只能包含中文、英文字母和空格');
+                }
+            }
+            
+            // Email 特殊驗證
+            if (fieldName === 'email') {
+                const emailErrors = this.validateEmailSpecial(value);
+                errors.push(...emailErrors);
+            }
+        }
+        
+        // 顯示錯誤或成功狀態
+        if (errors.length > 0) {
+            this.showFieldError(field, errors[0]);
+            return false;
+        } else if (value) {
+            this.showFieldSuccess(field);
+            return true;
+        }
+        
+        return !rules.required || value.length > 0;
+    }
+    
+    validateEmailSpecial(email) {
+        const errors = [];
+        
+        // 檢查是否為臨時信箱域名
+        const tempEmailDomains = [
+            '10minutemail.com', 'tempmail.org', 'guerrillamail.com',
+            'temp-mail.org', 'throwaway.email', 'mailinator.com'
+        ];
+        
+        const domain = email.split('@')[1];
+        if (tempEmailDomains.includes(domain)) {
+            errors.push('請使用常用的 Email 地址');
+        }
+        
+        // 檢查連續點或特殊字符
+        if (email.includes('..') || email.startsWith('.') || email.endsWith('.')) {
+            errors.push('Email 格式不正確');
+        }
+        
+        return errors;
+    }
+    
+    validateForm() {
+        const emailValid = this.validateField('email');
+        const nameValid = this.validateField('name');
+        
+        return emailValid && nameValid;
+    }
+    
+    showFieldError(field, message) {
+        field.classList.add('error');
+        field.classList.remove('success');
+        
+        // 移除舊的錯誤訊息
+        this.removeErrorMessage(field);
+        
+        // 新增錯誤訊息
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error-message';
+        errorDiv.textContent = message;
+        field.parentNode.appendChild(errorDiv);
+        
+        // 震動效果（在支援的裝置上）
+        if (navigator.vibrate) {
+            navigator.vibrate(100);
+        }
+    }
+    
+    showFieldSuccess(field) {
+        field.classList.add('success');
+        field.classList.remove('error');
+        this.removeErrorMessage(field);
+    }
+    
+    clearFieldError(field) {
+        field.classList.remove('error', 'success');
+        this.removeErrorMessage(field);
+    }
+    
+    removeErrorMessage(field) {
+        const existingError = field.parentNode.querySelector('.field-error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+    }
+    
+    setupFormSubmission() {
+        const form = document.getElementById('waitlistForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                if (this.validateForm()) {
+                    this.submitForm();
+                } else {
+                    this.showFormError('請檢查並修正表單中的錯誤');
+                }
+            });
+        }
+    }
+    
+    async submitForm() {
+        const submitBtn = document.getElementById('submitBtn');
+        const email = document.getElementById('email').value.trim();
+        const name = document.getElementById('name').value.trim();
+        
+        // 防止重複提交
+        if (submitBtn.disabled) return;
+        
+        // 更新按鈕狀態
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '⏳ 提交中...';
+        
+        try {
+            // 檢查是否已經註冊
+            const existingUser = localStorage.getItem('waitlistUser');
+            if (existingUser) {
+                const userData = JSON.parse(existingUser);
+                if (userData.email === email) {
+                    this.showSuccessMessage('您已經在等候名單中了！');
+                    return;
+                }
+            }
+            
+            // 模擬 API 提交（95% 成功率）
+            await this.simulateAPISubmission({ email, name });
+            
+            // 儲存用戶資料
+            const userData = {
+                email,
+                name,
+                timestamp: Date.now(),
+                source: 'waitlist_form'
+            };
+            localStorage.setItem('waitlistUser', JSON.stringify(userData));
+            
+            // 追蹤轉換事件
+            this.trackWaitlistSignup(email, name);
+            
+            // 顯示成功訊息
+            this.showSuccessMessage();
+            
+            // 清空表單
+            document.getElementById('waitlistForm').reset();
+            this.clearAllFieldStates();
+            
+        } catch (error) {
+            console.error('Waitlist submission error:', error);
+            this.showErrorMessage(error.message || '提交失敗，請稍後再試');
+        } finally {
+            // 恢復按鈕狀態
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '✨ 加入等候名單';
+        }
+    }
+    
+    async simulateAPISubmission(userData) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // 95% 成功率
+                if (Math.random() > 0.05) {
+                    resolve({ success: true, id: Math.random().toString(36).substr(2, 9) });
+                } else {
+                    reject(new Error('網路連線不穩定，請稍後再試'));
+                }
+            }, 1500 + Math.random() * 1000); // 1.5-2.5秒延遲
+        });
+    }
+    
+    trackWaitlistSignup(email, name) {
+        // Google Analytics 事件追蹤
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_signup', {
+                event_category: 'engagement',
+                event_label: 'form_submission',
+                value: 1,
+                custom_parameters: {
+                    has_name: name ? 'yes' : 'no',
+                    email_domain: email.split('@')[1]
+                }
+            });
+        }
+        
+        // 追蹤轉換漏斗
+        trackConversionFunnel('waitlist_completed');
+        
+        console.log('Waitlist signup tracked:', { email, name });
+    }
+    
+    showSuccessMessage(customMessage = null) {
+        const successDiv = document.getElementById('successMessage');
+        const errorDiv = document.getElementById('errorMessage');
+        
+        if (customMessage) {
+            successDiv.innerHTML = `🎉 ${customMessage}`;
+        }
+        
+        successDiv.style.display = 'block';
+        errorDiv.style.display = 'none';
+        
+        // 自動隱藏成功訊息
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 8000);
+        
+        // 滾動到訊息位置
+        successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    showErrorMessage(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+        
+        errorDiv.innerHTML = `❌ ${message}<br>如有問題請聯繫：foodfate2025@gmail.com`;
+        errorDiv.style.display = 'block';
+        successDiv.style.display = 'none';
+        
+        // 自動隱藏錯誤訊息
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 10000);
+        
+        // 滾動到訊息位置
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    showFormError(message) {
+        // 在表單上方顯示錯誤
+        const form = document.getElementById('waitlistForm');
+        let errorDiv = form.querySelector('.form-error-message');
+        
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error-message';
+            form.insertBefore(errorDiv, form.firstChild);
+        }
+        
+        errorDiv.innerHTML = `⚠️ ${message}`;
+        errorDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+    
+    clearAllFieldStates() {
+        ['email', 'name'].forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                this.clearFieldError(field);
+            }
+        });
+    }
+}
+
+// 密碼強度檢查器（未來功能）
+class PasswordStrengthChecker {
+    static checkStrength(password) {
+        let score = 0;
+        const feedback = [];
+        
+        if (password.length >= 8) score += 1;
+        else feedback.push('至少需要 8 個字符');
+        
+        if (/[a-z]/.test(password)) score += 1;
+        else feedback.push('需要包含小寫字母');
+        
+        if (/[A-Z]/.test(password)) score += 1;
+        else feedback.push('需要包含大寫字母');
+        
+        if (/[0-9]/.test(password)) score += 1;
+        else feedback.push('需要包含數字');
+        
+        if (/[^A-Za-z0-9]/.test(password)) score += 1;
+        else feedback.push('需要包含特殊字符');
+        
+        const strength = score < 2 ? 'weak' : score < 4 ? 'medium' : 'strong';
+        
+        return { score, strength, feedback };
+    }
+}
+
+// 社群媒體分享功能
+class SocialMediaSharer {
+    constructor() {
+        this.shareData = {
+            title: 'Foodfate - 智慧餐廳推薦 APP 即將推出！',
+            text: '告別選擇困難！Foodfate 正在升級改版中，加入等候名單搶先體驗全新的智慧美食推薦功能 🍜✨',
+            url: window.location.href,
+            hashtags: ['Foodfate', '美食APP', '餐廳推薦', '台灣美食', '智慧推薦']
+        };
+    }
+    
+    shareToFacebook() {
+        const url = `https://www.facebook.com/sharer/sharer.php?` +
+            `u=${encodeURIComponent(this.shareData.url)}&` +
+            `quote=${encodeURIComponent(this.shareData.text)}`;
+        
+        this.openShareWindow(url, 'facebook');
+        this.trackShare('facebook');
+    }
+    
+    shareToLine() {
+        const text = `${this.shareData.text}\n${this.shareData.url}`;
+        const url = `https://social-plugins.line.me/lineit/share?` +
+            `url=${encodeURIComponent(this.shareData.url)}&` +
+            `text=${encodeURIComponent(text)}`;
+        
+        this.openShareWindow(url, 'line');
+        this.trackShare('line');
+    }
+    
+    shareToTwitter() {
+        const text = `${this.shareData.text}`;
+        const hashtags = this.shareData.hashtags.join(',');
+        const url = `https://twitter.com/intent/tweet?` +
+            `text=${encodeURIComponent(text)}&` +
+            `url=${encodeURIComponent(this.shareData.url)}&` +
+            `hashtags=${encodeURIComponent(hashtags)}`;
+        
+        this.openShareWindow(url, 'twitter');
+        this.trackShare('twitter');
+    }
+    
+    shareToInstagram() {
+        // Instagram 不支援直接 URL 分享，所以複製文字並提示用戶
+        const shareText = `${this.shareData.text}\n\n${this.shareData.url}\n\n${this.shareData.hashtags.map(tag => `#${tag}`).join(' ')}`;
+        
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    this.showInstagramSharePrompt();
+                });
+            } else {
+                this.fallbackCopyToClipboard(shareText);
+                this.showInstagramSharePrompt();
+            }
+            this.trackShare('instagram');
+        } catch (error) {
+            console.error('Instagram share failed:', error);
+            this.showShareNotification('分享失敗，請手動複製內容分享', 'error');
+        }
+    }
+    
+    showInstagramSharePrompt() {
+        const promptDiv = document.createElement('div');
+        promptDiv.className = 'instagram-share-prompt';
+        promptDiv.innerHTML = `
+            <div class="prompt-content">
+                <div class="prompt-icon">📷</div>
+                <div class="prompt-title">Instagram 分享</div>
+                <div class="prompt-message">文字已複製到剪貼簿！<br>請開啟 Instagram 並貼上分享</div>
+                <div class="prompt-actions">
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" class="prompt-close">知道了</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(promptDiv);
+        
+        // 自動移除提示
+        setTimeout(() => {
+            if (promptDiv.parentNode) {
+                promptDiv.parentNode.removeChild(promptDiv);
+            }
+        }, 5000);
+    }
+    
+    async copyShareLink() {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(this.shareData.url);
+            } else {
+                // Fallback for older browsers
+                this.fallbackCopyToClipboard(this.shareData.url);
+            }
+            
+            this.showShareNotification('連結已複製到剪貼簿！');
+            this.trackShare('copy_link');
+        } catch (error) {
+            console.error('Copy failed:', error);
+            this.showShareNotification('複製失敗，請手動複製連結', 'error');
+        }
+    }
+    
+    fallbackCopyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
+            throw err;
+        } finally {
+            document.body.removeChild(textArea);
+        }
+    }
+    
+    openShareWindow(url, platform) {
+        const windowFeatures = this.getWindowFeatures(platform);
+        const shareWindow = window.open(url, `share_${platform}`, windowFeatures);
+        
+        // Focus the share window if it was blocked
+        if (shareWindow) {
+            shareWindow.focus();
+        } else {
+            // If popup was blocked, open in new tab
+            window.open(url, '_blank');
+        }
+    }
+    
+    getWindowFeatures(platform) {
+        const features = {
+            facebook: 'width=600,height=400',
+            twitter: 'width=600,height=400',
+            line: 'width=500,height=500',
+            instagram: 'width=600,height=400'
+        };
+        
+        const baseFeatures = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
+        return `${features[platform] || 'width=600,height=400'},${baseFeatures}`;
+    }
+    
+    showShareNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = 'share-notification';
+        notification.textContent = message;
+        
+        if (type === 'error') {
+            notification.style.background = 'rgba(220, 53, 69, 0.95)';
+        }
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 2000);
+    }
+    
+    trackShare(platform) {
+        // Google Analytics 事件追蹤
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'share', {
+                method: platform,
+                content_type: 'waitlist_page',
+                content_id: 'foodfate_waitlist'
+            });
+        }
+        
+        // 內部追蹤
+        trackEvent('share_click', 'social_media', platform);
+        
+        console.log(`Shared to ${platform}`);
+    }
+}
+
+// 創建全域分享器實例
+const socialSharer = new SocialMediaSharer();
+
+// 全域分享函數
+function shareToFacebook() { socialSharer.shareToFacebook(); }
+function shareToLine() { socialSharer.shareToLine(); }
+function shareToTwitter() { socialSharer.shareToTwitter(); }
+function shareToInstagram() { socialSharer.shareToInstagram(); }
+function copyShareLink() { socialSharer.copyShareLink(); }
+
+// 增強的分析追蹤系統
+class AnalyticsEnhanced {
+    constructor() {
+        this.sessionId = this.generateSessionId();
+        this.pageLoadTime = Date.now();
+        this.events = [];
+        this.userAgent = navigator.userAgent;
+        this.referrer = document.referrer;
+        
+        this.init();
+    }
+    
+    init() {
+        this.trackPageLoad();
+        this.setupScrollTracking();
+        this.setupEngagementTracking();
+        this.setupFormInteractionTracking();
+        this.setupPerformanceTracking();
+    }
+    
+    generateSessionId() {
+        return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+    }
+    
+    trackPageLoad() {
+        const loadTime = Date.now() - this.pageLoadTime;
+        
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                session_id: this.sessionId,
+                load_time: loadTime,
+                referrer: this.referrer
+            });
+        }
+        
+        this.trackEvent('page_load', 'navigation', 'initial_load', loadTime);
+    }
+    
+    setupScrollTracking() {
+        let scrollDepth = 0;
+        let maxScroll = 0;
+        const scrollMilestones = [25, 50, 75, 90, 100];
+        const trackedMilestones = new Set();
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            
+            if (documentHeight > 0) {
+                scrollDepth = Math.round((scrollTop / documentHeight) * 100);
+                maxScroll = Math.max(maxScroll, scrollDepth);
+                
+                scrollMilestones.forEach(milestone => {
+                    if (scrollDepth >= milestone && !trackedMilestones.has(milestone)) {
+                        trackedMilestones.add(milestone);
+                        this.trackScrollMilestone(milestone);
+                    }
+                });
+            }
+        });
+        
+        // Track max scroll on page unload
+        window.addEventListener('beforeunload', () => {
+            this.trackEvent('scroll_depth', 'engagement', 'max_scroll', maxScroll);
+        });
+    }
+    
+    trackScrollMilestone(percentage) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll', {
+                event_category: 'engagement',
+                event_label: `${percentage}%`,
+                value: percentage
+            });
+        }
+        
+        this.trackEvent('scroll_milestone', 'engagement', `${percentage}%`, percentage);
+    }
+    
+    setupEngagementTracking() {
+        let engagementStart = Date.now();
+        let totalEngagementTime = 0;
+        let isActive = true;
+        
+        // Track active/inactive states
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (isActive) {
+                    totalEngagementTime += Date.now() - engagementStart;
+                    isActive = false;
+                }
+            } else {
+                engagementStart = Date.now();
+                isActive = true;
+            }
+        });
+        
+        // Track engagement time on unload
+        window.addEventListener('beforeunload', () => {
+            if (isActive) {
+                totalEngagementTime += Date.now() - engagementStart;
+            }
+            
+            this.trackEvent('engagement_time', 'engagement', 'total_time', Math.round(totalEngagementTime / 1000));
+        });
+        
+        // Track idle time
+        let idleTimer;
+        const resetIdleTimer = () => {
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                this.trackEvent('user_idle', 'engagement', 'idle_5min');
+            }, 5 * 60 * 1000); // 5 minutes
+        };
+        
+        ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'].forEach(event => {
+            document.addEventListener(event, resetIdleTimer, true);
+        });
+    }
+    
+    setupFormInteractionTracking() {
+        const emailInput = document.getElementById('email');
+        const nameInput = document.getElementById('name');
+        const form = document.getElementById('waitlistForm');
+        
+        if (emailInput) {
+            emailInput.addEventListener('focus', () => {
+                this.trackEvent('form_interaction', 'engagement', 'email_focus');
+            });
+            
+            emailInput.addEventListener('input', () => {
+                this.trackEvent('form_interaction', 'engagement', 'email_input');
+            });
+        }
+        
+        if (nameInput) {
+            nameInput.addEventListener('focus', () => {
+                this.trackEvent('form_interaction', 'engagement', 'name_focus');
+            });
+        }
+        
+        if (form) {
+            form.addEventListener('submit', () => {
+                this.trackEvent('form_interaction', 'conversion', 'form_submit');
+            });
+        }
+    }
+    
+    setupPerformanceTracking() {
+        // Track Core Web Vitals
+        if ('web-vital' in window) {
+            import('https://unpkg.com/web-vitals@3/dist/web-vitals.js').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+                onCLS(this.trackWebVital.bind(this));
+                onFID(this.trackWebVital.bind(this));
+                onFCP(this.trackWebVital.bind(this));
+                onLCP(this.trackWebVital.bind(this));
+                onTTFB(this.trackWebVital.bind(this));
+            });
+        }
+        
+        // Track resource loading times
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const navigation = performance.getEntriesByType('navigation')[0];
+                
+                if (navigation) {
+                    this.trackEvent('performance', 'timing', 'dom_content_loaded', Math.round(navigation.domContentLoadedEventEnd));
+                    this.trackEvent('performance', 'timing', 'load_complete', Math.round(navigation.loadEventEnd));
+                }
+                
+                // Track resource loading
+                const resources = performance.getEntriesByType('resource');
+                resources.forEach(resource => {
+                    if (resource.name.includes('.css') || resource.name.includes('.js')) {
+                        this.trackEvent('performance', 'resource', resource.name.split('/').pop(), Math.round(resource.duration));
+                    }
+                });
+            }, 1000);
+        });
+    }
+    
+    trackWebVital(metric) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', metric.name, {
+                event_category: 'web_vitals',
+                value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+                event_label: metric.id
+            });
+        }
+        
+        this.trackEvent('web_vital', 'performance', metric.name, Math.round(metric.value));
+    }
+    
+    trackEvent(action, category, label = '', value = 1) {
+        const event = {
+            action,
+            category,
+            label,
+            value,
+            timestamp: Date.now(),
+            sessionId: this.sessionId,
+            userAgent: this.userAgent,
+            url: window.location.href
+        };
+        
+        this.events.push(event);
+        
+        // Store events in localStorage for offline tracking
+        const storedEvents = JSON.parse(localStorage.getItem('analyticsEvents') || '[]');
+        storedEvents.push(event);
+        
+        // Keep only last 100 events
+        if (storedEvents.length > 100) {
+            storedEvents.splice(0, storedEvents.length - 100);
+        }
+        
+        localStorage.setItem('analyticsEvents', JSON.stringify(storedEvents));
+        
+        console.log('Analytics Event:', event);
+    }
+    
+    // A/B Testing support
+    getExperimentVariant(experimentId) {
+        const key = `experiment_${experimentId}`;
+        let variant = localStorage.getItem(key);
+        
+        if (!variant) {
+            variant = Math.random() < 0.5 ? 'A' : 'B';
+            localStorage.setItem(key, variant);
+        }
+        
+        return variant;
+    }
+    
+    trackExperiment(experimentId, variant, action) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'experiment_interaction', {
+                experiment_id: experimentId,
+                variant: variant,
+                action: action
+            });
+        }
+        
+        this.trackEvent('experiment', 'testing', `${experimentId}_${variant}_${action}`);
+    }
+}
+
+// 初始化增強分析
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gtag !== 'undefined' || localStorage.getItem('cookieConsent') === 'accepted') {
+        new AnalyticsEnhanced();
+    }
+});
 
