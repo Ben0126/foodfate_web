@@ -5,13 +5,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .modal-overlay.visible {
@@ -20,96 +21,118 @@
 }
 
 .modal-dialog {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   position: relative;
-  max-width: 500px;
+  max-width: 480px;
   width: 90%;
-  transform: scale(0.9);
-  transition: transform 0.3s ease-in-out;
-  color: #333; /* Ensuring text is readable */
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #333;
+  border-top: 4px solid #FF6B35;
+  text-align: center;
 }
 
 .modal-overlay.visible .modal-dialog {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
 }
 
 .modal-close-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: none;
+  background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 300;
   cursor: pointer;
-  color: #888;
+  color: #aaa;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .modal-close-btn:hover {
-  color: #000;
+  color: #FF6B35;
+  transform: rotate(90deg);
 }
 
 .modal-dialog h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #2e2e2e;
 }
 
 .modal-dialog p {
+  font-size: 1rem;
+  color: #666;
   margin-bottom: 2rem;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.waitlist-form input,
-.waitlist-form select,
-.waitlist-form button {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+#waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.waitlist-form button {
-  background-color: #ff6347; /* Example color */
+#waitlist-form input,
+#waitlist-form select {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#waitlist-form input:focus,
+#waitlist-form select:focus {
+  outline: none;
+  border-color: #FF6B35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+#waitlist-form button {
+  background: linear-gradient(135deg, #FF8A65, #FF6B35);
   color: white;
   border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  transition: transform 0.2s, box-shadow 0.3s;
+  margin-top: 0.5rem;
 }
 
-.waitlist-form button:hover {
-  background-color: #e5533d; /* Darker shade */
+#waitlist-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
 }
 
-.waitlist-form button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+#waitlist-form button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
 }
 
 #form-feedback {
-    display: none;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 4px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  display: none; /* Hidden by default */
 }
 
 #form-feedback.success {
-    background-color: #d4edda;
-    color: #155724;
-    display: block;
+  background-color: rgba(45, 211, 111, 0.1);
+  color: #1a7f46;
+  display: block;
 }
 
 #form-feedback.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    display: block;
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #d93030;
+  display: block;
 }
 
 /* Responsive adjustments */
