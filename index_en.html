@@ -29,7 +29,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css?v=20250103">
-    <link rel="stylesheet" href="./assets/css/waitlist-modal.css">
+
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -437,39 +437,8 @@
 
     <!-- JavaScript -->
     <script src="./assets/js/main_en.js?v=20240729"></script>
-    <script src="./assets/js/waitlist-modal.js"></script>
 
-    <!-- Waitlist Modal HTML -->
-    <div id="waitlist-modal-overlay" class="modal-overlay">
-        <div class="modal-dialog">
-            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
-            <h2>Join Our Waitlist</h2>
-            <p>Be the first to experience the latest features and exclusive offers from Foodfate!</p>
-            
-            <form id="waitlist-form" name="waitlist-en" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-              <input type="hidden" name="form-name" value="waitlist-en" />
-              <p style="display:none;">
-                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-              </p>
-              
-              <!-- Required Fields -->
-              <input type="email" name="email" placeholder="Email Address" required />
-              <input type="text" name="name" placeholder="Name or Nickname" required />
-              
-              <!-- Optional Fields -->
-              <select name="interest[]" id="interest-en">
-                <option value="">What are you most interested in? (Optional)</option>
-                <option value="new-features">New Feature Previews</option>
-                <option value="local-deals">Local Restaurant Deals</option>
-                <option value="community-events">Community Events</option>
-                <option value="other">Other</option>
-              </select>
-              
-              <button type="submit">Join Now</button>
-            </form>
-            <div id="form-feedback"></div>
-        </div>
-    </div>
+
     
 </body>
 </html>

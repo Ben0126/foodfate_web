@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initMobileMenu();
     initAnnouncementBanner();
+    initWaitlistForm(); // 初始化等候清單表單
     adjustBodyPadding(); // 新增呼叫
     if (document.getElementById('waitlist-form')) {
         new FormValidator();
@@ -102,6 +103,140 @@ function closeAnnouncement() {
                 'value': 1
             });
         }
+    }
+}
+
+// 顯示等候清單表單
+function showWaitlistForm() {
+    const formContainer = document.getElementById('waitlist-form-container');
+    const joinButton = document.querySelector('.btn-join-waitlist');
+    
+    if (formContainer && joinButton) {
+        if (formContainer.style.display === 'none' || !formContainer.style.display) {
+            formContainer.style.display = 'block';
+            joinButton.textContent = '隱藏表單';
+            
+            // 記錄顯示等候清單事件
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_form_shown', {
+                    'event_category': 'engagement',
+                    'event_label': 'announcement_banner',
+                    'value': 1
+                });
+            }
+        } else {
+            formContainer.style.display = 'none';
+            joinButton.textContent = '加入等候清單';
+        }
+        
+        adjustBodyPadding(); // 調整頁面間距
+    }
+}
+
+// 處理等候清單表單提交
+function handleWaitlistFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = document.getElementById('waitlist-form');
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const feedbackDiv = document.getElementById('form-feedback');
+    
+    // 基本驗證
+    const email = formData.get('email');
+    const name = formData.get('name');
+    
+    if (!email || !name) {
+        showFormFeedback('請填寫電子郵件和姓名！', 'error');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        showFormFeedback('請輸入有效的電子郵件地址！', 'error');
+        return;
+    }
+    
+    // 顯示載入狀態
+    submitButton.disabled = true;
+    submitButton.textContent = '傳送中...';
+    
+    // 提交到 Netlify Forms
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+    })
+    .then(() => {
+        showFormFeedback('感謝您！您已成功加入我們的等候清單。', 'success');
+        form.reset();
+        
+        // 記錄成功事件
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_signup_success', {
+                'event_category': 'conversion',
+                'event_label': 'announcement_banner',
+                'value': 1
+            });
+        }
+        
+        // 3秒後隱藏表單
+        setTimeout(() => {
+            const formContainer = document.getElementById('waitlist-form-container');
+            const joinButton = document.querySelector('.btn-join-waitlist');
+            if (formContainer && joinButton) {
+                formContainer.style.display = 'none';
+                joinButton.textContent = '加入等候清單';
+                adjustBodyPadding();
+            }
+        }, 3000);
+    })
+    .catch((error) => {
+        console.error('Form submission error:', error);
+        showFormFeedback('抱歉，發生錯誤，請稍後再試。', 'error');
+        
+        // 記錄錯誤事件
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_signup_error', {
+                'event_category': 'error',
+                'event_label': 'form_submission',
+                'value': 1
+            });
+        }
+    })
+    .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = '立即加入';
+    });
+}
+
+// 顯示表單回饋訊息
+function showFormFeedback(message, type) {
+    const feedbackDiv = document.getElementById('form-feedback');
+    if (feedbackDiv) {
+        feedbackDiv.textContent = message;
+        feedbackDiv.className = `form-feedback ${type}`;
+        feedbackDiv.style.display = 'block';
+        
+        // 如果是錯誤訊息，5秒後自動隱藏
+        if (type === 'error') {
+            setTimeout(() => {
+                feedbackDiv.style.display = 'none';
+            }, 5000);
+        }
+    }
+}
+
+// 驗證電子郵件格式
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// 初始化等候清單表單
+function initWaitlistForm() {
+    const waitlistForm = document.getElementById('waitlist-form');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', handleWaitlistFormSubmit);
     }
 }
 

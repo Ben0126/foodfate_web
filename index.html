@@ -42,7 +42,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css?v=20250103">
-    <link rel="stylesheet" href="./assets/css/waitlist-modal.css">
     
     <!-- Language Switch -->
     <style>
@@ -104,7 +103,7 @@
 </head>
 
 <body>
-    <!-- Announcement Banner -->
+    <!-- Announcement Banner with Waitlist -->
     <div id="announcementBanner" class="announcement-banner">
         <div class="announcement-content">
             <div class="announcement-icon">🚀</div>
@@ -112,7 +111,35 @@
                 <h3>新版本開發中</h3>
                 <p>我們正在開發功能更強大的新版 Foodfate，敬請期待！目前的 <strong>Web 版本仍可正常使用</strong>，歡迎繼續體驗。</p>
             </div>
-            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="關閉公告">×</button>
+            <div class="announcement-actions">
+                <button class="btn-join-waitlist" onclick="showWaitlistForm()">加入等候清單</button>
+                <button class="announcement-close" onclick="closeAnnouncement()" aria-label="關閉公告">×</button>
+            </div>
+        </div>
+        
+        <!-- Inline Waitlist Form (Hidden by default) -->
+        <div id="waitlist-form-container" class="waitlist-form-container" style="display: none;">
+            <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="waitlist" />
+                <p class="hidden" style="display:none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+                
+                <div class="form-row">
+                    <input type="email" name="email" placeholder="電子郵件" required />
+                    <input type="text" name="name" placeholder="姓名或暱稱" required />
+                    <button type="submit">立即加入</button>
+                </div>
+                
+                <select name="interest[]" id="interest" class="interest-select">
+                    <option value="">您對什麼最感興趣？（可選）</option>
+                    <option value="new-features">新功能預告</option>
+                    <option value="local-deals">在地餐廳優惠</option>
+                    <option value="community-events">社群活動</option>
+                    <option value="other">其他</option>
+                </select>
+            </form>
+            <div id="form-feedback" class="form-feedback"></div>
         </div>
     </div>
 
@@ -522,7 +549,6 @@
 
     <!-- JavaScript -->
     <script src="./assets/js/main.js?v=20240729"></script>
-    <script src="./assets/js/waitlist-modal.js"></script>
     
     <!-- 頁面載入完成後的統計動畫 -->
     <script>
@@ -546,37 +572,7 @@
         });
     </script>
 
-    <!-- Waitlist Modal HTML -->
-    <div id="waitlist-modal-overlay" class="modal-overlay">
-        <div class="modal-dialog">
-            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
-            <h2>加入我們的等候清單</h2>
-            <p>搶先體驗 FoodFate 的最新功能與獨家優惠！</p>
-            
-            <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-              <input type="hidden" name="form-name" value="waitlist" />
-              <p class="hidden" style="display:none;">
-                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-              </p>
-              
-              <!-- Required Fields -->
-              <input type="email" name="email" placeholder="電子郵件" required />
-              <input type="text" name="name" placeholder="姓名或暱稱" required />
-              
-              <!-- Optional Fields -->
-              <select name="interest[]" id="interest">
-                <option value="">您對什麼最感興趣？（可選）</option>
-                <option value="new-features">新功能預告</option>
-                <option value="local-deals">在地餐廳優惠</option>
-                <option value="community-events">社群活動</option>
-                <option value="other">其他</option>
-              </select>
-              
-              <button type="submit">立即加入</button>
-            </form>
-            <div id="form-feedback"></div>
-        </div>
-    </div>
+
 
 </body>
 </html> 
