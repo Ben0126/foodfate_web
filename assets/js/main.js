@@ -8,13 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initMobileMenu();
     initAnnouncementBanner();
-<<<<<<< HEAD
-    initWaitlist();
-=======
-    if (document.getElementById('waitlistForm')) {
+    adjustBodyPadding(); // 新增呼叫
+    if (document.getElementById('waitlist-form')) {
         new FormValidator();
     }
->>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
 });
 
 // 導航欄功能
@@ -61,8 +58,19 @@ function initAnnouncementBanner() {
     // 如果用戶已關閉公告，則隱藏橫幅
     if (announcementClosed === 'true' && announcementBanner) {
         announcementBanner.style.display = 'none';
-        // 調整導航欄位置
-        adjustNavbarPosition(false);
+    }
+    // 監聽視窗大小變化，以調整 padding
+    window.addEventListener('resize', adjustBodyPadding);
+}
+
+// 新增函數：調整 body 的 padding-top
+function adjustBodyPadding() {
+    const announcementBanner = document.getElementById('announcementBanner');
+    if (announcementBanner && window.getComputedStyle(announcementBanner).display !== 'none') {
+        const bannerHeight = announcementBanner.offsetHeight;
+        document.body.style.paddingTop = `${bannerHeight}px`;
+    } else {
+        document.body.style.paddingTop = '0px';
     }
 }
 
@@ -79,8 +87,7 @@ function closeAnnouncement() {
         // 動畫完成後隱藏元素
         setTimeout(() => {
             announcementBanner.style.display = 'none';
-            // 調整導航欄位置
-            adjustNavbarPosition(false);
+            adjustBodyPadding(); // 在關閉後重新調整
         }, 300);
         
         // 記住用戶的選擇
@@ -928,7 +935,6 @@ function rejectAllCookies() {
     saveAllCookieSettings();
 }
 
-<<<<<<< HEAD
 // 等候清單功能
 function initWaitlist() {
     const waitlistShown = localStorage.getItem('waitlistShown');
@@ -1091,7 +1097,6 @@ function reopenWaitlist() {
     showWaitlist();
 }
 
-=======
 // 增強表單驗證系統
 class FormValidator {
     constructor() {
@@ -1894,5 +1899,3 @@ document.addEventListener('DOMContentLoaded', function() {
         new AnalyticsEnhanced();
     }
 });
-
->>>>>>> 8860af83c2dade7bed98e0ba35678a92e051176e
