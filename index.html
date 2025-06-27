@@ -42,6 +42,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css?v=20250103">
+    <link rel="stylesheet" href="./assets/css/waitlist-modal.css">
     
     <!-- Language Switch -->
     <style>
@@ -720,6 +721,7 @@
 
     <!-- JavaScript -->
     <script src="./assets/js/main.js?v=20240729"></script>
+    <script src="./assets/js/waitlist-modal.js"></script>
     
     <!-- 頁面載入完成後的統計動畫 -->
     <script>
@@ -742,5 +744,38 @@
             trackConversionFunnel('landing');
         });
     </script>
+
+    <!-- Waitlist Modal HTML -->
+    <div id="waitlist-modal-overlay" class="modal-overlay">
+        <div class="modal-dialog">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            <h2>加入我們的等候清單</h2>
+            <p>搶先體驗 FoodFate 的最新功能與獨家優惠！</p>
+            
+            <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="waitlist" />
+              <p class="hidden" style="display:none;">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
+              
+              <!-- Required Fields -->
+              <input type="email" name="email" placeholder="電子郵件" required />
+              <input type="text" name="name" placeholder="姓名或暱稱" required />
+              
+              <!-- Optional Fields -->
+              <select name="interest[]" id="interest">
+                <option value="">您對什麼最感興趣？（可選）</option>
+                <option value="new-features">新功能預告</option>
+                <option value="local-deals">在地餐廳優惠</option>
+                <option value="community-events">社群活動</option>
+                <option value="other">其他</option>
+              </select>
+              
+              <button type="submit">立即加入</button>
+            </form>
+            <div id="form-feedback"></div>
+        </div>
+    </div>
+
 </body>
 </html>

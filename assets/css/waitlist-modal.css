@@ -1,0 +1,121 @@
+/* Waitlist Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+  color: #333; /* Ensuring text is readable */
+}
+
+.modal-overlay.visible .modal-dialog {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-close-btn:hover {
+  color: #000;
+}
+
+.modal-dialog h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.modal-dialog p {
+  margin-bottom: 2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.waitlist-form input,
+.waitlist-form select,
+.waitlist-form button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.waitlist-form button {
+  background-color: #ff6347; /* Example color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.waitlist-form button:hover {
+  background-color: #e5533d; /* Darker shade */
+}
+
+.waitlist-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#form-feedback {
+    display: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#form-feedback.success {
+    background-color: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+#form-feedback.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .modal-dialog {
+    width: 95%;
+    padding: 1.5rem;
+  }
+} 
